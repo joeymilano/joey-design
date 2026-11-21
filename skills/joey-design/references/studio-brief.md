@@ -25,3 +25,7 @@ The app object names mode (collect or reserve), title, subtitle, home and saved 
     python "$SKILL/scripts/joey.py" app "$SKILL/assets/studies/side-b.json" --out listening-app
 
 Open index.html on a phone or in a desktop browser. It embeds the images and has no network dependency. On a static web server, the same browser and origin retain local state across reloads. The reservation example makes no request to a booking service.
+
+## Plate series and sound desk
+
+Set `theme` to `plate` to recompose all five card layouts as exhibition posters. Set `app.mode` to `instrument` and supply `title`, `subtitle` and `hero` (a key from `images`). In this mode those four app fields are sufficient. The desk plays sine, triangle and sawtooth waves, lets the listener change pitch from 110 to 440 Hz, saves one selection per brief ID and renders a two-second mono PCM WAV locally. Open the generated HTML and press Play to start audio. See `assets/studies/fold.json`.

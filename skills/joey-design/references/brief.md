@@ -23,3 +23,5 @@ Each language gets an offline keyboard-operated 16:9 HTML deck, a native editabl
 ## Fonts
 
 The renderer searches common macOS, Windows and Linux font locations, then fontconfig if available. For Linux install DejaVu and Noto CJK. Set JOEY_CJK_FONT to a specific Chinese font file to use it for all Chinese text. A missing font or an overlong title should be fixed before publication. For Chinese typography, check the actual exported output on the presentation computer.
+
+Use `plate` for full-bleed covers, macro detail pages, a specimen grid and a high-contrast close. Set `artwork.portrait` to a detail shot and describe it with bilingual `artwork.detail_alt`. The directions command uses the main and detail image to make three distinct cover compositions in both languages and both aspect ratios.
