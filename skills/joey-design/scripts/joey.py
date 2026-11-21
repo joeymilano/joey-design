@@ -1,5 +1,6 @@
 """Build both language editions locally. Run joey.py --help for usage."""
 import argparse
+import json
 import os
 import tempfile
 from pathlib import Path
@@ -42,13 +43,33 @@ def build(source, dest, check=False):
             os.replace(item,dest/item.name)
 
 
+def copy_issues(value, path="$"):
+    """Locate Chinese full stops without modifying the author's text."""
+    if isinstance(value, dict):
+        for key, child in value.items():
+            if key in {"en", "file", "url", "action_url"}:
+                continue
+            yield from copy_issues(child, f"{path}.{key}")
+    elif isinstance(value, list):
+        for index, child in enumerate(value):
+            yield from copy_issues(child, f"{path}[{index}]")
+    elif isinstance(value, str) and "。" in value and not value.startswith(("https://", "http://", "data:")):
+        yield path
+
+
 def main():
     parser=argparse.ArgumentParser(description="Build a bilingual design kit from one creative brief.")
-    parser.add_argument("command",choices=["build","check","social","app","directions","scenario"])
+    parser.add_argument("command",choices=["build","check","social","app","directions","scenario","copycheck"])
     parser.add_argument("brief",type=Path)
     parser.add_argument("--out",type=Path,default=None)
     args=parser.parse_args()
     try:
+        if args.command == "copycheck":
+            fields = list(copy_issues(json.loads(args.brief.read_text(encoding="utf-8"))))
+            if fields:
+                raise ValueError("Chinese full stops found in " + ", ".join(fields))
+            print("Chinese copy contains no full stops")
+            return
         if args.command == "scenario":
             from scenarios import build_scenario
             dest = args.out or Path("joey-scenario")
