@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>{{TITLE}}</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#101112;color:#f2f0e9;font:16px/1.5 Inter,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif}header,main,footer{width:min(1180px,92%);margin:auto}header,footer,.bar,.modes,.actions,.value{display:flex;align-items:center;justify-content:space-between;gap:14px}header{border-bottom:1px solid #5a5a59;padding:18px 0;font:700 19px/1.2 Arial,sans-serif;letter-spacing:-.055em}header small,figure figcaption,.tech{font:13px/1.35 "Courier New",monospace;letter-spacing:.035em}main{display:grid;grid-template-columns:1fr 1.05fr;gap:4%;align-items:start;margin-top:28px}figure{margin:0;position:relative;overflow:hidden;background:#161616;min-height:480px;aspect-ratio:1 / 1.13}figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:64% 50%}figure:after{content:"";position:absolute;inset:52% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.74));pointer-events:none}figcaption{position:absolute;z-index:1;bottom:18px;left:20px;color:white}.console{padding:3px 0}h1,h2,p{margin:0}h1{font-size:clamp(42px,5.2vw,88px);letter-spacing:-.065em;line-height:1.02}h2{font-size:17px}.intro{color:#c4c3bd;margin:12px 0 23px;max-width:36em}.scope{background:#efeee5;color:#131511;padding:14px 18px 10px}.scope canvas{display:block;width:100%;height:100px;margin:10px 0}.scope .bar{border-bottom:1px solid #adb2a1;padding-bottom:7px}.bar output{font:700 17px/1.2 monospace}.knobs{margin-top:23px}.modes{gap:5px;margin:8px 0 17px}button{font:inherit;color:inherit;cursor:pointer;border:1px solid #85847f;background:transparent;min-height:44px}.modes button{flex:1}.modes button[aria-pressed=true]{background:#b9c5ff;color:#10122a;border-color:#b9c5ff;font-weight:700}.value{margin-top:10px}.value output{font:600 25px monospace}input[type=range]{width:100%;min-height:32px;accent-color:#b1bcff;cursor:pointer}.actions{margin:13px 0 10px;flex-wrap:wrap;gap:8px}.actions button{padding:8px 16px}.actions #play{background:#f14b29;border-color:#f14b29;color:#080808;font-weight:700;flex:1.5;min-width:110px}.actions #save{flex:1}.actions #wav{flex:1}#saved[hidden]{display:none}#saved{color:#c8d0ff;padding:5px 0;border:0;text-decoration:underline;text-underline-offset:4px}#status{font-size:13px;color:#dadacf;min-height:24px}footer{border-top:1px solid #444;margin-top:30px;padding:15px 0 25px;font-size:12px;color:#bcbcb3}button:focus-visible,input:focus-visible{outline:3px solid #ffae8c;outline-offset:3px}
+@media(max-width:710px){header,main,footer{width:min(92%,520px)}main{display:flex;flex-direction:column;gap:18px;margin-top:14px}figure{width:100%;min-height:0;aspect-ratio:2.5}figure img{object-position:60% 48%}.console{width:100%}figcaption{bottom:8px;left:12px}h1{font-size:43px}.intro{font-size:14px;margin:6px 0 13px}.scope canvas{height:78px}.knobs{margin-top:14px}footer{margin-top:15px;align-items:flex-start}.actions button{font-size:14px;padding:8px}.modes{margin:7px 0 11px}}
+</style></head><body>
+<header><b id="brand"></b><small id="imprint"></small></header>
+<main><figure><img id="art" alt=""><figcaption>OSCILLATOR / 01</figcaption></figure><section class="console"><h1 id="title"></h1><p class="intro" id="subtitle"></p>
+<div class="scope"><div class="bar"><span class="tech">OSCILLOSCOPE</span><output id="type"></output></div><canvas aria-label="当前音色的波形示意"></canvas></div>
+<div class="knobs"><h2>波形</h2><div class="modes" role="group" aria-label="选择波形"><button data-wave="sine">正弦</button><button data-wave="triangle">三角</button><button data-wave="sawtooth">锯齿</button></div>
+<div class="value"><label for="pitch">音高</label><output id="hz" for="pitch"></output></div><input type="range" id="pitch" min="110" max="440" value="220" step="1">
+<div class="actions"><button id="play" aria-pressed="false">播放音色</button><button id="save">保存音色</button><button id="wav">导出 WAV</button></div><button id="saved" hidden></button><p id="status" role="status"></p></div></section></main>
+<footer><span id="credit"></span><span>Web Audio / Mono</span></footer>
+<script type="application/json" id="brief">{{DATA}}</script>
+<script>
+'use strict';
+const data=JSON.parse(document.querySelector('#brief').textContent), get=id=>document.getElementById(id);
+const labels={sine:'SINE',triangle:'TRIANGLE',sawtooth:'SAWTOOTH'};
+const storageKey='joey-tone-'+data.id;
+let wave='sine',hz=220,stored=null,ctx=null,osc=null,gain=null,starting=false;
+const asset=data.images[data.app.hero];get('art').src=asset.src;get('art').alt=asset.alt;
+for(const [id,text] of Object.entries({title:data.app.title,subtitle:data.app.subtitle,credit:data.credit,brand:data.brand,imprint:data.imprint})){get(id).textContent=text}
+function sample(t){const phase=t-Math.floor(t);if(wave==='sawtooth')return 2*phase-1;const sine=Math.sin(phase*2*Math.PI);return wave==='triangle'?2*Math.asin(sine)/Math.PI:sine}
+function draw(){
+ const c=document.querySelector('canvas'),r=c.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);
+ const w=Math.max(1,Math.round(r.width*d)),h=Math.max(1,Math.round(r.height*d));c.width=w;c.height=h;
+ const g=c.getContext('2d');g.strokeStyle='#cdd0c1';g.lineWidth=d;
+ for(let i=0;i<=8;i++){let x=i*w/8;g.beginPath();g.moveTo(x,0);g.lineTo(x,h);g.stroke()}
+ g.beginPath();g.moveTo(0,h/2);g.lineTo(w,h/2);g.stroke();
+ g.lineWidth=2.7*d;g.strokeStyle='#1937ce';g.beginPath();
+ for(let x=0;x<w;x++){let y=h*.5-sample(x/w*hz/75)*h*.40;x?g.lineTo(x,y):g.moveTo(x,y)}g.stroke()
+}
+function paint(){get('type').textContent=labels[wave];get('hz').value=hz+' Hz';get('pitch').value=hz;
+ document.querySelectorAll('[data-wave]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.wave===wave)));
+ if(osc){osc.type=wave;osc.frequency.setTargetAtTime(hz,ctx.currentTime,.012)}draw();
+ if(stored){get('saved').hidden=false;get('saved').textContent='载入已存音色 · '+labels[stored.wave]+' / '+stored.hz+' Hz'}}
+function valid(o){return o&&Object.hasOwn(labels,o.wave)&&Number.isInteger(o.hz)&&o.hz>=110&&o.hz<=440}
+try{let x=JSON.parse(localStorage.getItem(storageKey));if(valid(x)){stored=x;wave=x.wave;hz=x.hz}}catch{}
+document.querySelectorAll('[data-wave]').forEach(b=>b.onclick=()=>{wave=b.dataset.wave;paint()});
+get('pitch').oninput=e=>{hz=Number(e.target.value);paint()};
+function stop(){if(!osc)return;let old=osc;gain.gain.setTargetAtTime(0,ctx.currentTime,.009);old.stop(ctx.currentTime+.06);osc=null;get('play').textContent='播放音色';get('play').setAttribute('aria-pressed','false')}
+get('play').onclick=async()=>{if(osc){stop();return}if(starting)return;starting=true;try{
+ const Audio=window.AudioContext||window.webkitAudioContext;if(!Audio)throw Error();
+ ctx=ctx||new Audio();await ctx.resume();if(document.hidden)return;
+ osc=ctx.createOscillator();gain=ctx.createGain();osc.type=wave;osc.frequency.value=hz;
+ gain.gain.value=0;osc.connect(gain);gain.connect(ctx.destination);const gate=gain;const voice=osc;
+ osc.onended=()=>{voice.disconnect();gate.disconnect()};osc.start();gain.gain.setTargetAtTime(.075,ctx.currentTime,.02);
+ get('play').textContent='停止播放';get('play').setAttribute('aria-pressed','true');get('status').textContent='';
+ }catch{get('status').textContent='浏览器未能播放，可以导出 WAV 试听。'}finally{starting=false}};
+get('save').onclick=()=>{try{const patch={wave,hz};localStorage.setItem(storageKey,JSON.stringify(patch));stored=patch;paint();get('status').textContent='已保存在本机。'}catch{get('status').textContent='当前浏览器无法保存。'}};
+get('saved').onclick=()=>{if(stored){wave=stored.wave;hz=stored.hz;paint();get('status').textContent='已载入音色。'}};
+get('wav').onclick=()=>{
+ const rate=22050,count=rate*2,buffer=new ArrayBuffer(44+count*2),v=new DataView(buffer);
+ function label(offset,s){for(let i=0;i<s.length;i++)v.setUint8(offset+i,s.charCodeAt(i))}
+ label(0,'RIFF');v.setUint32(4,36+count*2,true);label(8,'WAVE');label(12,'fmt ');v.setUint32(16,16,true);v.setUint16(20,1,true);v.setUint16(22,1,true);v.setUint32(24,rate,true);v.setUint32(28,rate*2,true);v.setUint16(32,2,true);v.setUint16(34,16,true);label(36,'data');v.setUint32(40,count*2,true);
+ for(let i=0;i<count;i++){let envelope=Math.min(1,i/(rate*.02),(count-1-i)/(rate*.04));v.setInt16(44+2*i,Math.round(2400*envelope*sample(i*hz/rate)),true)}
+ const url=URL.createObjectURL(new Blob([buffer],{type:'audio/wav'})),a=document.createElement('a');a.href=url;a.download=data.id+'-'+wave+'-'+hz+'Hz.wav';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);get('status').textContent='已生成两秒 WAV 音色。';
+};
+document.addEventListener('visibilitychange',()=>{if(document.hidden)stop()});window.addEventListener('pagehide',stop);window.addEventListener('resize',draw);paint();
+</script></body></html>
