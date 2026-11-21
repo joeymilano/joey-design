@@ -1,0 +1,120 @@
+{
+  "theme": "signal",
+  "brand": "TIDE INDEX  /  OBSERVATION SERIES",
+  "artwork": {
+    "file": "tide.jpg",
+    "alt": {
+      "en": "Three simulated tide traces across a dark measurement grid.",
+      "zh": "深色测量网格上的三条模拟潮位曲线。"
+    },
+    "credit": {
+      "en": "Original plotted artwork. Values are synthetic demonstration fixtures.",
+      "zh": "原创绘制图像。数值来自演示用模拟记录。"
+    },
+    "wide": "tide-strip.jpg"
+  },
+  "action": {
+    "en": "Inspect the sample record",
+    "zh": "查看样本记录"
+  },
+  "action_url": "#sources",
+  "facts": {
+    "interval": {
+      "value": "15 min",
+      "label": {
+        "en": "Sampling interval",
+        "zh": "采样间隔"
+      },
+      "source": {
+        "en": "Tide Index demonstration protocol, synthetic run T-01.",
+        "zh": "Tide Index 演示观测协议，模拟批次 T-01。"
+      }
+    },
+    "sites": {
+      "value": "3",
+      "label": {
+        "en": "Virtual gauges",
+        "zh": "模拟测站"
+      },
+      "source": {
+        "en": "Tide Index demonstration protocol, synthetic run T-01.",
+        "zh": "Tide Index 演示观测协议，模拟批次 T-01。"
+      }
+    },
+    "window": {
+      "value": "24 h",
+      "label": {
+        "en": "Observation window",
+        "zh": "观测时长"
+      },
+      "source": {
+        "en": "Tide Index demonstration protocol, synthetic run T-01.",
+        "zh": "Tide Index 演示观测协议，模拟批次 T-01。"
+      }
+    }
+  },
+  "slides": [
+    {
+      "kind": "cover",
+      "kicker": {
+        "en": "T–01   /   COASTAL OBSERVATORY",
+        "zh": "T–01   /   海岸观测"
+      },
+      "title": {
+        "en": "Tide index.",
+        "zh": "潮位索引。"
+      },
+      "body": {
+        "en": "One day at the waterline, read across three imaginary gauges.",
+        "zh": "沿着三个虚构测站，读一遍海岸的一天。"
+      },
+      "notes": {
+        "en": "Explain that the project visualizes a synthetic study.",
+        "zh": "说明本项目展示的是模拟观测。"
+      }
+    },
+    {
+      "kind": "proof",
+      "kicker": {
+        "en": "01   /   SAMPLING PLAN",
+        "zh": "01   /   采样方案"
+      },
+      "title": {
+        "en": "A common clock.",
+        "zh": "用同一只时钟。"
+      },
+      "body": {
+        "en": "Each station uses the same interval so a phase shift remains visible across the three traces.",
+        "zh": "三个测站以相同间隔记录，让曲线之间的相位差清晰可见。"
+      },
+      "notes": {
+        "en": "Compare sampling cadence and observation length.",
+        "zh": "对比采样节奏和观察窗口。"
+      },
+      "facts": [
+        "interval",
+        "sites",
+        "window"
+      ]
+    },
+    {
+      "kind": "close",
+      "kicker": {
+        "en": "02   /   FIELD NOTES",
+        "zh": "02   /   观测手记"
+      },
+      "title": {
+        "en": "Read the second crest.",
+        "zh": "看看第二个波峰。"
+      },
+      "body": {
+        "en": "Follow each line from left to right. Which station reaches its next crest first?",
+        "zh": "从左向右追踪曲线。哪个测站率先抵达下一个波峰？"
+      },
+      "notes": {
+        "en": "Invite the audience to trace the curves.",
+        "zh": "请观众沿曲线观察变化。"
+      }
+    }
+  ]
+}
