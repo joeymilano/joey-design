@@ -1,4 +1,4 @@
 interface:
   display_name: "Joey Design"
-  short_description: "Design decks, social carousels and working business tools"
-  default_prompt: "Use $joey-design to turn my brief into a presentation, social post, mobile prototype, buyer sheet, channel review or event programme."
+  short_description: "低 AI 味的高审美 PPT、Web / App UIUX、网站与游戏设计"
+  default_prompt: "Use $joey-design to make a low-AI-aesthetic presentation, product interface, website or playable game from my brief."
