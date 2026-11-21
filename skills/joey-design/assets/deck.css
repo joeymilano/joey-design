@@ -9,3 +9,6 @@ nav{display:none;align-items:center;justify-content:center;gap:20px;height:56px;
 button:disabled{opacity:.35;cursor:default}
 button:focus-visible{outline:3px solid #f8b86c}
 @media print{@page{size:320mm 180mm;margin:0}html,body{background:white;margin:0}main{width:320mm;margin:0}.ready nav{display:none}.ready .slide,.ready .slide:not(.active){display:block;width:320mm;height:180mm;break-after:page;print-color-adjust:exact;-webkit-print-color-adjust:exact}.slide:last-child{break-after:auto}}
+
+#notes{padding:0 12px}#notes-panel{position:fixed;right:12px;bottom:62px;max-width:min(560px,calc(100vw - 24px));max-height:50vh;overflow:auto;background:#17202c;color:white;border:1px solid #7d8792;padding:8px 18px;font:17px/1.5 Arial,sans-serif}#notes-panel a{color:inherit}
+@media print{#notes-panel{display:none!important}}
