@@ -1,0 +1,11 @@
+{
+  "id":"contact-sheet","title":"底片台","mast":"CONTACT SHEET","intro":"工作室样张","credit":"虚构选片任务 · 图像为原创 AI 概念素材",
+  "items":[
+    {"id":"court","title":"日光过墙","series":"光隙","image":"courtyard.jpg","alt":"暖墙旁的人影经过明暗交界","note":"人到墙边的这一刻，墙的高度才看得出来"},
+    {"id":"stairs","title":"蓝阶","series":"光隙","image":"stair.jpg","alt":"蓝色楼梯的斜线穿过画面","note":"留意第一阶的边线，想想右上角要不要裁掉"},
+    {"id":"sleeve","title":"唱片背面","series":"反面唱片室","image":"sleeves.jpg","alt":"木桌上翻旧的唱片封套","note":"检查纸角和压痕，留一张能看清纸纹的"},
+    {"id":"needle","title":"落针之前","series":"反面唱片室","image":"vinyl.jpg","alt":"唱臂伸向黑胶唱片的标签","note":"唱针和内圈标签都要看得清"},
+    {"id":"fold","title":"钴蓝折片","series":"折频","image":"fold-object.jpg","alt":"钴蓝雕塑盘起在朱红色背景上","note":"选一张适合做横幅的全貌"},
+    {"id":"edge","title":"金属切口","series":"折频","image":"fold-detail.jpg","alt":"深蓝折片边缘反着一条细光","note":"和全貌放在一起，能不能看出是同一块金属？"}
+  ]
+}

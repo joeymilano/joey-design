@@ -1,0 +1,43 @@
+{
+  "id": "stillroom",
+  "title": "间室",
+  "mast": "Stillroom",
+  "intro": "摄影、物件和印刷品",
+  "credit": "间室为虚构设计工作室 · 图像为原创 AI 概念素材",
+  "items": [
+    {
+      "id": "light",
+      "title": "光隙",
+      "series": "摄影",
+      "image": "courtyard.jpg",
+      "detail": "stair.jpg",
+      "alt": "行人走过赭色庭院",
+      "detail_alt": "深蓝楼梯与台阶上的光",
+      "note": "在墙根等一个人走进光里，换到楼梯边，再把天空裁出去",
+      "detail_note": "蓝色楼梯里的斜线一直通到画面右上角"
+    },
+    {
+      "id": "fold",
+      "title": "折频",
+      "series": "物件",
+      "image": "fold-object.jpg",
+      "detail": "fold-detail.jpg",
+      "alt": "朱红色背景上的蓝色折片雕塑",
+      "detail_alt": "金属折痕的切边",
+      "note": "一件雕塑拍两次，第一次留全轮廓，第二次只留切口上的光",
+      "detail_note": "离开朱红背景，钴蓝色的金属看起来更冷"
+    },
+    {
+      "id": "sides",
+      "title": "反面唱片室",
+      "series": "印刷",
+      "image": "sleeves.jpg",
+      "detail": "vinyl.jpg",
+      "alt": "唱片封套上的朱红印刷和磨损纸角",
+      "detail_alt": "唱针在黑胶的内圈附近",
+      "note": "封套拿远先见红黑色块，凑近才看见磨毛的纸边",
+      "detail_note": "从压过油墨的纸，翻到带圈纹的黑胶"
+    }
+  ],
+  "about": "间室收了三组习作，庭院里的光、薄金属的折痕、磨毛的唱片封套，每组各留一张全貌和一张近景"
+}
