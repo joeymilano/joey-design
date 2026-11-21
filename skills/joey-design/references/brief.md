@@ -4,15 +4,15 @@ Copy `assets/starter.json` from the installed skill. Its FOLD 01 example names a
 
 | Field | Type | Meaning |
 |---|---|---|
-| theme | string | nocturne, folio or signal |
+| theme | string | nocturne, folio, signal or gallery |
 | brand | string | Shared wordmark or imprint |
 | artwork.file | relative path | A local photograph or illustration, ideally 1200 px or wider. PNG/JPEG recommended. |
 | artwork.wide, artwork.portrait | optional paths | Art-directed alternatives used for frames at least 2.4:1 or narrower than 0.95:1. |
 | artwork.alt, artwork.credit | language pairs | Description of the image, rights or attribution, and whether it is conceptual |
 | facts | object keyed by IDs | One to six entries. Each has a single canonical value string, a translated label, and a translated source. Preserve units. |
 | action, action_url | language pair and string | Intended action and its supplied destination. Use an HTTPS address, mailto, or #sources for a self-contained concept. |
-| slides | ordered array | Three to sixteen pages. Start with cover, add feature or proof, finish with close. |
-| Each slide | object | kind, kicker, title, body and notes. A proof adds a facts list of one to three existing IDs. |
+| slides | ordered array | Three to sixteen pages. Start with cover, add feature, spread or proof, finish with close. |
+| Each slide | object | kind, kicker, title, body and notes. A spread adds two plates with a local file and bilingual label and alt. A proof adds a facts list of one to three existing IDs. |
 
 A language pair has the form `{"en":"Reading light","zh":"阅读灯"}`. Add `{{mass}}` in prose to resolve the same supplied value in both languages. Build fails on unresolved references, missing translations, missing artwork or text beyond the available space. If copy fails to fit, split the slide or trim the sentence. To target one language at delivery, select its completed files.
 
