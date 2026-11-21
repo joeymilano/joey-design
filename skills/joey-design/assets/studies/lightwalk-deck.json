@@ -5,11 +5,11 @@
     "file": "courtyard.jpg",
     "alt": {
       "en": "A walker beneath an ochre wall.",
-      "zh": "人物走过赭色庭院的墙根。"
+      "zh": "人物走过赭色庭院的墙根"
     },
     "credit": {
       "en": "Original AI concept photographs. Fictional field studies.",
-      "zh": "原创 AI 概念摄影。场景为虚构练习。"
+      "zh": "原创 AI 概念摄影，场景为虚构练习"
     }
   },
   "action": {
@@ -26,7 +26,7 @@
       },
       "source": {
         "en": "Light Walk exercise sheet.",
-        "zh": "光隙摄影练习任务书。"
+        "zh": "光隙摄影练习任务书"
       }
     }
   },
@@ -38,16 +38,16 @@
         "zh": "建筑摄影 / 光线手记"
       },
       "title": {
-        "en": "Chasing\nlight.",
-        "zh": "追一束\n下午的光。"
+        "en": "Chasing\nlight",
+        "zh": "追一束\n下午的光"
       },
       "body": {
         "en": "An afternoon exercise in finding scale and direction.",
-        "zh": "一个下午，练习用光线交代尺度与方向。"
+        "zh": "两处拍摄位置，一面墙，一段蓝楼梯"
       },
       "notes": {
         "en": "Ask the audience where their eye first lands in the courtyard.",
-        "zh": "请观众说出第一眼看到的地方。"
+        "zh": "先让大家指一下最先注意到的地方"
       }
     },
     {
@@ -57,16 +57,16 @@
         "zh": "庭院 / 尺度"
       },
       "title": {
-        "en": "Wait for\nthe walker.",
-        "zh": "等一个人，\n走进光里。"
+        "en": "Wait for\nthe walker",
+        "zh": "等一个人\n走进光里"
       },
       "body": {
         "en": "A wall alone hides its height. A figure at its base gives the eye a unit of measure.",
-        "zh": "一面空墙很难交代高度。等一个人走到墙根，画面自然就有了尺度。"
+        "zh": "等行人走到墙根再拍，人才这么小，这面墙有多高就好懂了"
       },
       "notes": {
         "en": "Point to the figure at the foot of the wall.",
-        "zh": "指出墙根的人物，让观众比较人与墙的高度。"
+        "zh": "指给大家看，墙根站着一个人"
       }
     },
     {
@@ -76,23 +76,23 @@
         "zh": "接触印样 / 两张习作"
       },
       "title": {
-        "en": "Two ways to direct the eye.",
-        "zh": "两张照片，两种视线。"
+        "en": "Two ways to direct the eye",
+        "zh": "你先看到了哪里？"
       },
       "body": {
         "en": "Trace the shadow boundary, then follow the stairs uphill.",
-        "zh": "先沿明暗交界移动视线，再顺着台阶向上看。"
+        "zh": "左边找影子的边，右边顺着台阶往上看"
       },
       "notes": {
         "en": "Discuss where the eye enters and exits each image.",
-        "zh": "请观众指出每张图中视线的入口与出口。"
+        "zh": "请两个人分别说说，第一眼看到了哪儿"
       },
       "plates": [
         {
           "file": "courtyard.jpg",
           "alt": {
             "en": "A walker beneath an ochre wall.",
-            "zh": "人物走过赭色庭院的墙根。"
+            "zh": "人物走过赭色庭院的墙根"
           },
           "label": {
             "en": "A / Measure the space",
@@ -103,7 +103,7 @@
           "file": "stair.jpg",
           "alt": {
             "en": "Cool blue stairs in side light.",
-            "zh": "侧光下的深蓝色楼梯。"
+            "zh": "侧光下的深蓝色楼梯"
           },
           "label": {
             "en": "B / Follow the diagonal",
@@ -119,16 +119,16 @@
         "zh": "下次散步 / 练习"
       },
       "title": {
-        "en": "Find the edge.",
-        "zh": "从一条影子开始。"
+        "en": "Find the edge",
+        "zh": "下次散步去哪拍？"
       },
       "body": {
         "en": "Make one frame with a person for scale, then one with a line for direction.",
-        "zh": "用一个人物交代尺度，再用一条线带出方向。把两张照片并排看。"
+        "zh": "选一个机位带走，下次经过时试拍一张"
       },
       "notes": {
         "en": "Invite the audience to save the two study locations in the mobile prototype.",
-        "zh": "邀请观众打开机位手记，收藏下次想练习的机位。"
+        "zh": "打开机位手记，收藏想去的地方"
       }
     }
   ]

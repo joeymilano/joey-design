@@ -5,15 +5,15 @@
     "file": "fold-object.jpg",
     "portrait": "fold-detail.jpg",
     "alt": {
-      "zh": "朱红色背景上一束钴蓝金属折片，像波形向右翻起。",
+      "zh": "朱红色背景上一束钴蓝金属折片，像波形向右翻起",
       "en": "A cobalt aluminium fold rises across a vermilion field."
     },
     "detail_alt": {
-      "zh": "钴蓝折片的微距细节，边缘泛着冰蓝色高光。",
+      "zh": "钴蓝折片的微距细节，边缘泛着冰蓝色高光",
       "en": "A macro view of cobalt fins with ice-blue edges."
     },
     "credit": {
-      "zh": "折频为虚构声音展。金属雕塑为原创 AI 概念图，试听由浏览器合成。",
+      "zh": "折频为虚构声音展，金属雕塑为原创 AI 概念图，试听由浏览器合成",
       "en": "A fictional sound exhibition. The sculpture images are original AI concepts. Sound is synthesized in your browser."
     }
   },
@@ -30,7 +30,7 @@
         "en": "Starting pitch"
       },
       "source": {
-        "zh": "折频试听台的实现参数。",
+        "zh": "折频试听台的实现参数",
         "en": "Listening desk implementation."
       }
     },
@@ -41,7 +41,7 @@
         "en": "Waveforms"
       },
       "source": {
-        "zh": "折频试听台的实现参数。",
+        "zh": "折频试听台的实现参数",
         "en": "Listening desk implementation."
       }
     },
@@ -52,7 +52,7 @@
         "en": "WAV export"
       },
       "source": {
-        "zh": "折频试听台的实现参数。",
+        "zh": "折频试听台的实现参数",
         "en": "Listening desk implementation."
       }
     }
@@ -66,14 +66,14 @@
       },
       "title": {
         "zh": "折频",
-        "en": "FOLD\nFREQ."
+        "en": "FOLD\nFREQ"
       },
       "body": {
-        "zh": "看一道折痕，听三种音色。",
-        "en": "One fold. Three ways to hear it."
+        "zh": "这件蓝色雕塑有一道很亮的折痕",
+        "en": "One pitch, three tones"
       },
       "notes": {
-        "zh": "让观众先看蓝色薄片在哪儿转向。雕塑只是看声音的入口。",
+        "zh": "请大家在图上找找，蓝色薄片在哪里转了个弯？",
         "en": "Ask where the eye changes direction. The sculpture is an invitation to listen."
       }
     },
@@ -84,15 +84,15 @@
         "en": "MATERIAL STUDY  /  MACRO"
       },
       "title": {
-        "zh": "沿着高光，\n读一条边。",
-        "en": "Read the\nbright edge."
+        "zh": "沿着那条\n亮边看",
+        "en": "Read the\nbright edge"
       },
       "body": {
-        "zh": "靠近时，整件雕塑消失了。只留一条亮边，眼睛会沿它走到下一道折痕。",
+        "zh": "靠近看，蓝色几乎沉进黑里，只剩切口反着光",
         "en": "Move closer until the sculpture disappears. Follow one bright edge into the next fold."
       },
       "notes": {
-        "zh": "指出中间的转角，停留两秒。这里用形状来谈感知，并非声学测量。",
+        "zh": "指一下中间的转角，停两秒再翻页",
         "en": "Point to the bend and pause. This is a visual analogy, not a measurement."
       }
     },
@@ -103,15 +103,15 @@
         "en": "LISTENING DESK  /  CONTROLS"
       },
       "title": {
-        "zh": "留住音高，切换波形。",
-        "en": "Hold the pitch. Change the wave."
+        "zh": "音高不动，换种波形",
+        "en": "Hold the pitch. Change the wave"
       },
       "body": {
-        "zh": "先从正弦开始，依次切到三角和锯齿，听同一个音如何改变质地。",
+        "zh": "把旋钮留在 220 Hz，听完正弦再按锯齿",
         "en": "Begin with a sine wave, then switch to triangle and sawtooth. Listen for the change in texture."
       },
       "notes": {
-        "zh": "给听众留出安静的四秒，让他们对比同一音高下的音色。",
+        "zh": "切换后停四秒，问听众哪一种更刺耳",
         "en": "Leave four quiet seconds for each waveform at the same pitch."
       },
       "facts": [
@@ -127,22 +127,22 @@
         "en": "PLATES  /  OBJECT AND DETAIL"
       },
       "title": {
-        "zh": "退一步，看形。走近，看纹。",
-        "en": "The whole fold and the fine edge."
+        "zh": "远看轮廓\n近看切口",
+        "en": "The whole fold and the fine edge"
       },
       "body": {
-        "zh": "两张图分别承担轮廓与触感。比较相同的蓝在不同光线下如何变化。",
+        "zh": "左图看折片往哪儿弯，右图看光落在哪条边上",
         "en": "Compare the silhouette at a distance with the surface at close range."
       },
       "notes": {
-        "zh": "并排指向两处高光，说明相同的材质为什么读起来不同。",
+        "zh": "请大家指出右图里最亮的那一道边",
         "en": "Point to the two highlights. Discuss what scale changes."
       },
       "plates": [
         {
           "file": "fold-object.jpg",
           "alt": {
-            "zh": "朱红色背景上一束钴蓝金属折片，像波形向右翻起。",
+            "zh": "朱红色背景上一束钴蓝金属折片，像波形向右翻起",
             "en": "A cobalt aluminium fold rises across a vermilion field."
           },
           "label": {
@@ -153,7 +153,7 @@
         {
           "file": "fold-detail.jpg",
           "alt": {
-            "zh": "钴蓝折片的微距细节，边缘泛着冰蓝色高光。",
+            "zh": "钴蓝折片的微距细节，边缘泛着冰蓝色高光",
             "en": "A macro view of cobalt fins with ice-blue edges."
           },
           "label": {
@@ -170,15 +170,15 @@
         "en": "LAST TRACK  /  PLAY"
       },
       "title": {
-        "zh": "把它调成\n你的声音。",
-        "en": "Make your\nown tone."
+        "zh": "录下这\n两秒钟",
+        "en": "Make your\nown tone"
       },
       "body": {
-        "zh": "选一种波形，停在喜欢的音高。把这两秒带走。",
+        "zh": "选好波形，把喜欢的声音存成 WAV",
         "en": "Pick a waveform, tune it to a pitch you like, and take two seconds home."
       },
       "notes": {
-        "zh": "打开试听台，演示保存再载入音色，最后导出 WAV。",
+        "zh": "打开试听台放一遍，再导出刚才那段声音",
         "en": "Open the listening desk. Save a patch, recall it, then export a WAV."
       }
     }
