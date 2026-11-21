@@ -1,18 +1,20 @@
 # Joey Design
 
-[![Joey Design — three bilingual launch kits](docs/gallery.jpg)](https://joeymilano.github.io/joey-design/)
+一个为演示、小红书和移动界面做设计的开源 Skill。每种媒介都带可运行的生成器和可直接打开的成品。
 
-**从同一份产品资料，做出台上讲的 PPT、发给买家的销售页，以及社媒上第一眼看到的封面。**
+[打开完整作品集 / Live gallery](https://joeymilano.github.io/joey-design/) · [下载中文版 PPTX](https://joeymilano.github.io/joey-design/lightwalk-deck-zh.pptx) · [翻看一篇小红书](https://joeymilano.github.io/joey-design/side-b-social.html) · [试用预约 App](https://joeymilano.github.io/joey-design/side-b-app.html)
 
-An open-source design skill for bilingual product launches. One brief keeps the story, specifications and art direction together across Office, web and print-ready artwork.
+[![摄影演示、唱片封套笔记与机位收藏界面](docs/studio-hero.jpg)](https://joeymilano.github.io/joey-design/)
 
-[打开作品集 / Live gallery](https://joeymilano.github.io/joey-design/) · [下载英文样例 PPTX](https://github.com/joeymilano/joey-design/raw/refs/heads/main/docs/afterhours-deck-en.pptx) · [中文样例简报](examples/afterhours/brief.json)
+## 作品集
 
-| 案例 | 设计决定 | 成品 |
-|---|---|---|
-| **After hours.** 便携照明 | 把银色灯臂放在钴蓝色背景上，规格页转为浅底，让采购方读清设计目标。 | [看演示](https://joeymilano.github.io/joey-design/afterhours-deck-zh.html) · [英文销售页](https://joeymilano.github.io/joey-design/afterhours-page-en.html) |
-| **Paper radio.** 唱片试听会 | 以书籍衬线和唱片局部构图做邀请函，竖版保留封套的纸感。 | [看演示](https://joeymilano.github.io/joey-design/paper-radio-deck-zh.html) · [竖版封面](docs/paper-radio-cover-zh.png) |
-| **Tide index.** 潮位观测 | 用模拟测站曲线开场，接着交代采样方案，数据和来源随文件一起交付。 | [看演示](https://joeymilano.github.io/joey-design/tide-index-deck-en.html) · [研究页](https://joeymilano.github.io/joey-design/tide-index-page-zh.html) |
+| 媒介 | 能拿到什么 | 公开案例 |
+| --- | --- | --- |
+| PowerPoint | 4 组中英双语演示，8 份可编辑 PPTX。均含演讲者备注、网页演示、项目页、横竖封面。 | [光隙 · 建筑摄影](https://joeymilano.github.io/joey-design/lightwalk-deck-zh.html) · [After hours. · 工业产品](https://joeymilano.github.io/joey-design/afterhours-deck-zh.html) · [Paper radio. · 文化活动](https://joeymilano.github.io/joey-design/paper-radio-deck-zh.html) · [Tide index. · 数据研究](https://joeymilano.github.io/joey-design/tide-index-deck-zh.html) |
+| 小红书 | 2 篇各 5 张的 1080 × 1440 图文，含封面、分解页、对照页和清单。整套可下载，附正文与话题标签。 | [追一束下午的光](https://joeymilano.github.io/joey-design/lightwalk-social.html) · [落针之前，读一张封套。](https://joeymilano.github.io/joey-design/side-b-social.html) |
+| 移动 App | 2 个可操作的响应式网页原型。摄影工具支持筛选、详情与收藏。唱片室支持选场、预约、改期与取消。演示状态保存在当前浏览器。 | [光隙 · 机位手记](https://joeymilano.github.io/joey-design/lightwalk-app.html) · [反面唱片室 · 试听预约](https://joeymilano.github.io/joey-design/side-b-app.html) |
+
+想看设计如何随媒介改变，可以从《光隙》开始。演示把建筑照片横排，让观众比较人物和台阶怎样引导视线。小红书把两个拍摄动作拆开，让读者边滑边学。手机端把照片做成机位卡，出门前能按光线筛选，再存下想练的那张。
 
 ## Installation
 
@@ -20,15 +22,15 @@ An open-source design skill for bilingual product launches. One brief keeps the 
 npx skills add joeymilano/joey-design --skill joey-design
 ```
 
-Choose your agent in the installer. Or copy the complete [skills/joey-design](skills/joey-design) directory into the skills folder used by your agent. The skill includes the renderer, templates and design references.
+在安装器中选择你的 Agent，也可以将整个 [skills/joey-design](skills/joey-design) 目录复制到支持 Skills 的客户端。
 
-Try this in Codex or Claude Code:
+试着给 Codex 或 Claude Code 这条简报：
 
-> 用 joey-design 把附件里的阅读灯资料做成给德国经销商看的中英文发布套件。采用真实产品图。演示控制在 4 页，写清样机规格，最后引导预约看样。交付可编辑 PPTX、销售页和竖版封面。
+> 用 joey-design 为独立书店的摄影散步做三份东西。讲座需要 4 页可编辑中文 PPT，小红书需要 5 张给初学者的构图笔记，手机端让读者按光线筛选机位并收藏。三份都用我上传的照片，给我能直接打开的成品。
 
-## Run the renderer
+## 本地生成
 
-From a fresh clone with Python 3.9+:
+从项目根目录运行。需要 Python 3.9+。图片、文案及渲染均可在本地处理，无需 API 密钥。
 
 ```sh
 git clone https://github.com/joeymilano/joey-design.git
@@ -36,22 +38,28 @@ cd joey-design
 python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install -r skills/joey-design/requirements.txt
-python skills/joey-design/scripts/joey.py check examples/afterhours/brief.json
-python skills/joey-design/scripts/joey.py build examples/afterhours/brief.json --out joey-build
+
+# 核对简报，生成双语演示与项目页
+python skills/joey-design/scripts/joey.py check skills/joey-design/assets/studies/lightwalk-deck.json
+python skills/joey-design/scripts/joey.py build skills/joey-design/assets/studies/lightwalk-deck.json --out build/ppt
+
+# 生成整篇图文、逐张 JPG、正文与 ZIP
+python skills/joey-design/scripts/joey.py social skills/joey-design/assets/studies/lightwalk.json --out build/social
+
+# 生成可在手机浏览器打开的界面
+python skills/joey-design/scripts/joey.py app skills/joey-design/assets/studies/side-b.json --out build/app
 ```
 
-On Windows activate with `.venv\Scripts\activate`. Linux users need Latin and Chinese fonts, for example DejaVu and Noto CJK. A preinstalled Python environment with the two packages works offline. The compiler runs locally and requires no API key. A connected design agent is optional for drafting copy or generating original artwork.
+Windows 通过 `.venv\Scripts\activate` 激活环境。Linux 建议安装 DejaVu 与 Noto CJK 字体。
 
-Each build produces **ten files** across two languages. PowerPoint titles, copy, numbers and rules can be edited. Photos and illustration plates are embedded images. The HTML deck supports arrow keys, Home/End, speaker notes (N) and browser print. The sales pages link between languages, adapt to mobile and carry sources. PNGs are 1080×1440 and 1280×720.
+替换素材时，先复制整份 [摄影与唱片室示例](skills/joey-design/assets/studies)，保留 JSON 引用图片的相对路径。在 [工业产品示例](examples/afterhours/brief.json) 中，把 `facts.light.value` 从 `2700 K` 改成 `3000 K` 后重建，规格页、结尾、备注和双语销售页会一起更新。
 
-## Change one specification
-
-Open `examples/afterhours/brief.json`. Change `facts.light.value` from `2700 K` to `3000 K`, then rebuild. The new value appears in the specification slide, closing copy, speaker notes and both sales pages. Edit the two headlines independently. Every exported format uses the same resolved facts.
-
-[Brief format](skills/joey-design/references/brief.md) · [Art direction](skills/joey-design/references/art-direction.md) · [Regression checks](tests/test_joey.py)
+[媒介选择与验收](skills/joey-design/references/formats.md) · [演示简报格式](skills/joey-design/references/brief.md) · [图文与 App 简报格式](skills/joey-design/references/studio-brief.md) · [美术指导](skills/joey-design/references/art-direction.md)
 
 ## Design credits
 
-By **Joey Zhao**. The three projects are fictional demonstrations. The lighting image was generated for this project, and Paper Radio and Tide Index use original procedural artwork. The two reference projects informed the choice of problem: [Guizang PPT Skill](https://github.com/op7418/guizang-ppt-skill) explores browser presentations and live delivery, and [Huashu Design](https://github.com/alchaincyf/huashu-design) explores visual directions across media. Joey Design's instructions, layouts, renderer and examples were independently authored.
+Designed by **Joey Zhao**. All projects are fictional studies. The lighting, architecture and record-store images were generated for these examples. Paper Radio and Tide Index use original procedural artwork.
+
+项目参考了 [Guizang PPT Skill](https://github.com/op7418/guizang-ppt-skill) 对浏览器演示的探索，以及 [Huashu Design](https://github.com/alchaincyf/huashu-design) 对跨媒介设计的组织方式。Joey Design 的说明、渲染器、版式与案例独立编写。
 
 [MIT License](LICENSE) · [Joey Zhao](https://www.joeyzhao.cc/)
