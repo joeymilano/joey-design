@@ -1,51 +1,17 @@
 # Joey Design
 
-[![折频，钴蓝色金属折片在朱红色背景上翻转](docs/fold-reel.gif)](https://joeymilano.github.io/joey-design/)
+**低 AI 味的开源设计 Skill，做 PPT、高审美 Web / App UIUX、网站和游戏**
 
-一个开源设计工具，做 PPT、小红书图文和能在手机上操作的网页，案例里的简报、图片和源文件都放在仓库里
+[![Joey Design 四个可运行的案例，折频演示、摄影选片工具、工作室作品集和港口像素游戏](docs/four-works.jpg)](https://joeymilano.github.io/joey-design/)
 
-[逛展厅](https://joeymilano.github.io/joey-design/) · [安装 Skill](#installation)
+[看在线案例](https://joeymilano.github.io/joey-design/) · [安装 Skill](#installation) · [Read the skill in English](skills/joey-design/SKILL.md)
 
-## 选一个手头的活
-
-[![布样图录、渠道周报和印刷夜校的实际画面](docs/work-samples.jpg)](https://joeymilano.github.io/joey-design/#work)
-
-| 场景 | 打开试试 | 拿走什么 |
+| 我想做 | 先打开一个成品 | 用自己的内容重做 |
 | --- | --- | --- |
-| 给海外买手寄布样 | 在 [Material Office](https://joeymilano.github.io/joey-design/material-office.html) 挑亚麻、斜纹布或帆布，填上每种要几片 | 写好货号、规格和数量的英文询样单 |
-| 展会后一周复盘线索 | 在 [Signal Ledger](https://joeymilano.github.io/joey-design/signal-ledger.html) 看买手从哪儿来，用同一张表对比访问和询盘 | 带两期原始计数的 CSV |
-| 给印刷夜校排课 | 在 [Night School](https://joeymilano.github.io/joey-design/night-school.html) 挑想上的课，两堂撞时会当场提醒 | 能导入个人日历的 ICS 课表 |
-
-想换成自己的项目，从[三份可编辑简报](skills/joey-design/assets/scenarios)挑一份，课程时间、货号和渠道数字都在里面
-
-## 折频
-
-[![三种折频封面，分别展示整件雕塑、纸面图录和金属切边](docs/fold-directions.jpg)](https://joeymilano.github.io/joey-design/fold-proofs.zip)
-
-同一件蓝色雕塑，远看像张开的一把折扇，凑近只剩一条亮边
-场域、图录、微距三种封面各排了横竖版和中英文，[下载 12 张校样](https://joeymilano.github.io/joey-design/fold-proofs.zip)，打开 `index.html` 并排挑
-
-[![中文演示的封面、微距、参数和结尾](docs/fold-slides.jpg)](https://joeymilano.github.io/joey-design/fold-deck-zh.html)
-
-投影上先放整件雕塑，再给切口一个特写，讲到声音时把旋钮停在 220 Hz，点一下锯齿听听变化
-[在线翻 PPT](https://joeymilano.github.io/joey-design/fold-deck-zh.html) · [下载中文版](https://joeymilano.github.io/joey-design/fold-deck-zh.pptx) · [英文版](https://joeymilano.github.io/joey-design/fold-deck-en.pptx)
-
-[![折频的五张竖版试听笔记](docs/fold-cards.jpg)](https://joeymilano.github.io/joey-design/fold-social.html)
-
-手机上把这个练习拆成五张，最后一张留给想自己试的人
-[翻小红书图文](https://joeymilano.github.io/joey-design/fold-social.html) · [拿走图片和正文](https://joeymilano.github.io/joey-design/fold-images.zip)
-
-[![折频试听台的桌面和手机版](docs/fold-console.jpg)](https://joeymilano.github.io/joey-design/fold-app.html)
-
-[打开试听台](https://joeymilano.github.io/joey-design/fold-app.html)，选一种波形，把喜欢的两秒钟存成 WAV
-
-## 其他作品
-
-| 题材 | 成品 |
-| --- | --- |
-| 光隙 · 建筑摄影 | [中文 PPT](https://joeymilano.github.io/joey-design/lightwalk-deck-zh.html) · [庭院与蓝楼梯的拍摄笔记](https://joeymilano.github.io/joey-design/lightwalk-social.html) · [收藏机位](https://joeymilano.github.io/joey-design/lightwalk-app.html) |
-| 反面唱片室 | [落针前翻一张封套](https://joeymilano.github.io/joey-design/side-b-social.html) · [选试听场次](https://joeymilano.github.io/joey-design/side-b-app.html) |
-| 工业产品、文化活动、数据研究 | [折叠阅读灯](https://joeymilano.github.io/joey-design/afterhours-deck-zh.html) · [纸上电台](https://joeymilano.github.io/joey-design/paper-radio-deck-zh.html) · [潮位索引](https://joeymilano.github.io/joey-design/tide-index-deck-zh.html) |
+| **PPT / PowerPoint** | [翻看《折频》](https://joeymilano.github.io/joey-design/fold-deck-zh.html) · [下载可编辑中文版](https://joeymilano.github.io/joey-design/fold-deck-zh.pptx) | 给一份产品介绍或路演提纲，文字、图片、讲者备注都能在 PowerPoint 里改 |
+| **Web / App UIUX** | [打开《底片台》](https://joeymilano.github.io/joey-design/contact-sheet.html)，按 P 留片、X 淘汰，选完导出清单 | 替换成自己的照片，或让 Agent 按真实产品流程设计桌面和手机界面 |
+| **网站** | [逛《间室》作品集](https://joeymilano.github.io/joey-design/stillroom.html)，按类别找作品，打开详情看近景 | 换上项目和图片，做好品牌官网、作品集或带明确行动入口的产品落地页 |
+| **游戏** | [玩《末班渡轮》](https://joeymilano.github.io/joey-design/last-ferry.html)，用有限的航程接齐乘客，跑完三关 | 改角色、地图与步数，生成自己的浏览器游戏 |
 
 ## Installation
 
@@ -53,52 +19,54 @@
 npx skills add joeymilano/joey-design --skill joey-design
 ```
 
-在安装器中选择你的 Agent，也可以将整个 [skills/joey-design](skills/joey-design) 目录复制到支持 Skills 的客户端
+在安装器里选 Codex、Claude Code 或你使用的客户端，也可以直接复制 [skills/joey-design](skills/joey-design)
 
-也可以直接跟 Codex 或 Claude Code 说
+## 怎么开工
 
-> 用 joey-design 帮我做书店周六的摄影散步，用我上传的照片，给讲座排 4 页中文 PPT，再挑 5 张做小红书，手机上能存下次想去的机位就好
+- **演示**　“把这份介绍改成 8 页中文产品发布 PPT，照片用原图，价格页留一张比较表，给我可编辑的 PPTX”
+- **界面**　“做一个手机也能用的素材审核台，把预览图放大，键盘能通过或退回，点错了能撤销”
+- **网站**　“用我这三组作品搭一个摄影师网站，首页先放照片，每组作品都有能单独发给客户的链接”
+- **游戏**　“做一款能用方向键和触屏玩的短游戏，给我开场、三关、结算和重来按钮”
+
+## 低 AI 味怎么落到画面上
+
+《底片台》把位置留给正在看的照片，选片按钮贴在旁边，点完可以撤销
+《间室》让每组作品用一张全景和一张近景说话
+《末班渡轮》把剩余步数写成航程，船靠站后灯就灭，玩家看画面就知道刚才发生了什么
+
+中文标题和按钮不用句号，不编客户评价、奖项和增长数字
+[设计与验收方法](skills/joey-design/references/product-work.md) · [中文文案示例](skills/joey-design/references/chinese-copy.md)
 
 ## 本地生成
 
-需要 Python 3.9+，从仓库根目录运行，图片和文案都在本地处理
+需要 Python 3.9+，从仓库根目录运行
 
 ```sh
-git clone https://github.com/joeymilano/joey-design.git
-cd joey-design
 python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install -r skills/joey-design/requirements.txt
 
-# 检查中文句号，输出需要改写的字段位置
-python skills/joey-design/scripts/joey.py copycheck skills/joey-design/assets/studies/lightwalk.json
-
-# 用自己的货号、渠道数据或课程时间生成工作页
-python skills/joey-design/scripts/joey.py scenario skills/joey-design/assets/scenarios/material-office.json --out build/samples
-
-# 同题三种封面，输出并排校样页与 12 张中英文横竖图
-python skills/joey-design/scripts/joey.py directions skills/joey-design/assets/studies/fold-deck.json --out build/directions
-
-# 核对简报，生成双语演示与项目页
-python skills/joey-design/scripts/joey.py check skills/joey-design/assets/studies/lightwalk-deck.json
-python skills/joey-design/scripts/joey.py build skills/joey-design/assets/studies/lightwalk-deck.json --out build/ppt
-
-# 生成整篇图文、逐张 JPG、正文与 ZIP
-python skills/joey-design/scripts/joey.py social skills/joey-design/assets/studies/lightwalk.json --out build/social
-
-# 生成可在手机浏览器打开的界面
-python skills/joey-design/scripts/joey.py app skills/joey-design/assets/studies/side-b.json --out build/app
+SKILL=skills/joey-design
+python "$SKILL/scripts/joey.py" build "$SKILL/assets/studies/fold-deck.json" --out build/ppt
+python "$SKILL/scripts/joey.py" ui "$SKILL/assets/studies/contact-sheet.json" --out build/ui
+python "$SKILL/scripts/joey.py" site "$SKILL/assets/studies/stillroom.json" --out build/site
+python "$SKILL/scripts/joey.py" game "$SKILL/assets/studies/last-ferry.json" --out build/game
 ```
 
-Windows 通过 `.venv\Scripts\activate` 激活环境，Linux 建议安装 DejaVu 与 Noto CJK 字体
+Windows 用 `.venv\Scripts\activate` 激活环境，Linux 渲染中文图片时建议安装 Noto CJK 字体
+复制[示例简报和图片](skills/joey-design/assets/studies)后再修改，保留图片的相对路径
+网页案例都能离线打开，游戏生成器会先检查每关能否在步数内通关
 
-替换素材时，先复制整份 [摄影与唱片室示例](skills/joey-design/assets/studies)，保留 JSON 引用图片的相对路径在 [工业产品示例](examples/afterhours/brief.json) 中，把 `facts.light.value` 从 `2700 K` 改成 `3000 K` 后重建，规格页、结尾、备注和双语销售页会一起更新
+[全部演示和旧案例](https://joeymilano.github.io/joey-design/archive.html) · [小红书图文](https://joeymilano.github.io/joey-design/archive.html#social) · [三套封面校样](https://joeymilano.github.io/joey-design/fold-proofs.zip) · [查看原有命令](skills/joey-design/scripts/joey.py)
 
-[媒介选择与验收](skills/joey-design/references/formats.md) · [演示简报格式](skills/joey-design/references/brief.md) · [图文与 App 简报格式](skills/joey-design/references/studio-brief.md) · [美术指导](skills/joey-design/references/art-direction.md)
+## GitHub 参考
+
+四个入口分别参考了开发者演示、可定制界面组件、内容网站和浏览器游戏的实际项目形态
+[Slidev](https://github.com/slidevjs/slidev) · [shadcn/ui](https://github.com/shadcn-ui/ui) · [Astro](https://github.com/withastro/astro) · [Phaser](https://github.com/phaserjs/phaser)
 
 ## Design credits
 
-Designed by **Joey Zhao**. All projects are fictional studies. The textile study, metallic sculpture, lighting, architecture and record-store images were generated for these examples. Paper Radio and Tide Index use original procedural artwork.
+Designed by **Joey Zhao**. All projects are fictional studies. The harbour illustration, textile study, metallic sculpture, lighting, architecture and record-store images were generated for these examples. Paper Radio and Tide Index use original procedural artwork.
 
 项目参考了 [Guizang PPT Skill](https://github.com/op7418/guizang-ppt-skill) 对浏览器演示的探索，以及 [Huashu Design](https://github.com/alchaincyf/huashu-design) 对跨媒介设计的组织方式，Joey Design 的说明、渲染器、版式与案例独立编写
 
