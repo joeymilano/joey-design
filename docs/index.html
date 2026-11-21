@@ -1,96 +1,79 @@
 <!doctype html>
-<html lang="zh-CN">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Joey Design 开源设计作品集。预览双语 PowerPoint，下载小红书图文与文案，在手机上体验收藏和预约原型。">
-<meta property="og:title" content="Joey Design · 设计作品集">
-<meta property="og:image" content="https://joeymilano.github.io/joey-design/studio-hero.jpg">
-<title>Joey Design · 设计作品集</title>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Joey Design — 折频 / Fold Frequency</title>
+<meta name="description" content="Joey Zhao 的开源设计展厅。切换原创艺术指导样张，下载双语 PowerPoint，翻看小红书图文，演奏可导出 WAV 的声音界面。">
+<meta property="og:image" content="https://joeymilano.github.io/joey-design/fold-field-wide.jpg">
 <style>
-:root{--ink:#1d281f;--paper:#f6f4ec;--line:#bfc2b6;--muted:#50594f}
-*{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--paper);font:16px/1.58 Inter,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif}
-header,main,footer{width:min(1330px,92%);margin-inline:auto}
-.mast,nav,.actions,.case-title,.section-head,footer{display:flex;align-items:center}
-.mast,footer{justify-content:space-between;gap:15px}.mast{padding:16px 0;border-bottom:1px solid var(--ink)}
-.wordmark{font:900 24px/1 Arial,sans-serif;letter-spacing:-.11em;text-decoration:none}nav{gap:clamp(16px,3vw,46px)}nav a,footer a{font-size:14px}a{color:inherit;text-underline-offset:.22em}nav a{text-decoration:none}nav a:hover,.wordmark:hover{text-decoration:underline}
-a:focus-visible,summary:focus-visible{outline:3px solid #3a603b;outline-offset:4px}
-h1,h2,h3,p,figure{margin:0}.intro{display:flex;align-items:flex-end;justify-content:space-between;gap:34px;padding:clamp(38px,5vw,78px) 0 30px}
-h1{font-size:clamp(65px,9.2vw,143px);line-height:.86;letter-spacing:-.085em;font-weight:700;white-space:nowrap}
-.intro p{max-width:25em;color:#3b493b;font-size:clamp(15px,1.3vw,20px);line-height:1.6}
-img{display:block;width:100%;height:auto}.hero{width:100%;height:auto}
-section{padding:clamp(52px,6vw,90px) 0 0;scroll-margin-top:24px}
-.section-head{justify-content:space-between;gap:20px;padding:18px 0 22px;border-top:2px solid var(--ink)}
-h2{font-size:clamp(27px,3vw,48px);line-height:1;letter-spacing:-.05em}.section-head p{font-size:14px;color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px clamp(18px,3vw,43px)}
-article{min-width:0}.visual{display:block}.visual img{background:#deded4}.visual:hover{outline:1px solid var(--ink);outline-offset:3px}
-.case-title{justify-content:space-between;gap:12px;padding:15px 0 3px}h3{font-size:clamp(21px,2.2vw,33px);line-height:1.3;letter-spacing:-.045em}.category{font-size:12px;color:var(--muted);text-align:right;flex:none}
-article p{font-size:15px;color:var(--muted);line-height:1.65}.actions{flex-wrap:wrap;gap:8px 20px;margin-top:12px}.actions a{font-size:14px;font-weight:600}
-details{font-size:13px;margin-top:13px;border-top:1px solid var(--line);padding-top:8px}summary{cursor:pointer;color:var(--muted)}details .actions{margin-top:6px}details a{font-weight:400!important}
-footer{margin-top:72px;padding:22px 0 38px;border-top:1px solid var(--ink);font-size:14px}
-@media(max-width:760px){.intro{display:block}.intro p{margin-top:19px}.grid{gap:28px 18px}h1{white-space:normal}.section-head{align-items:flex-end}.section-head p{max-width:48%;text-align:right}}
-@media(max-width:620px){.grid{grid-template-columns:1fr}.mast{padding:16px 0}nav{gap:16px}nav a{font-size:13px}.intro{padding:37px 0 20px}.case-title{padding-top:10px}.section-head{padding:14px 0 17px}footer{margin-top:44px}}
-</style></head>
-<body>
-<header class="mast"><a class="wordmark" href="#top" aria-label="Joey Design 首页">J/D</a><nav aria-label="作品类别"><a href="#ppt">PPT</a><a href="#social">小红书</a><a href="#apps">App</a><a href="https://github.com/joeymilano/joey-design">GitHub ↗</a></nav></header>
-<main id="top">
-<div class="intro"><h1 lang="en">Joey Design</h1><p>给演讲者的幻灯片，给读者的图文，给使用者的界面。打开案例，可以看排版、取走源文件，也可以亲手试一遍。</p></div>
-<img class="hero" width="1540" height="650" src="studio-hero.jpg" alt="并排展示《光隙》演示开场、唱片室小红书封面与手机上的蓝梯机位详情">
-
-<section id="ppt"><div class="section-head"><h2>PowerPoint</h2><p>4 组双语演示 · 可编辑 PPTX</p></div><div class="grid">
-<article>
-<a class="visual" href="lightwalk-deck-zh.html"><img loading="lazy" width="1280" height="720" src="lightwalk-wide-zh.png" alt="光隙 演示封面，打开中文预览"></a>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f5f3ed;color:#191919;font:16px/1.52 Inter,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif}h1,h2,h3,p,figure{margin:0}
+a{color:inherit;text-underline-offset:.2em}button{font:inherit}a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #ef632d;outline-offset:4px}
+.mast,.band,.section-head,.case-title,footer,nav,.actions,.chooser{display:flex;align-items:center}.mast,.band,.section-head,.case-title,footer{justify-content:space-between}
+header{background:#101112;color:#f7f6ef}.mast,main,footer{width:min(1560px,94%);margin:auto}.mast{min-height:63px;padding:10px 0;gap:18px}.logo{font:800 clamp(25px,2.5vw,43px)/.95 Inter,"Helvetica Neue",Arial,sans-serif;letter-spacing:-.08em;text-decoration:none}
+nav{gap:clamp(14px,2.1vw,38px)}nav a{font-size:14px;text-decoration:none}nav a:hover,.actions a:hover{text-decoration:underline}
+.hero{background:#101112;color:#f8f7f0}.hero-inner{width:min(1560px,94%);margin:auto}.stage{background:#151515;overflow:hidden;position:relative}.stage picture,.stage img{width:100%;display:block}.stage img{max-height:calc(100svh - 166px);aspect-ratio:1.9;object-fit:cover;object-position:50% 52%}.stage.changed img{animation:develop .38s ease-out}@keyframes develop{from{opacity:.6;transform:scale(1.012)}to{opacity:1;transform:scale(1)}}
+.band{gap:10px;min-height:76px;padding:12px 0 18px;flex-wrap:wrap}.band h1{font-size:clamp(15px,1.55vw,25px);line-height:1.15;letter-spacing:-.035em}.band h1 span{font-weight:400;font-size:.72em;margin-left:.5em;color:#cccac2}.chooser{gap:5px}.chooser button{display:flex;align-items:center;gap:7px;background:transparent;border:1px solid #767674;border-radius:0;padding:9px 12px;min-height:42px;color:#ecebe2;cursor:pointer;font-size:14px}.chooser button[aria-pressed=true]{background:#eeece4;color:#111;border-color:#eeece4}.chooser i{height:12px;width:12px;background:var(--sw);display:inline-block;border:1px solid #888}
+main{padding:38px 0}.feature-links{border-bottom:1px solid #9c9d91;padding-bottom:28px;display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:end}.feature-links h2{font-size:clamp(31px,4.6vw,79px);line-height:1.02;letter-spacing:-.065em}.feature-links p{margin-top:11px;color:#484945}.feature-links .actions{justify-content:flex-end}.actions{flex-wrap:wrap;gap:10px 18px}.actions a{font-size:14px;text-decoration:underline;font-weight:600}
+.collection{padding-top:clamp(40px,6vw,89px);scroll-margin-top:16px}.section-head{border-top:3px solid #151515;padding:18px 0 22px;gap:15px;align-items:baseline}.section-head h2{font-size:clamp(38px,5.3vw,87px);font-weight:650;letter-spacing:-.07em;line-height:.98}.section-head span,.category{color:#454642;font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px clamp(18px,2.8vw,44px)}.grid article{min-width:0}.visual{display:block}.visual img{display:block;width:100%;height:auto}.visual:hover{outline:2px solid #222;outline-offset:3px}.case-title{gap:10px;margin:12px 0 4px}h3{font-size:clamp(22px,2.2vw,37px);line-height:1.15;letter-spacing:-.045em}article p{color:#484945;font-size:15px}article .actions{margin-top:12px}.lead-case{grid-column:1/-1;display:grid;grid-template-columns:1.9fr 1fr;align-items:center;background:#151617;color:#fffdf4}.lead-case .visual{height:100%;display:grid;align-items:center}.lead-txt{padding:clamp(18px,3.3vw,55px)}.lead-case .case-title{display:block;margin:0 0 14px}.lead-case .category{color:#c7c9c3;display:block;margin-top:7px}.lead-case p{color:#dadad3}.lead-case h3{font-size:clamp(28px,3.5vw,63px)}.lead-case .actions{margin-top:22px}
+details{margin-top:14px;padding-top:6px;border-top:1px solid #bec1b5;font-size:14px}summary{cursor:pointer}details .actions{margin-top:6px}footer{padding:18px 0 40px;border-top:1px solid;color:#31342e;font-size:14px}
+@media(max-width:760px){.feature-links{display:block}.feature-links .actions{justify-content:flex-start;margin-top:16px}.lead-case{grid-template-columns:1.4fr 1fr}.section-head span{max-width:42%;text-align:right}}
+@media(max-width:620px){.mast,.hero-inner,main,footer{width:92%}.mast{min-height:52px}.logo{font-size:27px}nav{gap:12px}nav a{font-size:12px}.hero-inner{width:100%}.stage img{width:100%;height:auto;max-height:none;aspect-ratio:900/1140;object-fit:contain}.band{display:block;padding:14px 4% 16px}.chooser{margin-top:12px}.chooser button{flex:1;justify-content:center;padding:7px 6px;min-height:43px}.band h1{font-size:20px}.grid{grid-template-columns:1fr;gap:29px}.lead-case{display:block}.lead-txt{padding:19px}.section-head{padding:13px 0 16px}.stage{padding:0}main{padding-top:25px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.stage.changed img{animation:none}}
+</style></head><body>
+<header id="top"><div class="mast"><a href="#top" class="logo">Joey Design.</a><nav aria-label="案例分类"><a href="#ppt">PPT</a><a href="#social">小红书</a><a href="#apps">App</a><a href="https://github.com/joeymilano/joey-design">GitHub ↗</a></nav></div></header>
+<div class="hero"><div class="hero-inner"><figure class="stage" id="proof"><picture><source media="(max-width:620px)" srcset="fold-field-portrait.jpg"><img src="fold-field-wide.jpg" alt="场域版封面，钴蓝色折片横过朱红色背景"></picture></figure>
+<div class="band"><h1>折频 <span>Fold Frequency / 声音设计习作</span></h1><div class="chooser" role="group" aria-label="切换封面艺术指导"><button type="button" aria-pressed="true" data-proof="field"><i style="--sw:#ec3818"></i>场域</button><button type="button" aria-pressed="false" data-proof="catalogue"><i style="--sw:#e7e5d8"></i>图录</button><button type="button" aria-pressed="false" data-proof="detail"><i style="--sw:#1735d9"></i>微距</button></div></div></div></div>
+<main><div class="feature-links"><div><h2>从一件雕塑，到两秒声音。</h2><p>《折频》是一个虚构声音展。先在图版上观察折痕，再到试听台调出自己的音色。</p></div><div class="actions"><a href="fold-deck-zh.html">看演示</a><a href="fold-social.html">翻图文</a><a href="fold-app.html">演奏试听台 ↗</a></div></div>
+<section class="collection" id="ppt"><div class="section-head"><h2>PowerPoint</h2><span>5 组双语演示 / 可编辑 PPTX</span></div><div class="grid"><article class="lead-case"><a class="visual" href="fold-deck-zh.html"><img loading="lazy" src="fold-slides.jpg" alt="折频四页对照，整版雕塑、微距图、数据页与蓝色收束页"></a><div class="lead-txt"><div class="case-title"><h3>折频 / Fold Frequency</h3><span class="category">声音展览 · 5 页</span></div><p>开场让雕塑占满银幕，第二页把视线拉到金属切边。图像、中文字、参数和讲者备注随 PPTX 交付。</p><div class="actions"><a href="fold-deck-zh.html">播放演示</a> · <a href="fold-deck-zh.pptx">下载中文 PPTX</a> · <a href="fold-deck-en.pptx">English PPTX</a></div></div></article><article>
+<a class="visual" href="lightwalk-deck-zh.html"><img alt="光隙 演示封面，打开中文预览" height="720" loading="lazy" src="lightwalk-wide-zh.png" width="1280"/></a>
 <div class="case-title"><h3>光隙</h3><span class="category">建筑摄影</span></div>
 <p>跟着一位行人读建筑尺度，再沿蓝色台阶找视线。双图对照页里，照片和图注都可独立替换。</p>
-<div class="actions"><a href="lightwalk-deck-zh.html">在线预览 →</a><a href="lightwalk-deck-zh.pptx" download>下载中文 PPTX</a><a href="lightwalk-deck-en.pptx" download>English PPTX</a></div><details><summary>项目页、封面及双语文件</summary><div class="actions"><b>中文</b><a href="lightwalk-deck-zh.html">演示</a><a href="lightwalk-page-zh.html">项目页</a><a href="lightwalk-deck-zh.pptx" download>PPTX</a><a href="lightwalk-cover-zh.png">竖图</a><a href="lightwalk-wide-zh.png">横图</a></div><div class="actions"><b>English</b><a href="lightwalk-deck-en.html">演示</a><a href="lightwalk-page-en.html">项目页</a><a href="lightwalk-deck-en.pptx" download>PPTX</a><a href="lightwalk-cover-en.png">竖图</a><a href="lightwalk-wide-en.png">横图</a></div></details>
+<div class="actions"><a href="lightwalk-deck-zh.html">在线预览 →</a><a download="" href="lightwalk-deck-zh.pptx">下载中文 PPTX</a><a download="" href="lightwalk-deck-en.pptx">English PPTX</a></div><details><summary>项目页、封面及双语文件</summary><div class="actions"><b>中文</b><a href="lightwalk-deck-zh.html">演示</a><a href="lightwalk-page-zh.html">项目页</a><a download="" href="lightwalk-deck-zh.pptx">PPTX</a><a href="lightwalk-cover-zh.png">竖图</a><a href="lightwalk-wide-zh.png">横图</a></div><div class="actions"><b>English</b><a href="lightwalk-deck-en.html">演示</a><a href="lightwalk-page-en.html">项目页</a><a download="" href="lightwalk-deck-en.pptx">PPTX</a><a href="lightwalk-cover-en.png">竖图</a><a href="lightwalk-wide-en.png">横图</a></div></details>
 </article>
 <article>
-<a class="visual" href="afterhours-deck-zh.html"><img loading="lazy" width="1280" height="720" src="afterhours-wide-en.png" alt="After hours. 演示封面，打开中文预览"></a>
+<a class="visual" href="afterhours-deck-zh.html"><img alt="After hours. 演示封面，打开中文预览" height="720" loading="lazy" src="afterhours-wide-en.png" width="1280"/></a>
 <div class="case-title"><h3>After hours.</h3><span class="category">工业产品</span></div>
 <p>钴蓝背景托起折叠灯臂，浅色规格页留给买家比较色温与尺寸。</p>
-<div class="actions"><a href="afterhours-deck-zh.html">在线预览 →</a><a href="afterhours-deck-zh.pptx" download>下载中文 PPTX</a><a href="afterhours-deck-en.pptx" download>English PPTX</a></div><details><summary>项目页、封面及双语文件</summary><div class="actions"><b>中文</b><a href="afterhours-deck-zh.html">演示</a><a href="afterhours-page-zh.html">项目页</a><a href="afterhours-deck-zh.pptx" download>PPTX</a><a href="afterhours-cover-zh.png">竖图</a><a href="afterhours-wide-zh.png">横图</a></div><div class="actions"><b>English</b><a href="afterhours-deck-en.html">演示</a><a href="afterhours-page-en.html">项目页</a><a href="afterhours-deck-en.pptx" download>PPTX</a><a href="afterhours-cover-en.png">竖图</a><a href="afterhours-wide-en.png">横图</a></div></details>
+<div class="actions"><a href="afterhours-deck-zh.html">在线预览 →</a><a download="" href="afterhours-deck-zh.pptx">下载中文 PPTX</a><a download="" href="afterhours-deck-en.pptx">English PPTX</a></div><details><summary>项目页、封面及双语文件</summary><div class="actions"><b>中文</b><a href="afterhours-deck-zh.html">演示</a><a href="afterhours-page-zh.html">项目页</a><a download="" href="afterhours-deck-zh.pptx">PPTX</a><a href="afterhours-cover-zh.png">竖图</a><a href="afterhours-wide-zh.png">横图</a></div><div class="actions"><b>English</b><a href="afterhours-deck-en.html">演示</a><a href="afterhours-page-en.html">项目页</a><a download="" href="afterhours-deck-en.pptx">PPTX</a><a href="afterhours-cover-en.png">竖图</a><a href="afterhours-wide-en.png">横图</a></div></details>
 </article>
 <article>
-<a class="visual" href="paper-radio-deck-zh.html"><img loading="lazy" width="1280" height="720" src="paper-radio-wide-en.png" alt="Paper radio. 演示封面，打开中文预览"></a>
+<a class="visual" href="paper-radio-deck-zh.html"><img alt="Paper radio. 演示封面，打开中文预览" height="720" loading="lazy" src="paper-radio-wide-en.png" width="1280"/></a>
 <div class="case-title"><h3>Paper radio.</h3><span class="category">文化活动</span></div>
 <p>用唱片封套的局部和书籍衬线构成试听邀请，讲清这场活动该怎样听。</p>
-<div class="actions"><a href="paper-radio-deck-zh.html">在线预览 →</a><a href="paper-radio-deck-zh.pptx" download>下载中文 PPTX</a><a href="paper-radio-deck-en.pptx" download>English PPTX</a></div><details><summary>项目页、封面及双语文件</summary><div class="actions"><b>中文</b><a href="paper-radio-deck-zh.html">演示</a><a href="paper-radio-page-zh.html">项目页</a><a href="paper-radio-deck-zh.pptx" download>PPTX</a><a href="paper-radio-cover-zh.png">竖图</a><a href="paper-radio-wide-zh.png">横图</a></div><div class="actions"><b>English</b><a href="paper-radio-deck-en.html">演示</a><a href="paper-radio-page-en.html">项目页</a><a href="paper-radio-deck-en.pptx" download>PPTX</a><a href="paper-radio-cover-en.png">竖图</a><a href="paper-radio-wide-en.png">横图</a></div></details>
+<div class="actions"><a href="paper-radio-deck-zh.html">在线预览 →</a><a download="" href="paper-radio-deck-zh.pptx">下载中文 PPTX</a><a download="" href="paper-radio-deck-en.pptx">English PPTX</a></div><details><summary>项目页、封面及双语文件</summary><div class="actions"><b>中文</b><a href="paper-radio-deck-zh.html">演示</a><a href="paper-radio-page-zh.html">项目页</a><a download="" href="paper-radio-deck-zh.pptx">PPTX</a><a href="paper-radio-cover-zh.png">竖图</a><a href="paper-radio-wide-zh.png">横图</a></div><div class="actions"><b>English</b><a href="paper-radio-deck-en.html">演示</a><a href="paper-radio-page-en.html">项目页</a><a download="" href="paper-radio-deck-en.pptx">PPTX</a><a href="paper-radio-cover-en.png">竖图</a><a href="paper-radio-wide-en.png">横图</a></div></details>
 </article>
 <article>
-<a class="visual" href="tide-index-deck-zh.html"><img loading="lazy" width="1280" height="720" src="tide-index-wide-en.png" alt="Tide index. 演示封面，打开中文预览"></a>
+<a class="visual" href="tide-index-deck-zh.html"><img alt="Tide index. 演示封面，打开中文预览" height="720" loading="lazy" src="tide-index-wide-en.png" width="1280"/></a>
 <div class="case-title"><h3>Tide index.</h3><span class="category">研究与数据</span></div>
 <p>从一条模拟潮位曲线，讲到三个测站的采样设计。数据与来源随演示交付。</p>
-<div class="actions"><a href="tide-index-deck-zh.html">在线预览 →</a><a href="tide-index-deck-zh.pptx" download>下载中文 PPTX</a><a href="tide-index-deck-en.pptx" download>English PPTX</a></div><details><summary>项目页、封面及双语文件</summary><div class="actions"><b>中文</b><a href="tide-index-deck-zh.html">演示</a><a href="tide-index-page-zh.html">项目页</a><a href="tide-index-deck-zh.pptx" download>PPTX</a><a href="tide-index-cover-zh.png">竖图</a><a href="tide-index-wide-zh.png">横图</a></div><div class="actions"><b>English</b><a href="tide-index-deck-en.html">演示</a><a href="tide-index-page-en.html">项目页</a><a href="tide-index-deck-en.pptx" download>PPTX</a><a href="tide-index-cover-en.png">竖图</a><a href="tide-index-wide-en.png">横图</a></div></details>
-</article>
-</div></section>
-<section id="social"><div class="section-head"><h2>小红书图文</h2><p>每篇 5 张 · JPG、正文与话题标签</p></div><div class="grid">
-<article>
-<a class="visual" href="lightwalk-social.html"><img loading="lazy" width="1050" height="570" src="lightwalk-spread.jpg" alt="摄影手记的庭院封面、蓝梯构图与三条练习"></a>
+<div class="actions"><a href="tide-index-deck-zh.html">在线预览 →</a><a download="" href="tide-index-deck-zh.pptx">下载中文 PPTX</a><a download="" href="tide-index-deck-en.pptx">English PPTX</a></div><details><summary>项目页、封面及双语文件</summary><div class="actions"><b>中文</b><a href="tide-index-deck-zh.html">演示</a><a href="tide-index-page-zh.html">项目页</a><a download="" href="tide-index-deck-zh.pptx">PPTX</a><a href="tide-index-cover-zh.png">竖图</a><a href="tide-index-wide-zh.png">横图</a></div><div class="actions"><b>English</b><a href="tide-index-deck-en.html">演示</a><a href="tide-index-page-en.html">项目页</a><a download="" href="tide-index-deck-en.pptx">PPTX</a><a href="tide-index-cover-en.png">竖图</a><a href="tide-index-wide-en.png">横图</a></div></details>
+</article></div></section><section class="collection" id="social"><div class="section-head"><h2>小红书</h2><span>3 套图文 / 每套 5 张</span></div><div class="grid"><article class="lead-case"><a class="visual" href="fold-social.html"><img loading="lazy" src="fold-cards.jpg" alt="折频的五张竖幅笔记"></a><div class="lead-txt"><div class="case-title"><h3>把声音折起来。</h3><span class="category">竖版图文 · 1080 × 1440</span></div><p>从薄片的转折讲到正弦、三角和锯齿。一张卡只留一个观察或动作，最后一张可以存下练习。</p><div class="actions"><a href="fold-social.html">逐张阅读</a> · <a href="fold-images.zip">下载 JPG 与文案</a></div></div></article><article>
+<a class="visual" href="lightwalk-social.html"><img alt="摄影手记的庭院封面、蓝梯构图与三条练习" height="570" loading="lazy" src="lightwalk-spread.jpg" width="1050"/></a>
 <div class="case-title"><h3>追一束下午的光</h3><span class="category">1080 × 1440</span></div>
 <p>前两张照片示范怎样等人入画、压低机位，滑到最后一张可以存下散步练习清单。</p>
-<div class="actions"><a href="lightwalk-social.html">翻看 5 张图 →</a><a href="lightwalk-images.zip" download>下载图片与文案</a></div>
+<div class="actions"><a href="lightwalk-social.html">翻看 5 张图 →</a><a download="" href="lightwalk-images.zip">下载图片与文案</a></div>
 </article>
 <article>
-<a class="visual" href="side-b-social.html"><img loading="lazy" width="1050" height="570" src="side-b-spread.jpg" alt="黑胶笔记的唱片封套、唱机与听后记录"></a>
+<a class="visual" href="side-b-social.html"><img alt="黑胶笔记的唱片封套、唱机与听后记录" height="570" loading="lazy" src="side-b-spread.jpg" width="1050"/></a>
 <div class="case-title"><h3>落针之前，读一张封套。</h3><span class="category">1080 × 1440</span></div>
 <p>从封套最大的色块读到唱针落下的第一轨，再给自己的听音笔记留三个问题。</p>
-<div class="actions"><a href="side-b-social.html">翻看 5 张图 →</a><a href="side-b-images.zip" download>下载图片与文案</a></div>
-</article>
-</div></section>
-<section id="apps"><div class="section-head"><h2>移动 App</h2><p>2 个可操作的移动网页原型</p></div><div class="grid">
-<article>
-<a class="visual" href="lightwalk-app.html"><img loading="lazy" width="1050" height="730" src="lightwalk-screens.jpg" alt="手机上的摄影练习首页与蓝梯机位详情"></a>
+<div class="actions"><a href="side-b-social.html">翻看 5 张图 →</a><a download="" href="side-b-images.zip">下载图片与文案</a></div>
+</article></div></section><section class="collection" id="apps"><div class="section-head"><h2>Mobile App</h2><span>3 个可操作的网页原型</span></div><div class="grid"><article class="lead-case"><a class="visual" href="fold-app.html"><img loading="lazy" src="fold-console.jpg" alt="折频试听台的实际操作画面"></a><div class="lead-txt"><div class="case-title"><h3>折频试听台</h3><span class="category">声音工具 · Web Audio</span></div><p>在同一个音高下切换波形，听质地怎样变化。保存音色后可以再次载入，也能导出两秒 WAV。</p><div class="actions"><a href="fold-app.html">打开试听台 ↗</a></div></div></article><article>
+<a class="visual" href="lightwalk-app.html"><img alt="手机上的摄影练习首页与蓝梯机位详情" height="730" loading="lazy" src="lightwalk-screens.jpg" width="1050"/></a>
 <div class="case-title"><h3>光隙 · 机位手记</h3><span class="category">收藏工具</span></div>
 <p>按冷光或斜阳筛选练习，打开机位看构图，收藏后在「我的机位」找回。</p>
 <div class="actions"><a href="lightwalk-app.html">试试收藏机位 →</a></div>
 </article>
 <article>
-<a class="visual" href="side-b-app.html"><img loading="lazy" width="1050" height="730" src="side-b-screens.jpg" alt="深色唱片室的节目单与试听场次选择画面"></a>
+<a class="visual" href="side-b-app.html"><img alt="深色唱片室的节目单与试听场次选择画面" height="730" loading="lazy" src="side-b-screens.jpg" width="1050"/></a>
 <div class="case-title"><h3>反面唱片室</h3><span class="category">试听预约</span></div>
 <p>从节目单选一场试听，挑时段、确认预约。回到「我的场次」可以改期或取消。</p>
 <div class="actions"><a href="side-b-app.html">试试预约场次 →</a></div>
-</article>
-</div></section>
-</main>
-<footer><span>Joey Zhao · MIT</span><a href="https://github.com/joeymilano/joey-design#installation">安装 Joey Design ↗</a></footer>
-</body></html>
+</article></div></section></main><footer><span>Joey Zhao · MIT</span><a href="https://github.com/joeymilano/joey-design#installation">安装 Joey Design ↗</a></footer>
+<script>
+const proof=document.querySelector('#proof'),pic=proof.querySelector('img'),source=proof.querySelector('source');
+const descriptions={field:'场域版封面，钴蓝色折片横过朱红色背景',catalogue:'图录版封面，纸白色底、印刷标尺和内嵌雕塑图版',detail:'微距版封面，钴蓝切边满版，标题落在黑色底栏'};
+for(const button of document.querySelectorAll('[data-proof]'))button.onclick=()=>{
+ const id=button.dataset.proof;document.querySelectorAll('[data-proof]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+ source.srcset='fold-'+id+'-portrait.jpg';pic.src='fold-'+id+'-wide.jpg';pic.alt=descriptions[id];
+ proof.classList.remove('changed');requestAnimationFrame(()=>proof.classList.add('changed'))
+};
+</script></body></html>
