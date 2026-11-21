@@ -1,4 +1,4 @@
 interface:
   display_name: "Joey Design"
-  short_description: "Design bilingual launch decks, sales pages and covers"
-  default_prompt: "Use $joey-design to turn this product brief into a bilingual launch kit."
+  short_description: "Design PowerPoint, Xiaohongshu carousels and mobile apps"
+  default_prompt: "Use $joey-design to design an editable presentation, a Xiaohongshu carousel or an interactive mobile app for my audience."
