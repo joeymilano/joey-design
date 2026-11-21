@@ -1,4 +1,4 @@
 interface:
   display_name: "Joey Design"
-  short_description: "Design PowerPoint, Xiaohongshu carousels and mobile apps"
-  default_prompt: "Use $joey-design to design an editable presentation, a Xiaohongshu carousel or an interactive mobile app for my audience."
+  short_description: "Design decks, social carousels and working business tools"
+  default_prompt: "Use $joey-design to turn my brief into a presentation, social post, mobile prototype, buyer sheet, channel review or event programme."
