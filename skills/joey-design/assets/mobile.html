@@ -34,7 +34,7 @@ function home(){const hero=element('section','hero'), intro=element('div'), art=
   for(const name of ['全部',...new Set(app.items.map(i=>i.category))]){const b=button(name,'filter',()=>{filter=name;render(false);Array.from(main.querySelectorAll('.filter')).find(x=>x.textContent===name)?.focus()});b.setAttribute('aria-pressed',String(name===filter));filters.append(b)}
   head.append(element('h2','',app.list),filters);shelf.append(head,cards(app.items.filter(i=>filter==='全部'||i.category===filter)));main.append(hero,shelf)}
 function savedView(){const s=element('section','saved');s.append(element('h1','',app.saved));const items=app.items.filter(i=>Object.hasOwn(saved,i.id));
-  if(items.length)s.append(cards(items));else{const e=element('div','empty');e.append(element('h2','',app.empty_title||'暂无记录'),element('p','',app.empty_body||('打开'+app.home+'，选择一项并完成「'+app.action+'」。')),link('回到'+app.home,'#home','cta'));s.append(e)}main.append(s)}
+  if(items.length)s.append(cards(items));else{const e=element('div','empty');e.append(element('h2','',app.empty_title||'暂无记录'),element('p','',app.empty_body||('打开'+app.home+'，选择一项并完成「'+app.action+'」')),link('回到'+app.home,'#home','cta'));s.append(e)}main.append(s)}
 function detail(item){const section=element('section','detail'), grid=element('div','detail-grid'), content=element('div');
   section.append(link('← '+(previousRoute==='saved'?app.saved:app.home),previousRoute==='saved'?'#saved':'#home','back'));content.append(element('p','meta',app.detail+'  /  '+item.meta),element('h1','',item.title),element('p','copy',item.body));
   const facts=element('dl','facts');for(const [k,v] of item.facts){const g=element('div');g.append(element('dt','',k),element('dd','',v));facts.append(g)}content.append(facts);
@@ -47,5 +47,5 @@ let lastRoute='';
 function render(navigated=true){let route=location.hash.slice(1)||'home';if(navigated && route!==lastRoute){if(!lastRoute.startsWith('item/'))previousRoute=lastRoute;chosen='';lastRoute=route}
   main.replaceChildren();nav(route);if(route==='saved')savedView();else if(route.startsWith('item/') && app.items.some(i=>'item/'+i.id===route))detail(app.items.find(i=>'item/'+i.id===route));else home();
   if(navigated){window.scrollTo(0,0);main.focus({preventScroll:true})}}
-document.body.className=study.theme;document.querySelector('#word').textContent=study.imprint;document.querySelector('#brand').textContent=study.brand;document.querySelector('#credit').textContent=study.credit;document.querySelector('#prototype').textContent=booking?'交互原型 · 预约只保存在此浏览器。':'交互原型 · 收藏保存在此浏览器。';window.addEventListener('hashchange',()=>render());render();
+document.body.className=study.theme;document.querySelector('#word').textContent=study.imprint;document.querySelector('#brand').textContent=study.brand;document.querySelector('#credit').textContent=study.credit;document.querySelector('#prototype').textContent=booking?'预约记录存在当前浏览器':'收藏存在当前浏览器';window.addEventListener('hashchange',()=>render());render();
 </script></body></html>

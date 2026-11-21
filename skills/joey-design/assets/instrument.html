@@ -46,15 +46,15 @@ get('play').onclick=async()=>{if(osc){stop();return}if(starting)return;starting=
  gain.gain.value=0;osc.connect(gain);gain.connect(ctx.destination);const gate=gain;const voice=osc;
  osc.onended=()=>{voice.disconnect();gate.disconnect()};osc.start();gain.gain.setTargetAtTime(.075,ctx.currentTime,.02);
  get('play').textContent='停止播放';get('play').setAttribute('aria-pressed','true');get('status').textContent='';
- }catch{get('status').textContent='浏览器未能播放，可以导出 WAV 试听。'}finally{starting=false}};
-get('save').onclick=()=>{try{const patch={wave,hz};localStorage.setItem(storageKey,JSON.stringify(patch));stored=patch;paint();get('status').textContent='已保存在本机。'}catch{get('status').textContent='当前浏览器无法保存。'}};
-get('saved').onclick=()=>{if(stored){wave=stored.wave;hz=stored.hz;paint();get('status').textContent='已载入音色。'}};
+ }catch{get('status').textContent='此处没能播放，导出 WAV 后再听'}finally{starting=false}};
+get('save').onclick=()=>{try{const patch={wave,hz};localStorage.setItem(storageKey,JSON.stringify(patch));stored=patch;paint();get('status').textContent='已保存在本机'}catch{get('status').textContent='当前浏览器无法保存'}};
+get('saved').onclick=()=>{if(stored){wave=stored.wave;hz=stored.hz;paint();get('status').textContent='已载入音色'}};
 get('wav').onclick=()=>{
  const rate=22050,count=rate*2,buffer=new ArrayBuffer(44+count*2),v=new DataView(buffer);
  function label(offset,s){for(let i=0;i<s.length;i++)v.setUint8(offset+i,s.charCodeAt(i))}
  label(0,'RIFF');v.setUint32(4,36+count*2,true);label(8,'WAVE');label(12,'fmt ');v.setUint32(16,16,true);v.setUint16(20,1,true);v.setUint16(22,1,true);v.setUint32(24,rate,true);v.setUint32(28,rate*2,true);v.setUint16(32,2,true);v.setUint16(34,16,true);label(36,'data');v.setUint32(40,count*2,true);
  for(let i=0;i<count;i++){let envelope=Math.min(1,i/(rate*.02),(count-1-i)/(rate*.04));v.setInt16(44+2*i,Math.round(2400*envelope*sample(i*hz/rate)),true)}
- const url=URL.createObjectURL(new Blob([buffer],{type:'audio/wav'})),a=document.createElement('a');a.href=url;a.download=data.id+'-'+wave+'-'+hz+'Hz.wav';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);get('status').textContent='已生成两秒 WAV 音色。';
+ const url=URL.createObjectURL(new Blob([buffer],{type:'audio/wav'})),a=document.createElement('a');a.href=url;a.download=data.id+'-'+wave+'-'+hz+'Hz.wav';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);get('status').textContent='两秒 WAV 已导出';
 };
 document.addEventListener('visibilitychange',()=>{if(document.hidden)stop()});window.addEventListener('pagehide',stop);window.addEventListener('resize',draw);paint();
 </script></body></html>
