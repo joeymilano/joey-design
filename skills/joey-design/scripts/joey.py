@@ -1,7 +1,6 @@
 """Build both language editions locally. Run joey.py --help for usage."""
 import argparse
 import os
-import sys
 import tempfile
 from pathlib import Path
 
@@ -19,7 +18,8 @@ def build(source, dest, check=False):
     if check:
         for p in editions.values():
             from PIL import Image
-            for path in (p["photo"], *p["variants"].values()):
+            plates = [plate["photo"] for page in p["pages"] for plate in page.get("plates", [])]
+            for path in (p["photo"], *p["variants"].values(), *plates):
                 with Image.open(path) as art:
                     art.verify()
         return
@@ -44,11 +44,18 @@ def build(source, dest, check=False):
 
 def main():
     parser=argparse.ArgumentParser(description="Build a bilingual design kit from one creative brief.")
-    parser.add_argument("command",choices=["build","check"])
+    parser.add_argument("command",choices=["build","check","social","app"])
     parser.add_argument("brief",type=Path)
-    parser.add_argument("--out",type=Path,default=Path("joey-build"))
+    parser.add_argument("--out",type=Path,default=None)
     args=parser.parse_args()
     try:
+        if args.command in ("social","app"):
+            from studio import build_studio
+            dest = args.out or Path("joey-" + args.command)
+            count = build_studio(args.brief, dest, args.command)
+            print(f"Built {count} files in {dest}")
+            return
+        args.out = args.out or Path("joey-build")
         build(args.brief,args.out,check=args.command=="check")
     except (ValueError,TypeError,KeyError,AttributeError,OSError,ImportError) as e:
         parser.exit(2,f"joey-design: {e}\n")

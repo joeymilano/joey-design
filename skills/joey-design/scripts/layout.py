@@ -85,7 +85,7 @@ class Canvas:
         ratio = w / h
         variant = "wide" if ratio >= 2.4 else "portrait" if ratio < 0.95 else ""
         path = p["variants"].get(variant, p["photo"])
-        self.layers.append(dict(type="image", x=x,y=y,w=w,h=h,path=path,alt=p["alt"]))
+        self.layers.append(dict(type="image", x=x,y=y,w=w,h=h,path=path,alt=p["alt"],fit=p.get("fit","contain")))
 
     def text(self, x,y,w,h,value,size,color,style="sans",minimum=None,leading=1.16):
         zh = bool(CJK.search(value))
@@ -111,7 +111,11 @@ def compose(p, index):
     ink = t["dark"] if feature or proof else t["ink"]
     c = Canvas(1280, 720, bg)
     if cover:
-        if p["theme"] == "folio":
+        if p["theme"] == "gallery":
+            c.image(598,0,682,720,{**p, "fit":"crop"})
+            c.text(46,165,526,267,s["title"],106,ink,"bold",54,1.06)
+            c.text(49,475,503,120,s["body"],30,ink,minimum=22)
+        elif p["theme"] == "folio":
             c.image(754,32,494,656,p)
             c.text(48,149,685,283,s["title"],116,ink,heading,62,1.04)
             c.text(52,470,630,112,s["body"],30,ink,minimum=23)
@@ -127,6 +131,14 @@ def compose(p, index):
             c.text(49,465,500,114,s["body"],29,ink,minimum=21)
         if p["theme"] != "signal":
             c.text(49,49,525,52,s["kicker"],21,t["muted"],"mono",15)
+    elif s["kind"] == "spread":
+        c.text(48,31,1150,47,s["kicker"],18,ink,"mono",14)
+        c.text(46,85,1170,94,s["title"],59,ink,heading,37)
+        for i, plate in enumerate(s["plates"]):
+            x = 49 + i*600
+            c.image(x,190,576,315,plate)
+            c.text(x,525,569,57,plate["label"],27,ink,"bold",18)
+        c.text(49,589,1174,53,s["body"],23,ink,minimum=17)
     elif feature:
         c.text(48,43,1130,52,s["kicker"],19,ink,"mono",15)
         c.image(48,117,571,495,p)
@@ -151,7 +163,7 @@ def compose(p, index):
         c.text(50,437,995,100,s["body"],30,ink,minimum=22)
         c.text(50,567,1165,69,p["action"],24,t["accent"],"bold",18)
     left = 49
-    footer_w = 497 if cover and p["theme"]=="nocturne" else 658 if cover and p["theme"]=="folio" else 1160
+    footer_w = 497 if cover and p["theme"] in ("nocturne","gallery") else 658 if cover and p["theme"]=="folio" else 1160
     c.rect(left,654,footer_w,2,ink)
     c.text(left,670,footer_w-76,34,p["brand"],19,ink,"mono",14)
     c.text(left+footer_w-65,670,66,34,f"{index+1:02}/{len(p['pages']):02}",18,ink,"mono",14)

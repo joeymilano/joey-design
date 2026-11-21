@@ -12,9 +12,13 @@ esc = html.escape
 
 
 @lru_cache(maxsize=24)
-def framed(path, w, h):
+def framed(path, w, h, fit="contain"):
     with Image.open(path) as raw:
         original = ImageOps.exif_transpose(raw).convert("RGB")
+    if fit == "crop":
+        out = io.BytesIO()
+        ImageOps.fit(original,(w,h),method=Image.Resampling.LANCZOS).save(out,"JPEG",quality=90,optimize=True)
+        return out.getvalue()
     # Preserve the silhouette of pack shots. Extend the adjacent edge into the bleed.
     inside = ImageOps.contain(original,(w,h),method=Image.Resampling.LANCZOS)
     iw,ih=inside.size
@@ -40,7 +44,7 @@ def raster(c):
     for n in c.layers:
         x,y,w,h=(n[k] for k in ("x","y","w","h"))
         if n["type"]=="image":
-            im.paste(Image.open(io.BytesIO(framed(n["path"],w,h))),(x,y))
+            im.paste(Image.open(io.BytesIO(framed(n["path"],w,h,n.get("fit","contain")))),(x,y))
         elif n["type"]=="rect":
             draw.rectangle((x,y,x+w-1,y+h-1),fill=n["color"])
         else:
@@ -73,7 +77,7 @@ def powerpoint(canvases, p, target):
         for n in c.layers:
             box=[unit(n[k]) for k in ("x","y","w","h")]
             if n["type"]=="image":
-                picture=slide.shapes.add_picture(io.BytesIO(framed(n["path"],n["w"],n["h"])),*box)
+                picture=slide.shapes.add_picture(io.BytesIO(framed(n["path"],n["w"],n["h"],n.get("fit","contain"))),*box)
                 picture._element.nvPicPr.cNvPr.set("descr",n["alt"])
             elif n["type"]=="rect":
                 shape=slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,*box)
@@ -132,7 +136,7 @@ def section_html(c, title):
         pos=(f'left:{n["x"]/c.width*100:.4f}%;top:{n["y"]/c.height*100:.4f}%;'
              f'width:{n["w"]/c.width*100:.4f}%;height:{n["h"]/c.height*100:.4f}%;')
         if n["type"]=="image":
-            src=uri(framed(n["path"],n["w"],n["h"]))
+            src=uri(framed(n["path"],n["w"],n["h"],n.get("fit","contain")))
             nodes.append(f'<img style="{pos}" alt="{esc(n["alt"])}" src="{src}">')
         elif n["type"]=="rect":
             nodes.append(f'<i aria-hidden="true" style="{pos}background:{n["color"]}"></i>')
@@ -189,6 +193,12 @@ def sales_page(p,assets):
         cards=""
         if slide["kind"]=="proof":
             cards="<dl>"+"".join(f'<div><dt>{txt(p["facts"][k]["label"])}</dt><dd>{txt(p["facts"][k]["value"])}</dd></div>' for k in slide["facts"])+"</dl>"
+        if slide["kind"]=="spread":
+            plates = []
+            for plate in slide["plates"]:
+                image = uri(framed(plate["photo"],700,400,"crop"))
+                plates.append(f'<figure style="margin:0"><img src="{image}" alt="{esc(plate["alt"])}" style="width:100%"><figcaption>{txt(plate["label"])}</figcaption></figure>')
+            cards='<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:16px;margin-top:22px">'+''.join(plates)+'</div>'
         sections.append(f'<section class="story"><p class="k">{txt(slide["kicker"])}</p><div><h2>{txt(slide["title"])}</h2><p>{txt(slide["body"])}</p>{cards}</div></section>')
     references="".join(f'<li><strong>{txt(f["label"])} · {txt(f["value"])}</strong><br>{txt(f["source"])}</li>' for f in p["facts"].values())
     colors=";".join(f"--{k}:{v}" for k,v in t.items() if k!="face")

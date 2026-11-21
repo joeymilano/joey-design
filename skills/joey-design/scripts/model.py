@@ -6,6 +6,7 @@ from urllib.parse import urlsplit
 
 LANGS = ("en", "zh")
 THEMES = {
+    "gallery": dict(bg="#ecece1", ink="#17271e", muted="#4a584e", accent="#315b39", paper="#f3f2e9", dark="#17271e", face="sans"),
     "nocturne": dict(bg="#10161e", ink="#fcf6e9", muted="#b9c4ce", accent="#f8b86c", paper="#f4efe5", dark="#182029", face="sans"),
     "folio": dict(bg="#f3ead8", ink="#2d241f", muted="#67574d", accent="#8f3528", paper="#ece1c9", dark="#2d241f", face="serif"),
     "signal": dict(bg="#e4efbf", ink="#162a26", muted="#48573f", accent="#235c4b", paper="#f2f4df", dark="#162a26", face="sans"),
@@ -86,12 +87,24 @@ def load_brief(path):
         for i, slide in enumerate(slides):
             where = f"slides[{i}]"
             kind = field(slide, "kind", where)
-            if kind not in ("cover", "feature", "proof", "close"):
+            if kind not in ("cover", "feature", "proof", "spread", "close"):
                 raise ValueError(f"{where}: unsupported layout {kind}")
             if (kind == "cover" and i != 0) or (kind == "close" and i != len(slides)-1):
                 raise ValueError(f"{where}: cover/close must be at the ends")
             page = {k: resolve(slide, k, where) for k in ("kicker", "title", "body", "notes")}
             page["kind"] = kind
+            if kind == "spread":
+                plates = field(slide, "plates", where)
+                if not isinstance(plates,list) or len(plates) != 2:
+                    raise ValueError(f"{where}.plates needs two photographs")
+                page["plates"] = []
+                for plate in plates:
+                    file_name = string(field(plate, "file", where), where)
+                    local = (path.parent / file_name).resolve()
+                    if not local.is_relative_to(path.parent) or not local.is_file():
+                        raise ValueError(f"Missing local plate: {file_name}")
+                    page["plates"].append(dict(photo=local, variants={}, fit="crop",
+                        alt=resolve(plate, "alt", where), label=resolve(plate, "label", where)))
             if kind == "proof":
                 ids = field(slide, "facts", where)
                 if not isinstance(ids, list) or not 1 <= len(ids) <= 3 or any(k not in canonical for k in ids):
