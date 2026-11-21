@@ -140,7 +140,7 @@ def social_files(data):
         name = f'{data["id"]}-{i:02}.jpg'
         blob = jpeg(pixels,93)
         out[name] = blob
-        alt = page["title"].replace("\n"," ") + "。" + page.get("body","")
+        alt = page["title"].replace("\n"," ") + " " + page.get("body","")
         for key in ("image","second"):
             if key in page:
                 alt += " " + data["images"][page[key]]["alt"]
