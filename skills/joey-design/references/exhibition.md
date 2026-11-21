@@ -4,7 +4,7 @@ Start with the material. For Fold Frequency it is the cut edge of a blue alumini
 
 ## Print three proofs
 
-Run the directions command on a deck brief. It writes 12 JPGs covering three compositions, two languages and landscape/portrait. A main photograph with breathing room and a distinct detail image produce the widest range. Use the folded sculpture originals to reproduce the shipped study.
+Run the directions command on a deck brief. Open the generated index.html to compare the three directions and switch language or orientation. The command writes 12 JPGs covering three compositions, two languages and landscape/portrait. A main photograph with breathing room and a distinct detail image produce the widest range. Use the folded sculpture originals to reproduce the shipped study.
 
 | Proof | Where the eye lands | When to choose it |
 | --- | --- | --- |
