@@ -1,0 +1,41 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>@@TITLE@@</title><style>
+:root{--paper:#f2efe7;--ink:#25271d;--rule:#a4a399;--spot:#a74126}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 "Instrument Sans","Helvetica Neue","PingFang SC",sans-serif}main,header,footer{width:min(1450px,92%);margin:auto}header,footer,.bar,.byline,.links,.tabs{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}header{padding:15px 0;border-bottom:1px solid var(--ink)}a{color:inherit;text-underline-offset:.24em}header a{text-decoration:none}.word{font:600 25px/1 Georgia,serif;letter-spacing:-.055em}.links a,.tabs button,footer,.byline{font-size:.87rem}.links a:hover,.word:hover{text-decoration:underline}a:focus-visible,button:focus-visible{outline:3px solid var(--spot);outline-offset:3px}h1,h2,h3,p,figure{margin:0}.cover{padding:clamp(16px,3vw,48px) 0 0}.name{font:400 clamp(78px,16.5vw,245px)/.86 "Instrument Serif",Baskerville,Georgia,serif;letter-spacing:-.095em;overflow-wrap:anywhere}.byline{border-bottom:1px solid var(--ink);margin:15px 0 20px;padding:0 0 11px}.lead{display:grid;grid-template-columns:minmax(0,2.7fr) minmax(170px,1fr);gap:clamp(20px,4.2vw,76px);align-items:end}.lead img,.projecthero img,.detailimg img,.tile img{width:100%;object-fit:cover;display:block}.lead img{aspect-ratio:2.15}.lead h2,.detail-title{font-family:"Songti SC","STSong","Noto Serif CJK SC",Georgia,serif;font-weight:500;letter-spacing:-.07em;line-height:1.13}.lead h2{font-size:clamp(36px,5.6vw,89px);margin:5px 0 12px}.lead aside>p{max-width:27ch;margin-bottom:20px}.arrow{font-weight:650;color:var(--spot)}.bar{border-top:1px solid var(--ink);padding:20px 0}.bar h2{font-size:clamp(25px,3.5vw,48px);letter-spacing:-.055em}.tabs{gap:4px;justify-content:flex-start}.tabs button{background:none;color:var(--ink);border:1px solid transparent;cursor:pointer;min-height:44px;padding:6px 11px}.tabs button[aria-pressed=true]{border-color:var(--ink)}#shelf{margin-top:clamp(46px,8vw,120px)}.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--g,22px)}.tile{display:block;text-decoration:none}.tile img{aspect-ratio:1.42}.tile h3{font-size:clamp(21px,2.7vw,39px);letter-spacing:-.055em;font-weight:550}.tile:hover h3{text-decoration:underline}.tile small{color:#55584c}.detail-title{font-size:clamp(62px,10vw,155px);margin:27px 0 12px}.projecthero img{max-height:72vh;aspect-ratio:1.9}.detailimg{display:grid;grid-template-columns:1.15fr 1fr;gap:5vw;align-items:center;margin:45px auto}.detailimg img{aspect-ratio:1.36}.detailimg p{font-size:clamp(20px,2.3vw,37px);max-width:17em}.back{display:inline-block;margin:20px 0 0}footer{border-top:1px solid var(--rule);margin-top:65px;padding:17px 0 33px}.projecthero p{max-width:43em;font-size:clamp(16px,1.75vw,27px);margin:18px 0}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}@media(max-width:660px){.lead{display:block}.lead img{aspect-ratio:1.3}.lead aside{margin-top:12px}.lead aside>p{max-width:36ch;margin-bottom:7px}.tiles{grid-template-columns:1fr;gap:24px}.detailimg{grid-template-columns:1fr;gap:12px;margin:28px auto}.detail-title{font-size:60px}.byline{gap:5px}.bar{align-items:flex-start}.name{font-size:clamp(66px,19vw,120px)}footer{margin-top:38px}}
+</style><header><a class="word" id="word" href="#home"></a><nav class="links"><a href="#work">作品索引</a><a href="#about">关于间室</a></nav></header><main id="main"></main><footer><span id="credit"></span><a href="#home">回到首页 ↑</a></footer><script type="application/json" id="brief">@@BRIEF@@</script><script>
+const D=JSON.parse(document.getElementById('brief').textContent),main=document.getElementById('main')
+const byId=id=>D.items.find(p=>p.id===id)
+const esc=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))
+const pic=(file,alt)=>'<img src="'+D.art[file]+'" alt="'+esc(alt)+'">'
+document.getElementById('word').textContent=D.title+' / '+D.mast
+document.querySelector('a[href="#about"]').textContent='关于'+D.title
+document.getElementById('credit').textContent=D.credit
+let filter='',initial=true
+function grid(){
+ const items=D.items.filter(i=>!filter||i.series===filter)
+ document.getElementById('tiles').innerHTML=items.map(i=>`<a class="tile" href="#project/${i.id}">${pic(i.image,i.alt)}<small>${esc(i.series)}</small><h3>${esc(i.title)} ↗</h3></a>`).join('')
+ document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.filter===filter))
+ document.getElementById('count').textContent=items.length+' 个项目'
+}
+function index(){
+ const first=D.items[0],categories=[...new Set(D.items.map(i=>i.series))]
+ main.innerHTML=`<section class="cover"><h1 class="name">${esc(D.mast)}</h1><div class="byline"><span>${esc(D.title)} / ${esc(D.intro)}</span><span>Selected work</span></div><div class="lead"><a href="#project/${first.id}" aria-label="查看${esc(first.title)}">${pic(first.image,first.alt)}</a><aside><small>${esc(first.series)}</small><h2>${esc(first.title)}</h2><p>${esc(first.note)}</p><a class="arrow" href="#project/${first.id}">打开项目 ↗</a></aside></div></section><section id="shelf"><div class="bar"><h2>作品索引</h2><div class="tabs">${['',...categories].map(t=>`<button data-filter="${esc(t)}">${esc(t||'全部')}</button>`).join('')}</div></div><div class="tiles" id="tiles"></div><span id="count" role="status" class="sr"></span></section>`
+ document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{filter=b.dataset.filter;grid()})
+ grid()
+}
+function route(){
+ const hash=location.hash.slice(1),item=hash.startsWith('project/')?byId(hash.slice(8)):null
+ if(item){
+  const next=D.items[(D.items.indexOf(item)+1)%D.items.length]
+  main.innerHTML=`<a class="back" href="#work">← 作品索引</a><h1 class="detail-title">${esc(item.title)}</h1><div class="byline"><span>${esc(item.series)}</span><span>${esc(D.mast)}</span></div><figure class="projecthero">${pic(item.image,item.alt)}<p>${esc(item.note)}</p></figure><figure class="detailimg">${pic(item.detail,item.detail_alt)}<p>${esc(item.detail_note)}</p></figure><div class="bar"><a href="#work">回到作品索引</a>${D.items.length>1?`<a class="arrow" href="#project/${next.id}">下一个项目 · ${esc(next.title)} ↗</a>`:''}</div>`
+ }else if(hash==='about'){
+  main.innerHTML=`<a class="back" href="#work">← 作品索引</a><h1 class="detail-title">关于${esc(D.title)}</h1><div class="byline">${esc(D.intro)}</div><figure class="detailimg">${pic(D.items[0].detail,D.items[0].detail_alt)}<p>${esc(D.about||D.credit)}</p></figure>`
+ }else index()
+ document.title=(item?item.title+' · ':hash==='about'?'关于 · ':'')+D.title
+ if(!initial){
+  const heading=main.querySelector(hash==='work'?'#shelf h2':'h1')
+  heading?.setAttribute('tabindex','-1');heading?.focus({preventScroll:true})
+ }
+ if(hash==='work')document.getElementById('shelf')?.scrollIntoView();else window.scrollTo(0,0)
+ initial=false
+}
+addEventListener('hashchange',route);route()
+</script></html>

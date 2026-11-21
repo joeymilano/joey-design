@@ -1,0 +1,96 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0d2027"><title>@@TITLE@@</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#0c1b23;color:#fff2cf;font:16px/1.5 "IBM Plex Mono","PingFang SC",system-ui,sans-serif}main{width:min(100%,1260px);margin:auto;padding:0 clamp(14px,3.5vw,45px)}header,footer,.instrument,.buttons,.game-nav,.zone,.rails{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}header{min-height:60px;border-bottom:1px solid #59747b;font-size:.86rem}header b{letter-spacing:.14em}footer{font-size:.76rem;color:#b1c2c0;padding:17px 0 28px}.stage{margin-top:14px;position:relative;isolation:isolate;min-height:clamp(440px,67vh,780px);background:#103543;overflow:hidden;border:1px solid #4d6264}.stage>img{position:absolute;width:100%;height:100%;inset:0;object-fit:cover;z-index:-2}.stage:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#061923df,transparent 73%),linear-gradient(0deg,#0619237a,transparent 28%);z-index:-1}.opening{padding:clamp(23px,4.9vw,84px);min-height:inherit;display:flex;align-items:flex-start;justify-content:center;flex-direction:column}.opening h1{font:900 clamp(64px,9vw,150px)/.84 "Archivo Black",Impact,"Arial Black",sans-serif;letter-spacing:-.065em;max-width:8ch;text-transform:uppercase;text-wrap:balance;margin:0;color:#ffe6ac;text-shadow:3px 5px #17323a}.opening h2{font-size:clamp(23px,3vw,40px);letter-spacing:.13em;line-height:1.1;margin:20px 0 0}.opening p{max-width:30em;margin:12px 0 24px}.buttons{justify-content:flex-start}.buttons button,.game-nav button,.dpad button{font:inherit;font-weight:650;cursor:pointer;border:1px solid #829894;background:#172c32;color:#f3ebd0;padding:10px 17px;min-height:44px;border-radius:1px}.buttons .prime,.game-nav .prime{background:#ffc365;color:#182526;border-color:#ffc365}.dpad button{width:clamp(42px,10vw,60px);padding:4px;border-color:#637e83}.dpad{display:grid;grid-template-columns:repeat(3,auto);gap:4px;justify-content:start}.dpad [data-key="ArrowUp"]{grid-column:2}.dpad [data-key="ArrowLeft"]{grid-column:1}button:focus-visible,summary:focus-visible{outline:3px solid #95e6dc;outline-offset:2px}button:disabled{opacity:.45;cursor:default}[hidden]{display:none!important}h2,h3,p{margin:0}.deck{padding:18px 0}.instrument{padding:0 0 12px;border-bottom:1px solid #4b6870}.instrument h2{font-size:clamp(23px,3vw,39px)}.readings{display:flex;gap:20px}.readings span{display:block;color:#a8c3c5;font-size:.73rem}.readings strong{color:#ffcc79;font-size:1.3rem}.chartroom{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(200px,.7fr);align-items:center;gap:clamp(16px,4vw,62px);margin-top:20px}canvas{width:100%;max-height:59vh;object-fit:contain;background:#102d36;image-rendering:pixelated;display:block}.rail{display:grid;gap:16px}.rail h3{font-size:1rem}.rail p,.rule,.legend{color:#b9cbd0;font-size:.89rem}.rail .event{min-height:3em;color:#ffeab1}.legend{display:flex;gap:15px;flex-wrap:wrap;margin-top:9px}.legend i{font-style:normal;color:#ffb951}.game-nav{justify-content:flex-start;gap:6px}.archive{border-top:1px solid #536b70;padding:14px 0;margin-top:14px}.archive summary{cursor:pointer}.archive ol{padding-left:24px}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}@media(max-width:650px){.stage{min-height:510px}.stage>img{object-position:61% 50%}.stage:after{background:linear-gradient(0deg,#071c25f5,transparent 70%)}.opening{justify-content:flex-end}.opening h1{font-size:72px}.opening p{margin-bottom:16px}.chartroom{grid-template-columns:1fr;margin-top:12px}.rail{grid-template-columns:1fr auto;align-items:center;gap:8px}.rail .game-nav,.rail .rule{grid-column:1/-1}.rail .event{min-height:2em}.instrument{gap:8px}.readings{gap:12px}header{min-height:46px}canvas{max-height:44vh}}
+</style><main><header><b id="brand"></b><span>港口航线图</span></header><section class="stage" id="menu"><img id="keyart" alt=""><div class="opening"><h1 id="mast"></h1><h2 id="title"></h2><p id="intro"></p><div class="buttons"><button class="prime" id="start">开始航行</button><button id="continue" hidden>继续航班</button></div></div></section>
+<section class="deck" id="play" hidden><div class="instrument"><h2 id="level"></h2><div class="readings"><div><span>剩余航程</span><strong id="fuel"></strong></div><div><span>已接站点</span><strong id="picked"></strong></div></div></div><div class="chartroom"><div><canvas id="map" role="img" aria-describedby="maptext">港口航线图</canvas><p id="maptext" class="sr"></p><div class="legend"><span><i>●</i> 候船点</span><span><i>▣</i> 终点</span><span>灰色栈桥不可通行</span></div></div><div class="rail"><div><h3 id="result">航班日志</h3><p class="event" role="status" aria-live="polite" id="log"></p></div><div class="dpad" aria-label="航向"><button data-key="ArrowUp" aria-label="向上">↑</button><button data-key="ArrowLeft" aria-label="向左">←</button><button data-key="ArrowDown" aria-label="向下">↓</button><button data-key="ArrowRight" aria-label="向右">→</button></div><p class="rule">用方向键或点箭头，每格消耗一格航程，接完亮灯站点再进终点</p><div class="game-nav"><button class="prime" id="next" hidden>下一段航线</button><button id="retry">重开本关</button><button id="home">返回标题</button></div></div></div></section>
+<details class="archive"><summary>航线与最佳步数</summary><ol id="records"></ol></details><footer id="credit"></footer></main><script id="brief" type="application/json">@@BRIEF@@</script><script>
+const D=JSON.parse(document.getElementById('brief').textContent), el=id=>document.getElementById(id)
+const moves={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0]}
+const storageKey='joey/ferry/'+D.id+'/'+JSON.stringify(D.levels.map(l=>[l.map,l.budget]))
+let records={}
+try{const stored=JSON.parse(localStorage.getItem(storageKey));if(stored && typeof stored==='object')records=stored}catch{}
+let idx=0,state='menu',x=0,y=0,steps=0,route=[],visited=new Set()
+const lvl=()=>D.levels[idx]
+function nextIndex(){const n=D.levels.findIndex((_,i)=>!Number.isInteger(records[i]));return n===-1?0:n}
+function historyList(){
+  el('records').replaceChildren(...D.levels.map((l,i)=>{const li=document.createElement('li');li.textContent=l.name+' · '+(Number.isInteger(records[i])?records[i]+' 步':'尚未抵达');return li}))
+  el('continue').hidden=nextIndex()===0
+}
+function begin(i){
+  idx=i;const l=lvl()
+  y=l.map.findIndex(row=>row.includes('S'));x=l.map[y].indexOf('S')
+  steps=0;visited=new Set();route=[[x,y]];state='sailing'
+  el('menu').hidden=true;el('play').hidden=false;el('next').hidden=true
+  el('level').textContent=l.name;el('result').textContent='航班日志';el('log').textContent='离港，先去亮着琥珀灯的站点'
+  draw();el('retry').focus({preventScroll:true})
+}
+function color(ctx,c){ctx.fillStyle=c}
+function dock(ctx,gx,gy,terrain,seen,boat){
+  const a=gx*24,b=gy*24
+  function rect(c,x,y,w,h){color(ctx,c);ctx.fillRect(a+x,b+y,w,h)}
+  rect((gx+gy)%2?'#123844':'#133d49',0,0,24,24)
+  for(let k=0;k<3;k++){const px=(gx*13+gy*7+k*9)%20,py=(gx*3+gy*11+k*7)%21;rect('#21505a',px,py,3+(k%2),1)}
+  rect('#1c4851',0,23,24,1);rect('#1c4851',23,0,1,24)
+  if(terrain==='#'){
+    rect('#071e2b',0,4,23,20);rect('#455657',1,1,21,17);rect('#718176',1,1,21,2)
+    rect('#33494f',3,4,17,11);rect('#80938a',4,5,15,2)
+    for(let i=0;i<3;i++){rect('#536764',4+i*5,8,3,5);rect('#b7a073',3+i*7,17,3,2)}
+  }
+  if(terrain==='B'){
+    rect('#202d31',4,14,15,5);rect('#9d7850',5,13,14,2)
+    rect(seen?'#5d9b8b':'#e89b42',9,4,5,9);rect(seen?'#8ac6ad':'#ffdf8c',10,4,3,3)
+    rect('#1c333a',10,10,3,2)
+  }
+  if(terrain==='E'){
+    rect('#809c8d',2,3,3,18);rect('#809c8d',19,3,3,18);rect('#c2cfaa',2,2,20,3)
+    rect('#35ae9c',6,5,12,3);rect('#c5ebce',11,10,2,7);rect('#c5ebce',9,14,6,2)
+  }
+  if(boat){
+    rect('#071e2b',2,17,19,3);rect('#df8d3a',3,14,18,3);rect('#f6d99b',2,12,19,2)
+    rect('#c8873b',7,8,10,4);rect('#ffe291',8,7,9,2);rect('#273941',9,9,2,2);rect('#344b50',13,9,2,2)
+    rect('#e9bc70',14,4,1,4);rect('#76bdb8',1,19,8,1)
+  }
+}
+function draw(){
+  const rows=lvl().map,c=el('map');c.width=rows[0].length*24;c.height=rows.length*24
+  const ctx=c.getContext('2d')
+  for(let yy=0;yy<rows.length;yy++) for(let xx=0;xx<rows[yy].length;xx++)dock(ctx,xx,yy,rows[yy][xx],visited.has(xx+','+yy),false)
+  for(const [xx,yy] of route.slice(0,-1)){color(ctx,'#639a92');ctx.fillRect(xx*24+11,yy*24+19,2,1)}
+  dock(ctx,x,y,rows[y][x],visited.has(x+','+y),true)
+  const total=rows.join('').split('B').length-1
+  el('fuel').textContent=String(lvl().budget-steps);el('picked').textContent=visited.size+' / '+total
+  el('map').setAttribute('aria-label',lvl().name+'，船在第 '+(y+1)+' 行第 '+(x+1)+' 列')
+  const names={'.':'水','#':'栈桥','B':'候船点','E':'终点','S':'出发点'}
+  el('maptext').textContent=rows.map((r,yy)=>'第 '+(yy+1)+' 行 '+[...r].map((char,xx)=>x===xx&&y===yy?'船':visited.has(xx+','+yy)?'已接站点':names[char]).join('，')).join(' / ')
+  document.querySelectorAll('[data-key]').forEach(b=>b.disabled=state!=='sailing')
+}
+function sail(key){
+  if(state!=='sailing'||!moves[key])return
+  const [dx,dy]=moves[key],xx=x+dx,yy=y+dy,cell=lvl().map[yy]?.[xx]
+  if(!cell||cell==='#'){el('log').textContent='前面走不通，换个方向';return}
+  x=xx;y=yy;steps++;route.push([x,y])
+  const coord=x+','+y
+  let message='船在第 '+(y+1)+' 行，第 '+(x+1)+' 列'
+  if(cell==='B'&&!visited.has(coord)){visited.add(coord);message='乘客上船，本站的灯灭了'}
+  const all=visited.size===lvl().map.join('').split('B').length-1
+  if(cell==='E' && all){
+    state='won';records[idx]=Math.min(records[idx]||Infinity,steps)
+    try{localStorage.setItem(storageKey,JSON.stringify(records))}catch{}
+    el('result').textContent=idx===D.levels.length-1?'末班船到港':'顺利靠岸'
+    const last=idx===D.levels.length-1
+    message='全员到齐，本段用了 '+steps+' 步'
+    el('next').textContent=last?'再跑一轮':'下一段航线';el('next').hidden=false;historyList()
+  }else if(steps===lvl().budget){state='lost';el('result').textContent='航程用尽';message='还没接齐抵达终点，重开这段试试另一条路'}
+  else if(cell==='E')message='还有乘客在等船，接齐后再回来'
+  el('log').textContent=message;draw()
+  if(state==='won')el('next').focus({preventScroll:true})
+  if(state==='lost')el('retry').focus({preventScroll:true})
+}
+for(const id of ['title','intro','mast','credit'])el(id).textContent=D[id]
+el('brand').textContent=D.mast;el('keyart').src=D.art[D.image];el('keyart').alt=D.alt
+el('start').onclick=()=>begin(0);el('continue').onclick=()=>begin(nextIndex());el('retry').onclick=()=>begin(idx);el('next').onclick=()=>begin((idx+1)%D.levels.length)
+el('home').onclick=()=>{state='menu';el('play').hidden=true;el('menu').hidden=false;el('start').focus()}
+for(const b of document.querySelectorAll('[data-key]'))b.onclick=()=>sail(b.dataset.key)
+document.addEventListener('keydown',e=>{if(state==='sailing'&&moves[e.key]&&!e.altKey&&!e.ctrlKey&&!e.metaKey){e.preventDefault();if(!e.repeat)sail(e.key)}})
+historyList()
+</script></html>

@@ -1,0 +1,45 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>@@TITLE@@</title><style>
+*{box-sizing:border-box}:root{--paper:#e4e1d6;--ink:#171b1b;--line:#515755;--lime:#e4ed69}body{margin:0;background:#202423;color:#e8e8de;font:15px/1.45 "Instrument Sans","PingFang SC",Arial,sans-serif}header,.tool,.hrow,.footer,.markbar,.statusline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}header{background:#151817;padding:14px clamp(15px,3vw,50px);border-bottom:1px solid var(--line)}h1,h2,p,figure{margin:0}h1{font-size:clamp(24px,2.8vw,40px);letter-spacing:-.055em;line-height:1}.mast{font:12px/1.1 "IBM Plex Mono",monospace;letter-spacing:.12em;color:#b1b7a9;margin-left:15px}main{margin:auto;max-width:1670px;padding:18px clamp(14px,2.7vw,45px)}.tool{border-bottom:1px solid var(--line);padding-bottom:12px}.tool strong{font-size:1.06rem}button{font:inherit;min-height:40px;background:none;border:1px solid #596059;border-radius:3px;padding:7px 11px;color:inherit;cursor:pointer}button:hover,button:focus-visible{background:#3b413b}button:focus-visible{outline:3px solid var(--lime);outline-offset:2px}button:disabled{opacity:.43;cursor:default}.statusline,.markbar{justify-content:flex-start;gap:6px}.statusline button[aria-pressed=true],.markbar .keep[aria-pressed=true],.primary{background:var(--lime);color:#182018;border-color:var(--lime)}.layout{display:grid;grid-template-columns:minmax(0,2.25fr) minmax(220px,.78fr);gap:20px;margin:18px 0}.viewer{background:#0f1211;padding:clamp(12px,2vw,30px);display:grid;place-items:center;min-height:240px}.viewer img{width:100%;height:clamp(240px,44vh,525px);object-fit:contain}.details{align-self:center}.details>small,.footer,.film small,.tool .meta{color:#bec4b7}.details h2{font-size:clamp(30px,4.2vw,65px);letter-spacing:-.07em;line-height:1.05;margin:9px 0 16px}.details p{max-width:28ch;color:#d5d8cd}.rule{border-top:1px solid var(--line);padding-top:12px;margin-top:22px}.markbar{margin-bottom:12px}.markbar .reject[aria-pressed=true]{background:#e9af9b;color:#291b18}.kbd{font:12px monospace;border:1px solid currentColor;padding:1px 3px;margin-left:4px}.film{display:flex;gap:8px;overflow:auto;padding:9px 2px 14px}.film button{text-align:left;position:relative;min-width:96px;width:clamp(96px,10vw,161px);padding:4px;border-radius:1px;flex:none}.film button[aria-pressed=true]{border:2px solid var(--lime);padding:3px}.film img{width:100%;aspect-ratio:1.68;object-fit:cover;display:block}.film small{display:block;padding:3px 1px 0}.film b{position:absolute;right:7px;top:7px;background:var(--lime);color:#171b16;font-size:11px;padding:1px 4px}.footer{border-top:1px solid var(--line);padding:12px 0}.sr{position:absolute;clip-path:inset(50%);height:1px;width:1px;overflow:hidden}.empty{padding:40px 8px;min-height:260px;display:grid;align-content:center;gap:12px}.empty button{width:fit-content}[hidden]{display:none!important}@media(max-width:700px){header{padding:11px 14px}.mast{font-size:10px;margin-left:7px}button{min-height:44px}.layout{display:block;margin:12px 0}.viewer{min-height:150px}.viewer img{height:clamp(150px,30vh,310px)}.details{padding:12px 0}.details h2{font-size:32px;margin:6px 0}.details p{max-width:100%}.rule{margin-top:11px;padding-top:8px}.tool{gap:8px}.film{gap:5px}.footer{font-size:.8rem}.kbd{display:none}}
+</style><header><h1><span id="brand"></span><span id="mast" class="mast"></span></h1><button id="export" class="primary">导出入选清单</button></header><main><div class="tool"><strong id="title"></strong><div class="statusline"><div class="statusline" id="filters" aria-label="底片筛选"></div><button id="undo">撤销</button></div></div><div id="workspace"><section class="layout"><figure class="viewer"><img id="frame" alt=""></figure><div class="details"><small id="series"></small><h2 id="shot"></h2><p id="note"></p><div class="rule"><div class="markbar"><button id="pick" class="keep">入选 <span class="kbd">P</span></button><button id="reject" class="reject">淘汰 <span class="kbd">X</span></button></div><div class="markbar"><button id="prev" aria-label="上一张">←</button><button id="next" aria-label="下一张">→</button><span id="ord"></span></div></div></div></section><div class="film" id="film" role="group" aria-label="底片缩略图"></div></div><section id="empty" class="empty" hidden><h2 id="emptytitle"></h2><button id="all">查看全部底片</button></section><div class="footer"><span id="total"></span><span id="credit"></span></div><p class="sr" role="status" id="notice"></p></main>
+<script type="application/json" id="brief">@@BRIEF@@</script><script>
+const D=JSON.parse(document.getElementById('brief').textContent),g=id=>document.getElementById(id),items=D.items
+const labels={all:'全部',keep:'入选',reject:'淘汰',new:'待选'},key='joey/proof/'+D.id
+let filter='all',active=items[0].id,marks={},history=[]
+try{const saved=JSON.parse(localStorage.getItem(key));if(saved&&typeof saved==='object')for(const i of items)if(['keep','reject'].includes(saved[i.id]))marks[i.id]=saved[i.id]}catch{}
+const subset=()=>items.filter(i=>filter==='all'||(marks[i.id]||'new')===filter)
+const button=(text,act)=>{const b=document.createElement('button');b.textContent=text;b.onclick=act;return b}
+function save(){try{localStorage.setItem(key,JSON.stringify(marks))}catch{}}
+function render(){
+ const group=subset()
+ if(!group.some(i=>i.id===active))active=group[0]?.id
+ const i=group.find(i=>i.id===active),index=group.indexOf(i)
+ g('workspace').hidden=!i;g('empty').hidden=!!i;g('emptytitle').textContent='这里还没有'+labels[filter]+'底片'
+ for(const b of g('filters').children)b.setAttribute('aria-pressed',b.dataset.filter===filter)
+ const kept=items.filter(i=>marks[i.id]==='keep').length
+ g('total').textContent=items.length+' 张底片 / '+kept+' 张入选';g('export').disabled=!kept;g('undo').disabled=!history.length
+ if(!i)return
+ g('frame').src=D.art[i.image];g('frame').alt=i.alt;g('shot').textContent=i.title;g('series').textContent=i.series+' / '+labels[marks[i.id]||'new'];g('note').textContent=i.note
+ g('pick').setAttribute('aria-pressed',marks[i.id]==='keep');g('reject').setAttribute('aria-pressed',marks[i.id]==='reject')
+ g('ord').textContent=(index+1)+' / '+group.length;g('prev').disabled=index===0;g('next').disabled=index===group.length-1
+ g('film').replaceChildren(...group.map(item=>{
+  const b=button('',()=>{active=item.id;render();g('film').querySelector('[aria-pressed="true"]')?.focus({preventScroll:true})});b.setAttribute('aria-label',item.title);b.setAttribute('aria-pressed',item.id===active)
+  const image=new Image();image.src=D.art[item.image];image.alt='';const s=document.createElement('small');s.textContent=item.title;b.append(image,s)
+  if(marks[item.id]){const flag=document.createElement('b');flag.textContent=labels[marks[item.id]];b.append(flag)}return b
+ }))
+}
+function setMark(m){
+ const i=items.find(i=>i.id===active);if(!i)return
+ history.push([i.id,marks[i.id],filter]);if(history.length>100)history.shift()
+ if(marks[i.id]===m)delete marks[i.id];else marks[i.id]=m
+ save();g('notice').textContent=i.title+' · '+labels[marks[i.id]||'new'];render()
+}
+function undo(){const a=history.pop();if(!a)return;const [id,old,f]=a;if(old)marks[id]=old;else delete marks[id];active=id;filter=f;save();render();g('notice').textContent='已撤销上次标记'}
+function go(dx){const list=subset(),pos=list.findIndex(i=>i.id===active);if(list[pos+dx]){active=list[pos+dx].id;render()}}
+for(const [v,t] of Object.entries(labels)){const b=button(t,()=>{filter=v;render()});b.dataset.filter=v;g('filters').append(b)}
+g('all').onclick=()=>{filter='all';render()};g('prev').onclick=()=>go(-1);g('next').onclick=()=>go(1)
+g('pick').onclick=()=>setMark('keep');g('reject').onclick=()=>setMark('reject');g('undo').onclick=undo
+g('export').onclick=()=>{const l=items.filter(i=>marks[i.id]==='keep').map(i=>({id:i.id,title:i.title,filename:i.image,series:i.series}));const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(l,null,2)],{type:'application/json'}));a.download=D.id+'-selection.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+document.addEventListener('keydown',e=>{if(e.altKey||e.metaKey||e.ctrlKey||e.repeat)return;const act={ArrowLeft:()=>go(-1),ArrowRight:()=>go(1),p:()=>setMark('keep'),x:()=>setMark('reject'),z:undo}[e.key]||null;if(act){e.preventDefault();act()}})
+for(const [id,k] of [['brand','title'],['mast','mast'],['title','intro'],['credit','credit']])g(id).textContent=D[k]
+render()
+</script></html>
