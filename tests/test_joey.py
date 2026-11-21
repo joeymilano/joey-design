@@ -5,6 +5,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from xml.etree import ElementTree
 from zipfile import ZipFile
 
 from PIL import Image
@@ -50,6 +51,18 @@ class LaunchKitTest(unittest.TestCase):
             for name,size in (("cover",(1080,1440)),("wide",(1280,720))):
                 with Image.open(self.dest / f"{name}-{lang}.png") as image:
                     self.assertEqual(size,image.size)
+
+    def test_keynote_can_resolve_widescreen_notes_master(self):
+        build(self.source, self.dest)
+        with ZipFile(self.dest / "deck-zh.pptx") as archive:
+            doc = ElementTree.fromstring(archive.read("ppt/presentation.xml"))
+            master = doc.find("{*}notesMasterIdLst/{*}notesMasterId")
+            self.assertIsNotNone(master)
+            relid = next(iter(master.attrib.values()))
+            rels = ElementTree.fromstring(archive.read("ppt/_rels/presentation.xml.rels"))
+            target = next(r.get("Target") for r in rels if r.get("Id")==relid and r.get("Type").endswith("/notesMaster"))
+            self.assertIn("ppt/"+target, archive.namelist())
+            self.assertEqual("screen16x9", doc.find("{*}sldSz").get("type"))
 
     def test_broken_reference_writes_nothing(self):
         self.data["slides"][1]["body"]["en"] = "{{missing_spec}}"
