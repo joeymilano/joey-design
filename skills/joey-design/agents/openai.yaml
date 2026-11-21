@@ -1,0 +1,4 @@
+interface:
+  display_name: "Joey Design"
+  short_description: "Design bilingual launch decks, sales pages and covers"
+  default_prompt: "Use $joey-design to turn this product brief into a bilingual launch kit."
