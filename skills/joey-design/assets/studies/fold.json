@@ -1,0 +1,72 @@
+{
+  "id": "fold-frequency",
+  "brand": "折频",
+  "imprint": "FOLD FREQUENCY",
+  "theme": "plate",
+  "credit": "折频为虚构声音展。金属雕塑为原创 AI 概念图，试听由浏览器合成。",
+  "images": {
+    "full": {
+      "file": "fold-object.jpg",
+      "alt": "朱红色背景上一束钴蓝金属折片，像波形向右翻起。"
+    },
+    "micro": {
+      "file": "fold-detail.jpg",
+      "alt": "钴蓝折片的微距细节，边缘泛着冰蓝色高光。"
+    }
+  },
+  "social": {
+    "title": "同一个音，为什么听起来不一样？",
+    "caption": "把音高停在 220 Hz。先听正弦，再切到三角，最后试试锯齿。三次都唱同一个音，边缘感却不一样。\n\n把你最喜欢的音色存下，导出两秒 WAV，留给下一条片子的片头。\n\n#声音设计 #电子音乐 #视觉设计",
+    "pages": [
+      {
+        "layout": "cover",
+        "tag": "开场",
+        "title": "把声音\n折起来。",
+        "body": "一组折痕，三种音色。戴上耳机做个小实验。",
+        "image": "full"
+      },
+      {
+        "layout": "frame",
+        "tag": "微距",
+        "title": "先看一个转折。",
+        "body": "视线沿着蓝色薄片转弯。暂时把这种感觉记下来，等会儿用耳朵找一条边。",
+        "image": "micro"
+      },
+      {
+        "layout": "split",
+        "tag": "试听",
+        "title": "停在 220 Hz。",
+        "body": "选正弦，轻轻按下播放。先记住它的音高，再切换波形。",
+        "image": "full"
+      },
+      {
+        "layout": "pair",
+        "tag": "对照",
+        "title": "轮廓和质地。",
+        "body": "看图时会分开观察形与纹。听声音，也可以分开比较音高和音色。",
+        "image": "full",
+        "second": "micro",
+        "labels": [
+          "远看 / 整体转向",
+          "近看 / 边缘密度"
+        ]
+      },
+      {
+        "layout": "list",
+        "tag": "练习",
+        "title": "只动一个参数。",
+        "points": [
+          "固定音高，切换三种波形。",
+          "固定波形，把音高调低。",
+          "保存喜欢的组合，导出两秒音色。"
+        ]
+      }
+    ]
+  },
+  "app": {
+    "mode": "instrument",
+    "title": "折频试听台",
+    "subtitle": "固定音高，听三种波形。调出自己的音色，带走两秒声音。",
+    "hero": "micro"
+  }
+}
