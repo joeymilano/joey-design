@@ -1,0 +1,127 @@
+{
+  "theme": "folio",
+  "brand": "PAPER RADIO  /  LISTENING LIBRARY",
+  "artwork": {
+    "file": "paper.jpg",
+    "alt": {
+      "en": "A printed vermilion record sleeve with concentric grooves and a cream paper label.",
+      "zh": "朱红色唱片封套、同心唱纹与米色纸标签。"
+    },
+    "credit": {
+      "en": "Original procedural print study for a fictional listening library.",
+      "zh": "为虚构听音图书馆绘制的原创版画习作。"
+    },
+    "portrait": "sleeve.jpg"
+  },
+  "action": {
+    "en": "Open the session notes",
+    "zh": "翻开场次手记"
+  },
+  "action_url": "#sources",
+  "facts": {
+    "sides": {
+      "value": "2",
+      "label": {
+        "en": "Record sides",
+        "zh": "唱片面数"
+      },
+      "source": {
+        "en": "Paper Radio sample programme, session A. Fictional event.",
+        "zh": "纸上电台演示节目册，A 场。虚构活动。"
+      }
+    },
+    "seats": {
+      "value": "12",
+      "label": {
+        "en": "Seats per session",
+        "zh": "每场座位"
+      },
+      "source": {
+        "en": "Paper Radio sample programme, session A. Fictional event.",
+        "zh": "纸上电台演示节目册，A 场。虚构活动。"
+      }
+    }
+  },
+  "slides": [
+    {
+      "kind": "cover",
+      "kicker": {
+        "en": "LISTENING LIBRARY   /   SIDE A",
+        "zh": "听音图书馆   /   A 面"
+      },
+      "title": {
+        "en": "Paper\nradio.",
+        "zh": "纸上\n电台。"
+      },
+      "body": {
+        "en": "A listening room for the notes tucked inside record sleeves.",
+        "zh": "一起听唱片，也读封套里夹着的那张纸。"
+      },
+      "notes": {
+        "en": "Introduce the imaginary listening room.",
+        "zh": "介绍这家虚构的听音空间。"
+      }
+    },
+    {
+      "kind": "feature",
+      "kicker": {
+        "en": "01   /   THE SLEEVE",
+        "zh": "01   /   封套"
+      },
+      "title": {
+        "en": "Read before\nthe needle drops.",
+        "zh": "落针之前，\n先读一页。"
+      },
+      "body": {
+        "en": "Pass the sleeve around the table. A name, a date or a handwritten dedication becomes the introduction to the first track.",
+        "zh": "把唱片封套递给下一位。一个人名、一个日期，或一行手写题词，都能成为第一首歌的开场白。"
+      },
+      "notes": {
+        "en": "Give everyone time to look at the sleeve.",
+        "zh": "给每个人一点端详封套的时间。"
+      }
+    },
+    {
+      "kind": "proof",
+      "kicker": {
+        "en": "02   /   THE ROOM",
+        "zh": "02   /   听音室"
+      },
+      "title": {
+        "en": "A small room by design.",
+        "zh": "小房间，刚刚好。"
+      },
+      "body": {
+        "en": "One table keeps the conversation within reach of the turntable.",
+        "zh": "一张长桌，把每个人的声音都留在唱机旁。"
+      },
+      "notes": {
+        "en": "Share the proposed room format.",
+        "zh": "说明听音空间的设想。"
+      },
+      "facts": [
+        "sides",
+        "seats"
+      ]
+    },
+    {
+      "kind": "close",
+      "kicker": {
+        "en": "03   /   SIDE B",
+        "zh": "03   /   B 面"
+      },
+      "title": {
+        "en": "Bring a sleeve.",
+        "zh": "带一张封套来。"
+      },
+      "body": {
+        "en": "Choose a record with a note worth reading aloud.",
+        "zh": "选一张唱片，带来一段值得念给大家听的文字。"
+      },
+      "notes": {
+        "en": "Invite participants to choose a record.",
+        "zh": "邀请听众选出自己的唱片。"
+      }
+    }
+  ]
+}
