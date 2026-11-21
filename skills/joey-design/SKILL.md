@@ -20,6 +20,14 @@ Read [formats.md](references/formats.md) for the production sequence and visual 
 
 Match recognisable assets, typography and voice across a campaign. Recompose for the reading distance and interaction of each medium. A slide can compare two photos side by side, a note can reveal them over five swipes, and an app can let someone save the next location.
 
+## Set an art direction people can see
+
+For a brief that calls for stronger visual work, read [exhibition.md](references/exhibition.md). Make three cover studies of the same subject before extending the selected geometry into a deck, a vertical sequence and a working interface. Compare type size, subject scale, crop and reading order at equal size. Carry one motif across media. Let someone perform the action the motif suggests.
+
+    python3 "$SKILL/scripts/joey.py" directions brief.json --out cover-studies
+
+A complete example ships in `assets/studies/fold-deck.json` and `assets/studies/fold.json`. Use the plate theme for full-bleed exhibition work, or its listening-desk app for playing, tuning, storing and exporting a sound.
+
 ## Direct the piece
 
 1. Extract the product name, market, decision, available imagery, approved specifications and asset rights. Pull explicit facts from the supplied brief. Mark estimates as estimates in both languages. Omit unverified superlatives, testimonials, performance figures and certifications.
