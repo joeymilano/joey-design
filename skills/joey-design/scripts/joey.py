@@ -44,11 +44,17 @@ def build(source, dest, check=False):
 
 def main():
     parser=argparse.ArgumentParser(description="Build a bilingual design kit from one creative brief.")
-    parser.add_argument("command",choices=["build","check","social","app"])
+    parser.add_argument("command",choices=["build","check","social","app","directions"])
     parser.add_argument("brief",type=Path)
     parser.add_argument("--out",type=Path,default=None)
     args=parser.parse_args()
     try:
+        if args.command == "directions":
+            from directions import build_directions
+            dest = args.out or Path("joey-directions")
+            build_directions(args.brief,dest)
+            print(f"Built 12 cover studies in {dest}")
+            return
         if args.command in ("social","app"):
             from studio import build_studio
             dest = args.out or Path("joey-" + args.command)

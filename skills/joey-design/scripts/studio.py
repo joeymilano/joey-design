@@ -33,8 +33,8 @@ def load(path, mode):
     path = Path(path).resolve()
     data = json.loads(path.read_text(encoding="utf8"))
     required(data, "id brand imprint theme credit", "brief")
-    if not ID.fullmatch(data["id"]) or data["theme"] not in ("daylight","afterdark"):
-        raise ValueError("Use a lowercase slug for id and daylight or afterdark for theme")
+    if not ID.fullmatch(data["id"]) or data["theme"] not in ("daylight","afterdark","plate"):
+        raise ValueError("Use a lowercase slug for id and daylight, afterdark or plate for theme")
     images = data.get("images")
     if not isinstance(images, dict) or not images:
         raise ValueError("Provide at least one image")
@@ -72,9 +72,14 @@ def load(path, mode):
             raise ValueError("Start the carousel with a cover")
     elif mode == "app":
         app = data.get("app")
-        required(app, "mode title subtitle home saved action undo list detail", "app")
+        required(app, "mode title subtitle", "app")
+        if app["mode"] == "instrument":
+            required(app, "hero", "app")
+            image_ref(app, "hero")
+            return data
+        required(app, "home saved action undo list detail", "app")
         if app["mode"] not in ("collect","reserve"):
-            raise ValueError("app.mode must be collect or reserve")
+            raise ValueError("app.mode must be collect, reserve or instrument")
         items = app.get("items")
         if not isinstance(items,list) or not 1 <= len(items) <= 30:
             raise ValueError("Supply 1–30 app items")
@@ -108,9 +113,9 @@ def jpeg(im, quality=91):
     return stream.getvalue()
 
 
-def markup(template, payload):
+def markup(template, payload, title):
     js = json.dumps(payload,ensure_ascii=False).replace("<","\\u003c").replace(">","\\u003e").replace("&","\\u0026")
-    return (ASSETS / template).read_text(encoding="utf8").replace("{{TITLE}}",escape(payload["brand"])).replace("{{DATA}}",js)
+    return (ASSETS / template).read_text(encoding="utf8").replace("{{TITLE}}",escape(" ".join(title.split()))).replace("{{DATA}}",js)
 
 
 def app_files(data):
@@ -122,7 +127,9 @@ def app_files(data):
             images[key] = {"src":uri(jpeg(image)), "alt":entry["alt"]}
     payload = {k:data[k] for k in ("brand","theme","imprint","id","credit","app")}
     payload["images"] = images
-    return {"index.html":markup("mobile.html",payload).encode("utf8")}
+    template = "instrument.html" if data["app"]["mode"] == "instrument" else "mobile.html"
+    title = data["brand"] + " · " + data["app"]["title"]
+    return {"index.html":markup(template,payload,title).encode("utf8")}
 
 
 def social_files(data):
@@ -149,7 +156,7 @@ def social_files(data):
         bundle.writestr("credits.txt",data["credit"]+"\n")
     out["images.zip"] = archive.getvalue()
     out["index.html"] = markup("carousel.html",dict(brand=data["brand"],imprint=data["imprint"],credit=data["credit"],
-        title=social["title"],pages=pages,caption=caption)).encode("utf8")
+        title=social["title"],pages=pages,caption=caption),social["title"]).encode("utf8")
     return out
 
 

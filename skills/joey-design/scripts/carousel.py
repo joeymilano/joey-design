@@ -6,6 +6,9 @@ W, H = 1080, 1440
 
 
 def make_card(data, page, index, total):
+    if data["theme"] == "plate":
+        from plates import card
+        return card(data,page,index,total)
     night = data["theme"] == "afterdark"
     paper, ink = ("#eae0c6","#251910") if night else ("#edece2","#17241f")
     accent = "#b03e2f" if night else "#b0ef70"

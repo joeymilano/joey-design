@@ -103,6 +103,9 @@ class Canvas:
 
 
 def compose(p, index):
+    if p["theme"] == "plate":
+        from plates import slide
+        return slide(p,index)
     s = p["pages"][index]
     t = THEMES[p["theme"]]
     cover, feature, proof = (s["kind"] == k for k in ("cover", "feature", "proof"))

@@ -6,6 +6,7 @@ from urllib.parse import urlsplit
 
 LANGS = ("en", "zh")
 THEMES = {
+    "plate": dict(bg="#ef3212", ink="#fffaf2", muted="#fff2de", accent="#152bb2", paper="#f4f1e9", dark="#111111", face="sans"),
     "gallery": dict(bg="#ecece1", ink="#17271e", muted="#4a584e", accent="#315b39", paper="#f3f2e9", dark="#17271e", face="sans"),
     "nocturne": dict(bg="#10161e", ink="#fcf6e9", muted="#b9c4ce", accent="#f8b86c", paper="#f4efe5", dark="#182029", face="sans"),
     "folio": dict(bg="#f3ead8", ink="#2d241f", muted="#67574d", accent="#8f3528", paper="#ece1c9", dark="#2d241f", face="serif"),
@@ -49,6 +50,7 @@ def load_brief(path):
                 raise ValueError(f"artwork.{shape} must name a file inside the brief directory")
             variants[shape] = variant
     alt = pair(field(artwork, "alt", "artwork"), "artwork.alt")
+    detail_alt = pair(artwork.get("detail_alt",artwork["alt"]), "artwork.detail_alt")
     credit = pair(field(artwork, "credit", "artwork"), "artwork.credit")
     facts = field(data, "facts", "brief")
     if not isinstance(facts, dict) or not 1 <= len(facts) <= 6:
@@ -111,7 +113,7 @@ def load_brief(path):
                     raise ValueError(f"{where}.facts needs 1–3 existing fact IDs")
                 page["facts"] = ids
             pages.append(page)
-        localized[lang] = dict(lang=lang, brand=brand, theme=theme, photo=file, variants=variants, alt=alt[lang],
+        localized[lang] = dict(lang=lang, brand=brand, theme=theme, photo=file, variants=variants, alt=alt[lang], detail_alt=detail_alt[lang],
                                credit=credit[lang], action=resolve(data, "action", "brief"), url=url,
                                facts={k: {a: (v[lang] if isinstance(v,dict) else v) for a,v in f.items()}
                                       for k,f in canonical.items()}, pages=pages)
