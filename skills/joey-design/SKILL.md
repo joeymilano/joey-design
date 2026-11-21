@@ -1,32 +1,26 @@
 ---
 name: joey-design
-description: Create art-directed PPT and editable PowerPoint decks, Xiaohongshu (小红书/RED) carousel posts, interactive mobile app prototypes, buyer sample sheets (出海询样单), channel performance reports (增长复盘), workshop agendas (活动课表), sales pages and bilingual launch kits. Use for slide design, social image sequences, product UI/UX, cross-format brand systems and photography-led editorial work. Includes original examples, local renderers and medium-specific quality checks.
+description: Low-AI-aesthetic design skill (低 AI 味) for editable PowerPoint / PPT, high-craft Web and App UI/UX, responsive websites and playable games. Use for pitch and product decks, application interfaces and dashboards, portfolio and landing sites, game UI, menus, HUDs and browser prototypes. Includes bilingual decks, Xiaohongshu carousels and runnable reference projects.
 ---
 
 # Joey Design
 
-Design for the moment after someone sees the work. Name the audience, the decision they face and the piece of evidence that can move it. A distributor choosing a sample needs a different page from a buyer comparing specifications.
+Build an artifact the reader can use. Start with their task and existing material, then choose the medium. For Chinese public copy and visual hierarchy use the low-AI-aesthetic (低 AI 味) guidance in [product-work.md](references/product-work.md) and [chinese-copy.md](references/chinese-copy.md).
 
-## Choose the deliverable
+## Choose the primary task
 
-Read [formats.md](references/formats.md) for the production sequence and visual checks. Start with the user's primary medium. A standalone 小红书 post or an App prototype can be authored from a single-language studio brief.
-
-| Request | Deliverable | Runnable starting point |
+| Request | Example / command | What to deliver |
 |---|---|---|
-| PPT, 路演, keynote, research or editorial talk | Editable .pptx with notes and a keyboard-operated HTML deck | `assets/studies/lightwalk-deck.json` |
-| 小红书笔记, carousel, photo essay or swipe guide | Numbered 3:4 images, cover, caption, image pack and interactive preview | `assets/studies/lightwalk.json` or `side-b.json`, social command |
-| Mobile App, product interaction or 高保真原型 | Responsive single-file web prototype with complete actions and persistent local state | Same studies, app command |
-| Bilingual product launch or sales handout | Linked language editions, web page, PPTX, speaker notes and campaign art | `assets/starter.json`, build command |
+| PPT, pitch or product presentation | fold-deck.json / build | Editable bilingual PowerPoint with speaker notes, images and an HTML preview |
+| High-craft Web or App UI/UX, product flow or dashboard | contact-sheet.json / ui | A working interface with decisions, keyboard and touch controls, empty states and recovery |
+| Portfolio, brand website or product landing page | stillroom.json / site | A responsive site with useful navigation, inspectable details and shareable project links |
+| Game prototype, title screen, game UI or HUD | last-ferry.json / game | A playable loop with visible controls, victory, failure, retry and progression |
 
-Match recognisable assets, typography and voice across a campaign. Recompose for the reading distance and interaction of each medium. A slide can compare two photos side by side, a note can reveal them over five swipes, and an app can let someone save the next location.
+The four included starters are in `assets/studies/`. For a user's existing product, preserve their stack, navigation, content and saved data. Implement their actual workflow. Choose a new layout or mechanic when the bundled example is a poor fit. Reserve social and specialist tools for requests that call for them. Xiaohongshu uses [studio-brief.md](references/studio-brief.md), sourcing and channel reports use [scenarios.md](references/scenarios.md).
 
-## Start with the job
+## 低 AI 味
 
-For sample sourcing, a two-period channel review or a multi-room event, read [scenarios.md](references/scenarios.md). Choose a brief in `assets/scenarios`, replace the items and source line, then build the working page:
-
-    python3 "$SKILL/scripts/joey.py" scenario "$SKILL/assets/scenarios/material-office.json" --out buyer-sheet
-
-For Chinese deliverables, use [chinese-copy.md](references/chinese-copy.md). Write the reader’s next action in their words. Leave Chinese titles, captions, UI copy, body and notes free of full stops. Preserve decimals, file extensions, URLs and verbatim source material. Run the following check to locate a full stop by field name. Edit the sentence in the brief, then read the live interface and exported file once as its reader.
+Use the subject to choose the dominant shape, image and type. Give every section a distinct job. Remove made-up metrics, vague taglines, filler badges and repeated card grids that add no information. One primary action must take a visitor somewhere real. Write Chinese UI labels as actions, keep full stops out of authored Chinese display copy and preserve decimals, filenames, URLs and quotations. A copy check locates punctuation; assess tone by reading the piece in context. Run the project-specific checks in [product-work.md](references/product-work.md).
 
     python3 "$SKILL/scripts/joey.py" copycheck brief.json
 
@@ -58,6 +52,12 @@ Replace all starter content. Place an authorized image beside the brief, then up
 
     .venv/bin/python "$SKILL/scripts/joey.py" check brief.json
     .venv/bin/python "$SKILL/scripts/joey.py" build brief.json --out joey-build
+
+For the three new standalone paths, run a command with its own brief:
+
+    .venv/bin/python "$SKILL/scripts/joey.py" ui "$SKILL/assets/studies/contact-sheet.json" --out product-ui
+    .venv/bin/python "$SKILL/scripts/joey.py" site "$SKILL/assets/studies/stillroom.json" --out studio-site
+    .venv/bin/python "$SKILL/scripts/joey.py" game "$SKILL/assets/studies/last-ferry.json" --out harbor-game
 
 For a social or app study, see [studio-brief.md](references/studio-brief.md). Run either command with a tailored copy of the study and its local images.
 
