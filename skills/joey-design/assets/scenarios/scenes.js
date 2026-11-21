@@ -51,7 +51,7 @@ function samples(){
     render()
   })
   get('export').onclick = () => {
-    const cuts = items.filter(i=>quantities[i.id]).map(i => `${i.code} | ${i.name} | ${i.spec} | ${quantities[i.id]} cut(s)`)
+    const cuts = items.filter(i=>quantities[i.id]).map(i => `${i.code} | ${i.name} | ${i.spec} | ${quantities[i.id]} ${quantities[i.id]===1?'cut':'cuts'}`)
     download(brief.id+'-request.txt','text/plain;charset=utf-8',[brief.title,'Sample request','',...cuts,'','Please confirm availability and shipping before dispatch.','',brief.source].join('\r\n'))
   }
   render()

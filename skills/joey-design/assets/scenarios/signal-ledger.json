@@ -1,6 +1,6 @@
 {
   "kind":"report","id":"signal-ledger","title":"Signal Ledger","edition":"增长周报 / 11 月",
-  "headline":"谁带来了询盘？","intro":"展会散场一周，把本周和上周放在一起，看看买手从哪儿来、在哪儿留了询盘","source":"示例数据 · 询盘按渠道内去重，跨渠道未去重",
+  "headline":"谁带来了询盘？","intro":"展会散场一周，社交内容有 1230 次访问，询盘最多的也是它吗？","source":"示例数据 · 询盘按渠道内去重，跨渠道未去重",
   "previous":"11.02 至 11.08","current":"11.09 至 11.15",
   "items":[
     {"id":"search","name":"自然搜索","previous":[960,24],"current":[1080,38]},
