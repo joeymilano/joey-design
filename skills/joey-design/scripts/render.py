@@ -96,6 +96,13 @@ def powerpoint(canvases, p, target):
                     east=OxmlElement("a:ea")
                     east.set("typeface",n["family"])
                     run._r.get_or_add_rPr().append(east)
+                if page["kind"] == "close" and n["rows"] == [p["action"]]:
+                    if p["url"] != "#sources":
+                        shape.click_action.hyperlink.address = p["url"]
+                    else:
+                        proof = next((i for i, item in enumerate(p["pages"]) if item["kind"] == "proof"), None)
+                        if proof is not None:
+                            shape.click_action.target_slide = deck.slides[proof]
         notes=page["notes"]
         if page["kind"]=="proof":
             notes+="\n"+"\n".join(f'{p["facts"][i]["value"]} — {p["facts"][i]["source"]}' for i in page["facts"])
@@ -133,11 +140,28 @@ def section_html(c, title):
 def deck_html(canvases,p,assets):
     content="".join(section_html(c,s["title"]) for c,s in zip(canvases,p["pages"]))
     en=p["lang"]=="en"
+    note_items=[]
+    for page in p["pages"]:
+        source_items = []
+        for key in page.get("facts", []):
+            f=p["facts"][key]
+            source_items.append(f'<li>{esc(f["label"])} · {esc(f["value"])} — {esc(f["source"])}</li>')
+        action=""
+        if page["kind"]=="close":
+            if p["url"]=="#sources":
+                source_items.extend(f'<li>{esc(f["value"])} — {esc(f["source"])}</li>' for f in p["facts"].values())
+            else:
+                action=f'<p><a href="{esc(p["url"])}">{esc(p["action"])}</a></p>'
+        refs=f'<ul>{"".join(source_items)}</ul>' if source_items else ""
+        note_items.append(f'<article hidden><p>{esc(page["notes"])}</p>{refs}{action}</article>')
+    notes=''.join(note_items)
     title=esc(p["pages"][0]["title"].replace("\n"," "))
     return (f'<!doctype html><html lang="{p["lang"]}"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{title}</title>'
             f'<style>{(assets/"deck.css").read_text(encoding="utf-8")}</style><main>{content}</main>'
             f'<nav aria-label="{"Presentation" if en else "演示导航"}"><button id="prev" aria-label="{"Previous" if en else "上一页"}">←</button>'
-            f'<output aria-live="polite"></output><button id="next" aria-label="{"Next" if en else "下一页"}">→</button></nav>'
+            f'<output aria-live="polite"></output><button id="next" aria-label="{"Next" if en else "下一页"}">→</button>'
+            f'<button id="notes" aria-expanded="false" aria-controls="notes-panel">{"Notes" if en else "讲者备注"}</button></nav>'
+            f'<aside id="notes-panel" hidden aria-label="{"Speaker notes" if en else "讲者备注"}">{notes}</aside>'
             f'<script>{(assets/"deck.js").read_text(encoding="utf-8")}</script></html>')
 
 
