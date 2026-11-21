@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Joey Design — 折频 / Fold Frequency</title>
-<meta name="description" content="Joey Zhao 的开源设计展厅。切换原创艺术指导样张，下载双语 PowerPoint，翻看小红书图文，演奏可导出 WAV 的声音界面。">
+<title>Joey Design · 作品与工具</title>
+<meta name="description" content="Joey Zhao 的开源设计作品，含双语 PowerPoint、小红书图文、布样采购册、渠道周报和工作坊课表">
 <meta property="og:image" content="https://joeymilano.github.io/joey-design/fold-field-wide.jpg">
 <style>
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f5f3ed;color:#191919;font:16px/1.52 Inter,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif}h1,h2,h3,p,figure{margin:0}
@@ -17,55 +17,58 @@ main{padding:38px 0}.feature-links{border-bottom:1px solid #9c9d91;padding-botto
 details{margin-top:14px;padding-top:6px;border-top:1px solid #bec1b5;font-size:14px}summary{cursor:pointer}details .actions{margin-top:6px}footer{padding:18px 0 40px;border-top:1px solid;color:#31342e;font-size:14px}
 @media(max-width:760px){.feature-links{display:block}.feature-links .actions{justify-content:flex-start;margin-top:16px}.lead-case{grid-template-columns:1.4fr 1fr}.section-head span{max-width:42%;text-align:right}}
 @media(max-width:620px){.mast,.hero-inner,main,footer{width:92%}.mast{min-height:52px}.logo{font-size:27px}nav{gap:12px}nav a{font-size:12px}.hero-inner{width:100%}.stage img{width:100%;height:auto;max-height:none;aspect-ratio:900/1140;object-fit:contain}.band{display:block;padding:14px 4% 16px}.chooser{margin-top:12px}.chooser button{flex:1;justify-content:center;padding:7px 6px;min-height:43px}.band h1{font-size:20px}.grid{grid-template-columns:1fr;gap:29px}.lead-case{display:block}.lead-txt{padding:19px}.section-head{padding:13px 0 16px}.stage{padding:0}main{padding-top:25px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.stage.changed img{animation:none}}
+
+.work-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2.1vw,32px)}.work-grid a{display:block;text-decoration:none}.work-grid img{display:block;width:100%;aspect-ratio:1.65;object-fit:cover;object-position:top;border:1px solid #9996}.work-grid h3{font-size:clamp(21px,2.3vw,34px);margin:12px 0 5px}.work-grid p{max-width:29em}.work-grid a:hover h3{text-decoration:underline}
+@media(max-width:700px){.work-grid{grid-template-columns:1fr}.work-grid article{padding-bottom:12px}nav{gap:9px}.mast{flex-wrap:wrap}}
 </style></head><body>
-<header id="top"><div class="mast"><a href="#top" class="logo">Joey Design.</a><nav aria-label="案例分类"><a href="#ppt">PPT</a><a href="#social">小红书</a><a href="#apps">App</a><a href="https://github.com/joeymilano/joey-design">GitHub ↗</a></nav></div></header>
+<header id="top"><div class="mast"><a href="#top" class="logo">Joey Design</a><nav aria-label="案例分类"><a href="#work">场景</a><a href="#ppt">PPT</a><a href="#social">小红书</a><a href="#apps">App</a><a href="https://github.com/joeymilano/joey-design">GitHub ↗</a></nav></div></header>
 <div class="hero"><div class="hero-inner"><figure class="stage" id="proof"><picture><source media="(max-width:620px)" srcset="fold-field-portrait.jpg"><img src="fold-field-wide.jpg" alt="场域版封面，钴蓝色折片横过朱红色背景"></picture></figure>
 <div class="band"><h1>折频 <span>Fold Frequency / 声音设计习作</span></h1><div class="chooser" role="group" aria-label="切换封面艺术指导"><button type="button" aria-pressed="true" data-proof="field"><i style="--sw:#ec3818"></i>场域</button><button type="button" aria-pressed="false" data-proof="catalogue"><i style="--sw:#e7e5d8"></i>图录</button><button type="button" aria-pressed="false" data-proof="detail"><i style="--sw:#1735d9"></i>微距</button></div></div></div></div>
-<main><div class="feature-links"><div><h2>从一件雕塑，到两秒声音。</h2><p>《折频》是一个虚构声音展。先在图版上观察折痕，再到试听台调出自己的音色。</p></div><div class="actions"><a href="fold-deck-zh.html">看演示</a><a href="fold-social.html">翻图文</a><a href="fold-app.html">演奏试听台 ↗</a></div></div>
-<section class="collection" id="ppt"><div class="section-head"><h2>PowerPoint</h2><span>5 组双语演示 / 可编辑 PPTX</span></div><div class="grid"><article class="lead-case"><a class="visual" href="fold-deck-zh.html"><img loading="lazy" src="fold-slides.jpg" alt="折频四页对照，整版雕塑、微距图、数据页与蓝色收束页"></a><div class="lead-txt"><div class="case-title"><h3>折频 / Fold Frequency</h3><span class="category">声音展览 · 5 页</span></div><p>开场让雕塑占满银幕，第二页把视线拉到金属切边。图像、中文字、参数和讲者备注随 PPTX 交付。</p><div class="actions"><a href="fold-deck-zh.html">播放演示</a> · <a href="fold-deck-zh.pptx">下载中文 PPTX</a> · <a href="fold-deck-en.pptx">English PPTX</a></div></div></article><article>
+<main><div class="feature-links"><div><h2>这道折痕，听起来像什么？</h2><p>放大看看蓝色折片的切口，再戴上耳机，试试同一个音高下三种波形的区别</p></div><div class="actions"><a href="fold-deck-zh.html">看演示</a><a href="fold-social.html">翻图文</a><a href="fold-app.html">演奏试听台 ↗</a></div></div>
+<section class="collection" id="work"><div class="section-head"><h2>手头的活</h2><span>三份能直接改的工作样本</span></div><div class="work-grid"><article><a href="material-office.html"><img loading="lazy" src="material-office-preview.jpg" alt="给海外买手选布样的页面预览"><h3>给海外买手选布样 ↗</h3></a><p>按货号选布和数量，下一封询样邮件就有了底稿</p></article><article><a href="signal-ledger.html"><img loading="lazy" src="signal-ledger-preview.jpg" alt="展会带来多少询盘？的页面预览"><h3>展会带来多少询盘？ ↗</h3></a><p>看访问最多的渠道，再看买手究竟在哪儿留了询盘</p></article><article><a href="night-school.html"><img loading="lazy" src="night-school-preview.jpg" alt="今晚开印的页面预览"><h3>今晚开印 ↗</h3></a><p>排一晚的课，两堂撞时会提醒，选好就存进日历</p></article></div></section><section class="collection" id="ppt"><div class="section-head"><h2>PowerPoint</h2><span>5 组双语演示 / 可编辑 PPTX</span></div><div class="grid"><article class="lead-case"><a class="visual" href="fold-deck-zh.html"><img loading="lazy" src="fold-slides.jpg" alt="折频四页对照，整版雕塑、微距图、数据页与蓝色收束页"></a><div class="lead-txt"><div class="case-title"><h3>折频 / Fold Frequency</h3><span class="category">声音展览 · 5 页</span></div><p>翻到第二页，整件雕塑只剩一道亮边，下载后能单独换图、改字和演讲备注</p><div class="actions"><a href="fold-deck-zh.html">播放演示</a> · <a href="fold-deck-zh.pptx">下载中文 PPTX</a> · <a href="fold-deck-en.pptx">English PPTX</a></div></div></article><article>
 <a class="visual" href="lightwalk-deck-zh.html"><img alt="光隙 演示封面，打开中文预览" height="720" loading="lazy" src="lightwalk-wide-zh.png" width="1280"/></a>
 <div class="case-title"><h3>光隙</h3><span class="category">建筑摄影</span></div>
-<p>跟着一位行人读建筑尺度，再沿蓝色台阶找视线。双图对照页里，照片和图注都可独立替换。</p>
+<p>等人走到墙根再拍，人才这么小，墙显得格外高，下一页换到蓝楼梯</p>
 <div class="actions"><a href="lightwalk-deck-zh.html">在线预览 →</a><a download="" href="lightwalk-deck-zh.pptx">下载中文 PPTX</a><a download="" href="lightwalk-deck-en.pptx">English PPTX</a></div><details><summary>项目页、封面及双语文件</summary><div class="actions"><b>中文</b><a href="lightwalk-deck-zh.html">演示</a><a href="lightwalk-page-zh.html">项目页</a><a download="" href="lightwalk-deck-zh.pptx">PPTX</a><a href="lightwalk-cover-zh.png">竖图</a><a href="lightwalk-wide-zh.png">横图</a></div><div class="actions"><b>English</b><a href="lightwalk-deck-en.html">演示</a><a href="lightwalk-page-en.html">项目页</a><a download="" href="lightwalk-deck-en.pptx">PPTX</a><a href="lightwalk-cover-en.png">竖图</a><a href="lightwalk-wide-en.png">横图</a></div></details>
 </article>
 <article>
 <a class="visual" href="afterhours-deck-zh.html"><img alt="After hours. 演示封面，打开中文预览" height="720" loading="lazy" src="afterhours-wide-en.png" width="1280"/></a>
 <div class="case-title"><h3>After hours.</h3><span class="category">工业产品</span></div>
-<p>钴蓝背景托起折叠灯臂，浅色规格页留给买家比较色温与尺寸。</p>
+<p>灯头压到书页上，再翻一页看打样要测的色温和尺寸</p>
 <div class="actions"><a href="afterhours-deck-zh.html">在线预览 →</a><a download="" href="afterhours-deck-zh.pptx">下载中文 PPTX</a><a download="" href="afterhours-deck-en.pptx">English PPTX</a></div><details><summary>项目页、封面及双语文件</summary><div class="actions"><b>中文</b><a href="afterhours-deck-zh.html">演示</a><a href="afterhours-page-zh.html">项目页</a><a download="" href="afterhours-deck-zh.pptx">PPTX</a><a href="afterhours-cover-zh.png">竖图</a><a href="afterhours-wide-zh.png">横图</a></div><div class="actions"><b>English</b><a href="afterhours-deck-en.html">演示</a><a href="afterhours-page-en.html">项目页</a><a download="" href="afterhours-deck-en.pptx">PPTX</a><a href="afterhours-cover-en.png">竖图</a><a href="afterhours-wide-en.png">横图</a></div></details>
 </article>
 <article>
 <a class="visual" href="paper-radio-deck-zh.html"><img alt="Paper radio. 演示封面，打开中文预览" height="720" loading="lazy" src="paper-radio-wide-en.png" width="1280"/></a>
 <div class="case-title"><h3>Paper radio.</h3><span class="category">文化活动</span></div>
-<p>用唱片封套的局部和书籍衬线构成试听邀请，讲清这场活动该怎样听。</p>
+<p>把唱片递给下一位，先念一行封套上的字，再一起听第一轨</p>
 <div class="actions"><a href="paper-radio-deck-zh.html">在线预览 →</a><a download="" href="paper-radio-deck-zh.pptx">下载中文 PPTX</a><a download="" href="paper-radio-deck-en.pptx">English PPTX</a></div><details><summary>项目页、封面及双语文件</summary><div class="actions"><b>中文</b><a href="paper-radio-deck-zh.html">演示</a><a href="paper-radio-page-zh.html">项目页</a><a download="" href="paper-radio-deck-zh.pptx">PPTX</a><a href="paper-radio-cover-zh.png">竖图</a><a href="paper-radio-wide-zh.png">横图</a></div><div class="actions"><b>English</b><a href="paper-radio-deck-en.html">演示</a><a href="paper-radio-page-en.html">项目页</a><a download="" href="paper-radio-deck-en.pptx">PPTX</a><a href="paper-radio-cover-en.png">竖图</a><a href="paper-radio-wide-en.png">横图</a></div></details>
 </article>
 <article>
 <a class="visual" href="tide-index-deck-zh.html"><img alt="Tide index. 演示封面，打开中文预览" height="720" loading="lazy" src="tide-index-wide-en.png" width="1280"/></a>
 <div class="case-title"><h3>Tide index.</h3><span class="category">研究与数据</span></div>
-<p>从一条模拟潮位曲线，讲到三个测站的采样设计。数据与来源随演示交付。</p>
+<p>三个模拟测站同一时刻读数，沿着曲线找谁先到第二个波峰</p>
 <div class="actions"><a href="tide-index-deck-zh.html">在线预览 →</a><a download="" href="tide-index-deck-zh.pptx">下载中文 PPTX</a><a download="" href="tide-index-deck-en.pptx">English PPTX</a></div><details><summary>项目页、封面及双语文件</summary><div class="actions"><b>中文</b><a href="tide-index-deck-zh.html">演示</a><a href="tide-index-page-zh.html">项目页</a><a download="" href="tide-index-deck-zh.pptx">PPTX</a><a href="tide-index-cover-zh.png">竖图</a><a href="tide-index-wide-zh.png">横图</a></div><div class="actions"><b>English</b><a href="tide-index-deck-en.html">演示</a><a href="tide-index-page-en.html">项目页</a><a download="" href="tide-index-deck-en.pptx">PPTX</a><a href="tide-index-cover-en.png">竖图</a><a href="tide-index-wide-en.png">横图</a></div></details>
-</article></div></section><section class="collection" id="social"><div class="section-head"><h2>小红书</h2><span>3 套图文 / 每套 5 张</span></div><div class="grid"><article class="lead-case"><a class="visual" href="fold-social.html"><img loading="lazy" src="fold-cards.jpg" alt="折频的五张竖幅笔记"></a><div class="lead-txt"><div class="case-title"><h3>把声音折起来。</h3><span class="category">竖版图文 · 1080 × 1440</span></div><p>从薄片的转折讲到正弦、三角和锯齿。一张卡只留一个观察或动作，最后一张可以存下练习。</p><div class="actions"><a href="fold-social.html">逐张阅读</a> · <a href="fold-images.zip">下载 JPG 与文案</a></div></div></article><article>
+</article></div></section><section class="collection" id="social"><div class="section-head"><h2>小红书</h2><span>3 套图文 / 每套 5 张</span></div><div class="grid"><article class="lead-case"><a class="visual" href="fold-social.html"><img loading="lazy" src="fold-cards.jpg" alt="折频的五张竖幅笔记"></a><div class="lead-txt"><div class="case-title"><h3>同一个音，换三种听法</h3><span class="category">竖版图文 · 1080 × 1440</span></div><p>音高留在 220 Hz，先放正弦，再按锯齿，戴上耳机更容易听出差别</p><div class="actions"><a href="fold-social.html">逐张阅读</a> · <a href="fold-images.zip">下载 JPG 与文案</a></div></div></article><article>
 <a class="visual" href="lightwalk-social.html"><img alt="摄影手记的庭院封面、蓝梯构图与三条练习" height="570" loading="lazy" src="lightwalk-spread.jpg" width="1050"/></a>
 <div class="case-title"><h3>追一束下午的光</h3><span class="category">1080 × 1440</span></div>
-<p>前两张照片示范怎样等人入画、压低机位，滑到最后一张可以存下散步练习清单。</p>
+<p>在庭院等人走进光里，到了蓝楼梯就蹲低一点，试着裁掉那块亮天</p>
 <div class="actions"><a href="lightwalk-social.html">翻看 5 张图 →</a><a download="" href="lightwalk-images.zip">下载图片与文案</a></div>
 </article>
 <article>
 <a class="visual" href="side-b-social.html"><img alt="黑胶笔记的唱片封套、唱机与听后记录" height="570" loading="lazy" src="side-b-spread.jpg" width="1050"/></a>
-<div class="case-title"><h3>落针之前，读一张封套。</h3><span class="category">1080 × 1440</span></div>
-<p>从封套最大的色块读到唱针落下的第一轨，再给自己的听音笔记留三个问题。</p>
+<div class="case-title"><h3>落针前，看看封套背面</h3><span class="category">1080 × 1440</span></div>
+<p>唱针还没落下，先把封套翻个面，内袋上有没有印歌词？</p>
 <div class="actions"><a href="side-b-social.html">翻看 5 张图 →</a><a download="" href="side-b-images.zip">下载图片与文案</a></div>
-</article></div></section><section class="collection" id="apps"><div class="section-head"><h2>Mobile App</h2><span>3 个可操作的网页原型</span></div><div class="grid"><article class="lead-case"><a class="visual" href="fold-app.html"><img loading="lazy" src="fold-console.jpg" alt="折频试听台的实际操作画面"></a><div class="lead-txt"><div class="case-title"><h3>折频试听台</h3><span class="category">声音工具 · Web Audio</span></div><p>在同一个音高下切换波形，听质地怎样变化。保存音色后可以再次载入，也能导出两秒 WAV。</p><div class="actions"><a href="fold-app.html">打开试听台 ↗</a></div></div></article><article>
+</article></div></section><section class="collection" id="apps"><div class="section-head"><h2>Mobile App</h2><span>3 个可操作的网页原型</span></div><div class="grid"><article class="lead-case"><a class="visual" href="fold-app.html"><img loading="lazy" src="fold-console.jpg" alt="折频试听台的实际操作画面"></a><div class="lead-txt"><div class="case-title"><h3>折频试听台</h3><span class="category">声音工具 · Web Audio</span></div><p>音高不动，只换波形，挑喜欢的那段存成两秒 WAV</p><div class="actions"><a href="fold-app.html">打开试听台 ↗</a></div></div></article><article>
 <a class="visual" href="lightwalk-app.html"><img alt="手机上的摄影练习首页与蓝梯机位详情" height="730" loading="lazy" src="lightwalk-screens.jpg" width="1050"/></a>
 <div class="case-title"><h3>光隙 · 机位手记</h3><span class="category">收藏工具</span></div>
-<p>按冷光或斜阳筛选练习，打开机位看构图，收藏后在「我的机位」找回。</p>
+<p>找个有斜阳的机位，存到「我的机位」，下次出门带着走</p>
 <div class="actions"><a href="lightwalk-app.html">试试收藏机位 →</a></div>
 </article>
 <article>
 <a class="visual" href="side-b-app.html"><img alt="深色唱片室的节目单与试听场次选择画面" height="730" loading="lazy" src="side-b-screens.jpg" width="1050"/></a>
 <div class="case-title"><h3>反面唱片室</h3><span class="category">试听预约</span></div>
-<p>从节目单选一场试听，挑时段、确认预约。回到「我的场次」可以改期或取消。</p>
+<p>周五晚听第一轨，周六翻唱片封套，选好后在「我的场次」改时间</p>
 <div class="actions"><a href="side-b-app.html">试试预约场次 →</a></div>
 </article></div></section></main><footer><span>Joey Zhao · MIT</span><a href="https://github.com/joeymilano/joey-design#installation">安装 Joey Design ↗</a></footer>
 <script>

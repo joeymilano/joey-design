@@ -7,7 +7,7 @@
 @media print{button,.toolbar,.summary,.status{display:none!important}body{background:white;color:black}main{max-width:none}.row{break-inside:avoid}}
 </style></head>
 <body class="report"><main><header class="mast"><span id="brand"></span><span id="edition"></span></header><div class="hero"><div class="hero-copy"><h1 id="headline"></h1><p id="intro"></p></div><div id="cover"></div></div><section id="desk" aria-label="Workspace"></section><footer id="credit"></footer></main>
-<script id="brief" type="application/json">{"kind": "report", "id": "signal-ledger", "title": "Signal Ledger", "edition": "增长周报 / 11 月", "headline": "谁带来了询盘？", "intro": "展会散场一周，把本周和上周放在一起，看看买手从哪儿来、在哪儿留了询盘", "source": "示例数据 · 询盘按渠道内去重，跨渠道未去重", "previous": "11.02 至 11.08", "current": "11.09 至 11.15", "items": [{"id": "search", "name": "自然搜索", "previous": [960, 24], "current": [1080, 38]}, {"id": "newsletter", "name": "买手通讯", "previous": [320, 18], "current": [410, 31]}, {"id": "social", "name": "社交内容", "previous": [880, 9], "current": [1230, 12]}], "metrics": {"visits": "访问", "actions": "询盘", "rate": "询盘率"}}</script><script>const brief = JSON.parse(document.querySelector('#brief').textContent)
+<script id="brief" type="application/json">{"kind": "report", "id": "signal-ledger", "title": "Signal Ledger", "edition": "增长周报 / 11 月", "headline": "谁带来了询盘？", "intro": "展会散场一周，社交内容有 1230 次访问，询盘最多的也是它吗？", "source": "示例数据 · 询盘按渠道内去重，跨渠道未去重", "previous": "11.02 至 11.08", "current": "11.09 至 11.15", "items": [{"id": "search", "name": "自然搜索", "previous": [960, 24], "current": [1080, 38]}, {"id": "newsletter", "name": "买手通讯", "previous": [320, 18], "current": [410, 31]}, {"id": "social", "name": "社交内容", "previous": [880, 9], "current": [1230, 12]}], "metrics": {"visits": "访问", "actions": "询盘", "rate": "询盘率"}}</script><script>const brief = JSON.parse(document.querySelector('#brief').textContent)
 const get = id => document.getElementById(id)
 const esc = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))
 const storageKey = 'joey-scenario/' + brief.kind + '/' + brief.id
@@ -60,7 +60,7 @@ function samples(){
     render()
   })
   get('export').onclick = () => {
-    const cuts = items.filter(i=>quantities[i.id]).map(i => `${i.code} | ${i.name} | ${i.spec} | ${quantities[i.id]} cut(s)`)
+    const cuts = items.filter(i=>quantities[i.id]).map(i => `${i.code} | ${i.name} | ${i.spec} | ${quantities[i.id]} ${quantities[i.id]===1?'cut':'cuts'}`)
     download(brief.id+'-request.txt','text/plain;charset=utf-8',[brief.title,'Sample request','',...cuts,'','Please confirm availability and shipping before dispatch.','',brief.source].join('\r\n'))
   }
   render()
