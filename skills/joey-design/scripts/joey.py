@@ -59,11 +59,17 @@ def copy_issues(value, path="$"):
 
 def main():
     parser=argparse.ArgumentParser(description="Build a bilingual design kit from one creative brief.")
-    parser.add_argument("command",choices=["build","check","social","app","directions","scenario","copycheck"])
+    parser.add_argument("command",choices=["build","check","social","app","directions","scenario","copycheck","ui","site","game"])
     parser.add_argument("brief",type=Path)
     parser.add_argument("--out",type=Path,default=None)
     args=parser.parse_args()
     try:
+        if args.command in ("ui", "site", "game"):
+            from projects import build_project
+            dest = args.out or Path("joey-" + args.command)
+            build_project(args.command, args.brief, dest)
+            print(f"Open {dest / 'index.html'}")
+            return
         if args.command == "copycheck":
             fields = list(copy_issues(json.loads(args.brief.read_text(encoding="utf-8"))))
             if fields:
