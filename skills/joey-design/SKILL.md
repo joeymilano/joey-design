@@ -1,6 +1,6 @@
 ---
 name: joey-design
-description: Create art-directed PPT and editable PowerPoint decks, Xiaohongshu (小红书/RED) carousel posts, interactive mobile app prototypes, buyer sample sheets, channel performance reports, workshop agendas, sales pages and bilingual launch kits. Use for slide design, social image sequences, product UI/UX, cross-format brand systems and photography-led editorial work. Includes original examples, local renderers and medium-specific quality checks.
+description: Create art-directed PPT and editable PowerPoint decks, Xiaohongshu (小红书/RED) carousel posts, interactive mobile app prototypes, buyer sample sheets (出海询样单), channel performance reports (增长复盘), workshop agendas (活动课表), sales pages and bilingual launch kits. Use for slide design, social image sequences, product UI/UX, cross-format brand systems and photography-led editorial work. Includes original examples, local renderers and medium-specific quality checks.
 ---
 
 # Joey Design
@@ -26,7 +26,9 @@ For sample sourcing, a two-period channel review or a multi-room event, read [sc
 
     python3 "$SKILL/scripts/joey.py" scenario "$SKILL/assets/scenarios/material-office.json" --out buyer-sheet
 
-For Chinese deliverables, use [chinese-copy.md](references/chinese-copy.md). Write the reader’s next action in their words. Leave Chinese titles, captions, UI copy, body and notes free of full stops. Preserve decimals, file extensions, URLs and verbatim source material. Read the live interface and the exported file once as the buyer, operator or attendee.
+For Chinese deliverables, use [chinese-copy.md](references/chinese-copy.md). Write the reader’s next action in their words. Leave Chinese titles, captions, UI copy, body and notes free of full stops. Preserve decimals, file extensions, URLs and verbatim source material. Run the following check to locate a full stop by field name. Edit the sentence in the brief, then read the live interface and exported file once as its reader.
+
+    python3 "$SKILL/scripts/joey.py" copycheck brief.json
 
 ## Set an art direction people can see
 
