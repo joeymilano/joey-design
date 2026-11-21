@@ -1,0 +1,138 @@
+{
+  "theme": "nocturne",
+  "brand": "AFTERHOURS  /  FOLD 01",
+  "artwork": {
+    "file": "fold-01.jpg",
+    "alt": {
+      "en": "Brushed aluminium reading lamp against a cobalt studio backdrop.",
+      "zh": "钴蓝色背景前，一盏拉丝铝折叠阅读灯。"
+    },
+    "credit": {
+      "en": "Concept image generated for Joey Design. FOLD 01 is a fictional product.",
+      "zh": "Joey Design 为本示例生成的概念图。FOLD 01 为虚构产品。"
+    }
+  },
+  "action": {
+    "en": "Read the design specification",
+    "zh": "查看设计规格"
+  },
+  "action_url": "#sources",
+  "facts": {
+    "light": {
+      "value": "2700 K",
+      "label": {
+        "en": "Target colour temperature",
+        "zh": "目标色温"
+      },
+      "source": {
+        "en": "FOLD 01 concept brief, revision A. Design targets, pending prototype testing.",
+        "zh": "FOLD 01 概念设计任务书 A 版。目标值待样机验证。"
+      }
+    },
+    "angle": {
+      "value": "110°",
+      "label": {
+        "en": "Planned hinge travel",
+        "zh": "铰链设计行程"
+      },
+      "source": {
+        "en": "FOLD 01 concept brief, revision A. Design targets, pending prototype testing.",
+        "zh": "FOLD 01 概念设计任务书 A 版。目标值待样机验证。"
+      }
+    },
+    "mass": {
+      "value": "480 g",
+      "label": {
+        "en": "Target assembled weight",
+        "zh": "目标整机重量"
+      },
+      "source": {
+        "en": "FOLD 01 concept brief, revision A. Design targets, pending prototype testing.",
+        "zh": "FOLD 01 概念设计任务书 A 版。目标值待样机验证。"
+      }
+    }
+  },
+  "slides": [
+    {
+      "kind": "cover",
+      "kicker": {
+        "en": "FOLD 01   /   PORTABLE LIGHT",
+        "zh": "FOLD 01   /   便携照明"
+      },
+      "title": {
+        "en": "After\nhours.",
+        "zh": "入夜，\n开灯。"
+      },
+      "body": {
+        "en": "A folding reading light for the last occupied desk.",
+        "zh": "为夜里最后一张有人伏案的书桌，留一束光。"
+      },
+      "notes": {
+        "en": "Introduce the fictional design study and its intended reading scene.",
+        "zh": "介绍虚构设计研究，以及它针对的夜读场景。"
+      }
+    },
+    {
+      "kind": "feature",
+      "kicker": {
+        "en": "01   /   THE HINGE",
+        "zh": "01   /   转轴"
+      },
+      "title": {
+        "en": "Put the light\non the page.",
+        "zh": "让光落在\n书页上。"
+      },
+      "body": {
+        "en": "A thin blade pivots over the book. The round base keeps the rest of the desk free for a notebook and a cup.",
+        "zh": "薄灯头绕转轴俯下，照向书页。圆形底座旁还能放下一本笔记和一只杯子。"
+      },
+      "notes": {
+        "en": "Follow the line from the base, through the pivot, to the edge of the blade.",
+        "zh": "沿着底座、转轴、灯头引导观众观察。"
+      }
+    },
+    {
+      "kind": "proof",
+      "kicker": {
+        "en": "02   /   DESIGN TARGETS",
+        "zh": "02   /   设计目标"
+      },
+      "title": {
+        "en": "Three numbers to prototype.",
+        "zh": "打样前，先对齐三个数字。"
+      },
+      "body": {
+        "en": "The first prototype will test reach, warmth and stability at the desk.",
+        "zh": "第一轮样机将测试光照范围、光色与桌面稳定性。"
+      },
+      "notes": {
+        "en": "These are design targets. Distinguish them from measured performance.",
+        "zh": "这些是设计目标，测试完成后再补充实测值。"
+      },
+      "facts": [
+        "light",
+        "angle",
+        "mass"
+      ]
+    },
+    {
+      "kind": "close",
+      "kicker": {
+        "en": "03   /   PARTNER REVIEW",
+        "zh": "03   /   样机评审"
+      },
+      "title": {
+        "en": "Bring it to the desk.",
+        "zh": "把它放到书桌上。"
+      },
+      "body": {
+        "en": "Review the {{light}} target with a lighting partner before freezing the first prototype.",
+        "zh": "邀请照明合作方确认 {{light}} 的色温目标，再确定第一轮样机方案。"
+      },
+      "notes": {
+        "en": "Ask the partner which reading environment to use for the first test.",
+        "zh": "与合作方确认第一次打样要模拟的阅读环境。"
+      }
+    }
+  ]
+}
