@@ -57,6 +57,13 @@ def covers(p):
             yield f"{name}-{'portrait' if portrait else 'wide'}.jpg",c
 
 
+PROOF_ROOM = '''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>封面校样 / Cover proofs</title>
+<style>*{box-sizing:border-box}body{margin:4%;background:#171819;color:#f6f4eb;font:16px/1.4 system-ui,sans-serif}header,main{max-width:1800px;margin:auto}header{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}h1{font-size:clamp(28px,4vw,64px);letter-spacing:-.06em;margin:0}label{display:inline-flex;align-items:center;gap:6px;margin:5px}select{padding:8px;font:inherit}main{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5%;margin-top:25px}figure{margin:0}img{width:100%;height:auto;display:block}figcaption{margin:9px 0 20px}@media(max-width:650px){main{grid-template-columns:1fr;gap:18px}}</style>
+<header><h1>封面校样</h1><div><label>语言 <select id="lang"><option value="zh">中文</option><option value="en">English</option></select></label><label>画幅 <select id="ratio"><option value="wide">横版</option><option value="portrait">竖版</option></select></label></div></header>
+<main><figure><img src="zh-field-wide.jpg" data-name="field" alt="场域版封面"><figcaption>场域 / Field</figcaption></figure><figure><img src="zh-catalogue-wide.jpg" data-name="catalogue" alt="图录版封面"><figcaption>图录 / Catalogue</figcaption></figure><figure><img src="zh-detail-wide.jpg" data-name="detail" alt="微距版封面"><figcaption>微距 / Detail</figcaption></figure></main>
+<script>const language=document.querySelector('#lang'),ratio=document.querySelector('#ratio');function update(){document.querySelectorAll('[data-name]').forEach(img=>img.src=[language.value,img.dataset.name,ratio.value].join('-')+'.jpg')}language.onchange=ratio.onchange=update;</script></html>'''
+
+
 def build_directions(path, dest):
     editions=load_brief(path)
     dest=Path(dest).resolve()
@@ -69,6 +76,7 @@ def build_directions(path, dest):
         for language,p in editions.items():
             for name,canvas in covers(p):
                 raster(canvas).save(tmp/f"{language}-{name}",quality=90,optimize=True)
+        (tmp/"index.html").write_text(PROOF_ROOM,encoding="utf8")
         (tmp/marker.name).write_text("Joey Design cover studies\n",encoding="utf8")
         dest.mkdir(exist_ok=True)
         for f in tmp.iterdir():
