@@ -1,0 +1,10 @@
+{
+  "kind":"report","id":"signal-ledger","title":"Signal Ledger","edition":"增长周报 / 11 月",
+  "headline":"谁带来了询盘？","intro":"展会散场一周，把本周和上周放在一起，看看买手从哪儿来、在哪儿留了询盘","source":"示例数据 · 询盘按渠道内去重，跨渠道未去重",
+  "previous":"11.02 至 11.08","current":"11.09 至 11.15",
+  "items":[
+    {"id":"search","name":"自然搜索","previous":[960,24],"current":[1080,38]},
+    {"id":"newsletter","name":"买手通讯","previous":[320,18],"current":[410,31]},
+    {"id":"social","name":"社交内容","previous":[880,9],"current":[1230,12]}
+  ]
+}

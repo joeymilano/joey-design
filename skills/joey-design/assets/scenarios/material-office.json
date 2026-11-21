@@ -1,0 +1,10 @@
+{
+  "kind": "samples", "id": "material-office", "title": "Material Office", "edition": "Textile library / Spring collection",
+  "headline": "Cloth by the cut", "intro": "Three cloths for a first prototype. Pick the cuts you want on your sample rail.",
+  "source": "Fictional collection · AI-generated material study", "image": "swatches.jpg", "alt": "A loop of undyed linen against forest-green twill and a dark cork tile",
+  "items": [
+    {"id":"ln-01","name":"Raw linen","code":"LN / 01","color":"#b7a485","spec":"240 g/m² · 140 cm","note":"Open weave with a dry hand. Hold a single layer against the light."},
+    {"id":"tw-02","name":"Forest twill","code":"TW / 02","color":"#39462f","spec":"310 g/m² · 148 cm","note":"Close diagonal ribs. Try a deep fold to see how the face catches light."},
+    {"id":"cv-03","name":"Ink canvas","code":"CV / 03","color":"#333337","spec":"360 g/m² · 150 cm","note":"A firm, plain weave for structured panels. Compare it with the softer linen."}
+  ]
+}
