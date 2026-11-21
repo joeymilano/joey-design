@@ -56,11 +56,14 @@ def powerpoint(canvases, p, target):
     from pptx.enum.shapes import MSO_SHAPE
     from pptx.enum.text import MSO_AUTO_SIZE
     from pptx.oxml.xmlchemy import OxmlElement
+    from pptx.oxml.ns import qn
+    from pptx.opc.constants import RELATIONSHIP_TYPE as RT
     from pptx.util import Emu, Pt
     def unit(v): return Emu(round(v*9525))
     def rgb(v): return RGBColor.from_string(v[1:])
     deck=Presentation()
     deck.slide_width,deck.slide_height=unit(1280),unit(720)
+    deck._element.sldSz.set("type", "screen16x9")
     deck.core_properties.author=p["brand"]
     deck.core_properties.title=p["pages"][0]["title"].replace("\n"," ")
     for c,page in zip(canvases,p["pages"]):
@@ -109,6 +112,13 @@ def powerpoint(canvases, p, target):
         if page["kind"]=="close":
             notes+="\n"+p["url"]
         slide.notes_slide.notes_text_frame.text=notes
+    # python-pptx creates the notes master relationship but omits its index.
+    # Keynote requires the index, before the slide list, to import the file.
+    master_list = OxmlElement("p:notesMasterIdLst")
+    master = OxmlElement("p:notesMasterId")
+    master.set(qn("r:id"), next(r.rId for r in deck.part.rels.values() if r.reltype == RT.NOTES_MASTER))
+    master_list.append(master)
+    deck._element.sldIdLst.addprevious(master_list)
     deck.save(target)
 
 
