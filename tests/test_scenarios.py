@@ -8,6 +8,7 @@ from pathlib import Path
 SKILL = Path(__file__).resolve().parents[1] / "skills/joey-design"
 sys.path.insert(0, str(SKILL / "scripts"))
 from scenarios import build_scenario, load_scenario
+from joey import copy_issues
 
 STUDIES = SKILL / "assets/scenarios"
 
@@ -48,6 +49,12 @@ class ScenarioTests(unittest.TestCase):
         self.assertNotIn("</script><x>", page)
         self.assertIn("报名率", page)
         self.assertEqual(load_scenario(src)["items"][0]["previous"], [0, 0])
+
+    def test_copy_reports_only_editable_fields(self):
+        self.assertEqual(list(copy_issues({"zh": ["保留 2.5 mm", "这里换行。"], "en":"Quoted 。", "url":"https://test.invalid/a。"})), ["$.zh[1]"])
+        for pattern in ("assets/studies/*.json", "assets/scenarios/*.json", "assets/starter.json"):
+            for source in SKILL.glob(pattern):
+                self.assertEqual(list(copy_issues(json.loads(source.read_text()))), [], source.name)
 
     def test_invalid_end_and_counts(self):
         src = self.write("night-school", lambda d: d["items"][0].update(end=d["items"][0]["start"]))
