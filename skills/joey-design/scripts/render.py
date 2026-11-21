@@ -1,0 +1,167 @@
+"""Render the exact same canvas to raster, native Office shapes or semantic HTML."""
+import base64
+import html
+import io
+from functools import lru_cache
+from PIL import Image, ImageDraw, ImageOps
+
+from layout import font
+from model import THEMES
+
+esc = html.escape
+
+
+@lru_cache(maxsize=24)
+def framed(path, w, h):
+    with Image.open(path) as raw:
+        original = ImageOps.exif_transpose(raw).convert("RGB")
+    # Preserve the silhouette of pack shots. Extend the adjacent edge into the bleed.
+    inside = ImageOps.contain(original,(w,h),method=Image.Resampling.LANCZOS)
+    iw,ih=inside.size
+    x,y=(w-iw)//2,(h-ih)//2
+    art=Image.new("RGB",(w,h))
+    if y:
+        art.paste(inside.crop((0,0,iw,1)).resize((w,y)),(0,0))
+    if h-y-ih:
+        art.paste(inside.crop((0,ih-1,iw,ih)).resize((w,h-y-ih)),(0,y+ih))
+    if x:
+        art.paste(inside.crop((0,0,1,ih)).resize((x,h)),(0,0))
+    if w-x-iw:
+        art.paste(inside.crop((iw-1,0,iw,ih)).resize((w-x-iw,h)),(x+iw,0))
+    art.paste(inside,(x,y))
+    out=io.BytesIO()
+    art.save(out,"JPEG",quality=90,optimize=True)
+    return out.getvalue()
+
+
+def raster(c):
+    im=Image.new("RGB",(c.width,c.height),c.bg)
+    draw=ImageDraw.Draw(im)
+    for n in c.layers:
+        x,y,w,h=(n[k] for k in ("x","y","w","h"))
+        if n["type"]=="image":
+            im.paste(Image.open(io.BytesIO(framed(n["path"],w,h))),(x,y))
+        elif n["type"]=="rect":
+            draw.rectangle((x,y,x+w-1,y+h-1),fill=n["color"])
+        else:
+            f=font(n["style"],n["zh"],n["size"])
+            for i,row in enumerate(n["rows"]):
+                draw.text((x,y+i*n["pitch"]+int(n["size"]*.12)),row,font=f,fill=n["color"],anchor="lt")
+    return im
+
+
+def powerpoint(canvases, p, target):
+    from pptx import Presentation
+    from pptx.dml.color import RGBColor
+    from pptx.enum.shapes import MSO_SHAPE
+    from pptx.enum.text import MSO_AUTO_SIZE
+    from pptx.oxml.xmlchemy import OxmlElement
+    from pptx.util import Emu, Pt
+    def unit(v): return Emu(round(v*9525))
+    def rgb(v): return RGBColor.from_string(v[1:])
+    deck=Presentation()
+    deck.slide_width,deck.slide_height=unit(1280),unit(720)
+    deck.core_properties.author=p["brand"]
+    deck.core_properties.title=p["pages"][0]["title"].replace("\n"," ")
+    for c,page in zip(canvases,p["pages"]):
+        slide=deck.slides.add_slide(deck.slide_layouts[6])
+        slide.background.fill.solid()
+        slide.background.fill.fore_color.rgb=rgb(c.bg)
+        for n in c.layers:
+            box=[unit(n[k]) for k in ("x","y","w","h")]
+            if n["type"]=="image":
+                picture=slide.shapes.add_picture(io.BytesIO(framed(n["path"],n["w"],n["h"])),*box)
+                picture._element.nvPicPr.cNvPr.set("descr",n["alt"])
+            elif n["type"]=="rect":
+                shape=slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,*box)
+                shape.fill.solid()
+                shape.fill.fore_color.rgb=rgb(n["color"])
+                shape.line.fill.background()
+            else:
+                shape=slide.shapes.add_textbox(*box)
+                tf=shape.text_frame
+                tf.auto_size=MSO_AUTO_SIZE.NONE
+                tf.word_wrap=False
+                tf.margin_left=tf.margin_right=tf.margin_top=tf.margin_bottom=0
+                for i,row in enumerate(n["rows"]):
+                    para=tf.paragraphs[0] if i==0 else tf.add_paragraph()
+                    para.space_before=para.space_after=Pt(0)
+                    para.line_spacing=Pt(n["pitch"]*.75)
+                    run=para.add_run()
+                    run.text=row
+                    run.font.name=n["family"]
+                    run.font.bold=n["style"]=="bold"
+                    run.font.size=Pt(n["size"]*.75)
+                    run.font.color.rgb=rgb(n["color"])
+                    east=OxmlElement("a:ea")
+                    east.set("typeface",n["family"])
+                    run._r.get_or_add_rPr().append(east)
+        notes=page["notes"]
+        if page["kind"]=="proof":
+            notes+="\n"+"\n".join(f'{p["facts"][i]["value"]} — {p["facts"][i]["source"]}' for i in page["facts"])
+        if page["kind"]=="close":
+            notes+="\n"+p["url"]
+        slide.notes_slide.notes_text_frame.text=notes
+    deck.save(target)
+
+
+def uri(data):
+    return "data:image/jpeg;base64,"+base64.b64encode(data).decode("ascii")
+
+
+def section_html(c, title):
+    nodes=[]
+    for n in c.layers:
+        pos=(f'left:{n["x"]/c.width*100:.4f}%;top:{n["y"]/c.height*100:.4f}%;'
+             f'width:{n["w"]/c.width*100:.4f}%;height:{n["h"]/c.height*100:.4f}%;')
+        if n["type"]=="image":
+            src=uri(framed(n["path"],n["w"],n["h"]))
+            nodes.append(f'<img style="{pos}" alt="{esc(n["alt"])}" src="{src}">')
+        elif n["type"]=="rect":
+            nodes.append(f'<i aria-hidden="true" style="{pos}background:{n["color"]}"></i>')
+        else:
+            family=esc(n["family"])
+            weight=700 if n["style"]=="bold" else 400
+            fallback={"serif":"serif","mono":"monospace"}.get(n["style"],"sans-serif")
+            style=(f"{pos}font-family:'{family}',{fallback};font-weight:{weight};"
+                   f'font-size:{n["size"]/12.8:.5f}cqw;line-height:{n["pitch"]/12.8:.5f}cqw;color:{n["color"]};')
+            value="<br>".join(esc(row) for row in n["rows"])
+            nodes.append(f'<div style="{style}">{value}</div>')
+    return f'<section class="slide" aria-label="{esc(title)}" style="background:{c.bg}">{"".join(nodes)}</section>'
+
+
+def deck_html(canvases,p,assets):
+    content="".join(section_html(c,s["title"]) for c,s in zip(canvases,p["pages"]))
+    en=p["lang"]=="en"
+    title=esc(p["pages"][0]["title"].replace("\n"," "))
+    return (f'<!doctype html><html lang="{p["lang"]}"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{title}</title>'
+            f'<style>{(assets/"deck.css").read_text(encoding="utf-8")}</style><main>{content}</main>'
+            f'<nav aria-label="{"Presentation" if en else "演示导航"}"><button id="prev" aria-label="{"Previous" if en else "上一页"}">←</button>'
+            f'<output aria-live="polite"></output><button id="next" aria-label="{"Next" if en else "下一页"}">→</button></nav>'
+            f'<script>{(assets/"deck.js").read_text(encoding="utf-8")}</script></html>')
+
+
+def sales_page(p,assets):
+    t=THEMES[p["theme"]]
+    cover=p["pages"][0]
+    closing=p["pages"][-1]
+    src=uri(framed(p["photo"],1200,800))
+    switch="中文" if p["lang"]=="en" else "English"
+    other="zh" if p["lang"]=="en" else "en"
+    sources="Sources & credits" if p["lang"]=="en" else "资料来源与图像署名"
+    def txt(s): return esc(s).replace("\n","<br>")
+    sections=[]
+    for slide in p["pages"][1:-1]:
+        cards=""
+        if slide["kind"]=="proof":
+            cards="<dl>"+"".join(f'<div><dt>{txt(p["facts"][k]["label"])}</dt><dd>{txt(p["facts"][k]["value"])}</dd></div>' for k in slide["facts"])+"</dl>"
+        sections.append(f'<section class="story"><p class="k">{txt(slide["kicker"])}</p><div><h2>{txt(slide["title"])}</h2><p>{txt(slide["body"])}</p>{cards}</div></section>')
+    references="".join(f'<li><strong>{txt(f["label"])} · {txt(f["value"])}</strong><br>{txt(f["source"])}</li>' for f in p["facts"].values())
+    colors=";".join(f"--{k}:{v}" for k,v in t.items() if k!="face")
+    titlefont="Georgia,serif" if p["theme"]=="folio" else "Arial,sans-serif"
+    return f"""<!doctype html><html lang="{p['lang']}"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{esc(cover['title'].replace(chr(10),' '))}</title>
+<style>:root{{{colors};--head:{titlefont}}}{(assets/'page.css').read_text(encoding='utf-8')}</style>
+<header><b>{txt(p['brand'])}</b><a lang="{other}" hreflang="{other}" href="page-{other}.html">{switch}</a></header>
+<main><section class="hero"><div><p class="k">{txt(cover['kicker'])}</p><h1>{txt(cover['title'])}</h1><p>{txt(cover['body'])}</p></div><img src="{src}" alt="{esc(p['alt'])}"></section>
+{''.join(sections)}<section class="finish"><p class="k">{txt(closing['kicker'])}</p><h2>{txt(closing['title'])}</h2><p>{txt(closing['body'])}</p><a class="cta" href="{esc(p['url'])}">{txt(p['action'])} ↗</a></section></main>
+<footer id="sources" tabindex="-1"><h2>{sources}</h2><ul>{references}</ul><p>{txt(p['credit'])}</p></footer></html>"""
