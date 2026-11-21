@@ -70,6 +70,9 @@ python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install -r skills/joey-design/requirements.txt
 
+# 检查中文句号，输出需要改写的字段位置
+python skills/joey-design/scripts/joey.py copycheck skills/joey-design/assets/studies/lightwalk.json
+
 # 用自己的货号、渠道数据或课程时间生成工作页
 python skills/joey-design/scripts/joey.py scenario skills/joey-design/assets/scenarios/material-office.json --out build/samples
 
