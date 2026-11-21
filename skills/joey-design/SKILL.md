@@ -1,6 +1,6 @@
 ---
 name: joey-design
-description: Create art-directed PPT and editable PowerPoint decks, Xiaohongshu (小红书/RED) carousel posts, interactive mobile app prototypes, sales pages and bilingual launch kits. Use for slide design, social image sequences, product UI/UX, cross-format brand systems and photography-led editorial work. Includes original examples, local renderers and medium-specific quality checks.
+description: Create art-directed PPT and editable PowerPoint decks, Xiaohongshu (小红书/RED) carousel posts, interactive mobile app prototypes, buyer sample sheets, channel performance reports, workshop agendas, sales pages and bilingual launch kits. Use for slide design, social image sequences, product UI/UX, cross-format brand systems and photography-led editorial work. Includes original examples, local renderers and medium-specific quality checks.
 ---
 
 # Joey Design
@@ -19,6 +19,14 @@ Read [formats.md](references/formats.md) for the production sequence and visual 
 | Bilingual product launch or sales handout | Linked language editions, web page, PPTX, speaker notes and campaign art | `assets/starter.json`, build command |
 
 Match recognisable assets, typography and voice across a campaign. Recompose for the reading distance and interaction of each medium. A slide can compare two photos side by side, a note can reveal them over five swipes, and an app can let someone save the next location.
+
+## Start with the job
+
+For sample sourcing, a two-period channel review or a multi-room event, read [scenarios.md](references/scenarios.md). Choose a brief in `assets/scenarios`, replace the items and source line, then build the working page:
+
+    python3 "$SKILL/scripts/joey.py" scenario "$SKILL/assets/scenarios/material-office.json" --out buyer-sheet
+
+For Chinese deliverables, use [chinese-copy.md](references/chinese-copy.md). Write the reader’s next action in their words. Leave Chinese titles, captions, UI copy, body and notes free of full stops. Preserve decimals, file extensions, URLs and verbatim source material. Read the live interface and the exported file once as the buyer, operator or attendee.
 
 ## Set an art direction people can see
 
