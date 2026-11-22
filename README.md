@@ -1,6 +1,6 @@
 # Joey Design
 
-**低 AI 味的开源设计 Skill，做 PPT、高审美 Web / App UIUX、网站和游戏**
+**低 AI 味的开源设计 Skill，做可编辑 PPT、高完成度的 Web / App 界面、网站和小游戏**
 
 [![Joey Design 四个可运行的案例，折频演示、摄影选片工具、工作室作品集和港口像素游戏](docs/four-works.jpg)](https://joeymilano.github.io/joey-design/)
 
@@ -9,17 +9,17 @@
 | 我想做 | 先打开一个成品 | 用自己的内容重做 |
 | --- | --- | --- |
 | **PPT / PowerPoint** | [翻看《折频》](https://joeymilano.github.io/joey-design/fold-deck-zh.html) · [下载可编辑中文版](https://joeymilano.github.io/joey-design/fold-deck-zh.pptx) | 给一份产品介绍或路演提纲，文字、图片、讲者备注都能在 PowerPoint 里改 |
-| **Web / App UIUX** | [打开《底片台》](https://joeymilano.github.io/joey-design/contact-sheet.html)，按 P 留片、X 淘汰，选完导出清单 | 替换成自己的照片，或让 Agent 按真实产品流程设计桌面和手机界面 |
-| **网站** | [逛《间室》作品集](https://joeymilano.github.io/joey-design/stillroom.html)，按类别找作品，打开详情看近景 | 换上项目和图片，做好品牌官网、作品集或带明确行动入口的产品落地页 |
+| **Web / App UIUX** | [打开《底片台》](https://joeymilano.github.io/joey-design/contact-sheet.html)，按 P 留片、X 淘汰，选完导出清单 | 换成自己的照片，或让 Agent 照你真实的产品流程设计桌面和手机界面 |
+| **网站** | [逛《间室》作品集](https://joeymilano.github.io/joey-design/stillroom.html)，按类别找作品，打开详情看近景 | 换成自己的项目和图片，做品牌官网、作品集，或者行动入口清清楚楚的产品落地页 |
 | **游戏** | [玩《末班渡轮》](https://joeymilano.github.io/joey-design/last-ferry.html)，用有限的航程接齐乘客，跑完三关 | 改角色、地图与步数，生成自己的浏览器游戏 |
 
 ## 同一道题，打开试试
 
-[三版修理铺报名页](https://joeymilano.github.io/joey-design/field-test/)共用一份简报。试着比较上午和下午的名额、选一场、留一位，再刷新或撤销。先体验作品，再展开看各自用了哪个 Skill
+[三版修理铺报名页](https://joeymilano.github.io/joey-design/field-test/)共用一份简报。试着比较上午和下午的名额、选一场、留一位，再刷新或撤销。先自己点一遍，再回头看它们各用了哪个 Skill
 
-[两本摄影册，先补印哪本？](https://joeymilano.github.io/joey-design/field-test/?task=deck) 歸藏 PPT 和 Joey Design 拿到相同的两张照片、四周销量和库存，各做四页发行会演示。翻到第三页，看哪版让你更快决定先印哪本
+[两本摄影册，先补印哪本？](https://joeymilano.github.io/joey-design/field-test/?task=deck) 歸藏 PPT 和 Joey Design 拿到的是同样两张照片、同样四周的销量和库存，各做四页发行会演示。翻到第三页，看哪版让你更快决定先印哪本
 
-[反面唱片室排场](https://joeymilano.github.io/joey-design/listening-room.html)有八把空椅子，应该搬到哪一场？[下载三页中文 PPTX](https://joeymilano.github.io/joey-design/listening-room.pptx)，在第二页点图表的「编辑数据」，可以改人数。网页表格、图表和中英文演示共享[同一份数据](skills/joey-design/assets/studies/listening-room.json)
+[反面唱片室排场](https://joeymilano.github.io/joey-design/listening-room.html)有八把空椅子，应该搬到哪一场？[下载三页中文 PPTX](https://joeymilano.github.io/joey-design/listening-room.pptx)，在第二页点图表的「编辑数据」，可以改人数。网页表格、图表和中英文演示，用的都是[同一份数据](skills/joey-design/assets/studies/listening-room.json)
 
 ## Installation
 
@@ -47,7 +47,7 @@ npx skills add joeymilano/joey-design --skill joey-design
 
 ## 交付前走一遍
 
-`review` 会在桌面和手机宽度从头操作一次，保存截图、已完成的步骤和异常。可以给自己的离线 HTML 写操作步骤，也可以直接复跑这个仓库的[四个示例](skills/joey-design/assets/journeys)。[用法与验收范围](skills/joey-design/references/design-review.md)
+`review` 会在桌面和手机宽度把页面从头操作一遍，截图、走过的步骤、出问题的地方，都记下来。可以给自己的离线 HTML 写操作步骤，也可以直接复跑这个仓库的[四个示例](skills/joey-design/assets/journeys)。[用法与验收范围](skills/joey-design/references/design-review.md)
 
 ## 本地生成
 
@@ -73,13 +73,11 @@ Windows 用 `.venv\Scripts\activate` 激活环境，Linux 渲染中文图片时�
 
 ## GitHub 参考
 
-四个入口分别参考了开发者演示、可定制界面组件、内容网站和浏览器游戏的实际项目形态
+四个入口分别参考了一类真实项目的形态，开发者演示、可定制组件、内容网站、浏览器游戏
 [Slidev](https://github.com/slidevjs/slidev) · [shadcn/ui](https://github.com/shadcn-ui/ui) · [Astro](https://github.com/withastro/astro) · [Phaser](https://github.com/phaserjs/phaser)
 
 ## Design credits
 
 Designed by **Joey Zhao**. All projects are fictional studies. The harbour illustration, textile study, metallic sculpture, lighting, architecture and record-store images were generated for these examples. Paper Radio and Tide Index use original procedural artwork.
-
-项目参考了 [Guizang PPT Skill](https://github.com/op7418/guizang-ppt-skill) 对浏览器演示的探索，以及 [Huashu Design](https://github.com/alchaincyf/huashu-design) 对跨媒介设计的组织方式，Joey Design 的说明、渲染器、版式与案例独立编写
 
 [MIT License](LICENSE) · [Joey Zhao](https://www.joeyzhao.cc/)
