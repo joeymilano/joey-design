@@ -107,6 +107,8 @@ def review_page(source, destination, journey=None):
                     issues.append(f"After {completed} completed steps: {str(error)[:700]}")
                 if steps:
                     page.screenshot(path=stage / f"{name}-end.png", animations="disabled")
+                for issue in dict.fromkeys(issues):
+                    print(f"{name}: {issue}")
                 results[name] = {"size": [width, height], "completed": completed, "issues": issues}
                 context.close()
             browser.close()

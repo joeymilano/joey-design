@@ -13,7 +13,7 @@ Name the person, the decision, the material they inspect and the smallest action
 
 For open-ended visual work, sketch two different ways to put the *same* content in front of the user. Change scale, reading order and relationship to the object. Name the tradeoff and build the stronger one. Keep the alternatives when the user asks to choose. A statement about the art direction earns its place when you can point to the specific crop, type treatment or control it changed.
 
-In a working UI, place the two items people actually compare within sight of each other. Express the current state in words and in a second cue. Test what happens to focus when the activating control disappears. At phone width let the primary action follow the thing it changes. For Chinese copy, read the screen aloud with the interface hidden. Replace a vague button with the result of pressing it.
+In a working UI, place the two items people actually compare within sight of each other. Express the current state in words and in a second cue. Test what happens to focus when the activating control disappears. At phone width let the primary action follow the thing it changes. When the decision compares two axes, try making each matrix cell the selection control. Start at phone size: if a miniature bar or row of squares adds no legible information beside an exact count, hide it at that width. For Chinese copy, read the screen aloud with the interface hidden. Replace a vague button with the result of pressing it.
 
 ## Open the deliverable
 

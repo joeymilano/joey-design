@@ -17,6 +17,8 @@
 
 [三版修理铺报名页](https://joeymilano.github.io/joey-design/field-test/)共用一份简报。试着比较上午和下午的名额、选一场、留一位，再刷新或撤销。先体验作品，再展开看各自用了哪个 Skill
 
+[两本摄影册，先补印哪本？](https://joeymilano.github.io/joey-design/field-test/?task=deck) 歸藏 PPT 和 Joey Design 拿到相同的两张照片、四周销量和库存，各做四页发行会演示。翻到第三页，看哪版让你更快决定先印哪本
+
 [反面唱片室排场](https://joeymilano.github.io/joey-design/listening-room.html)有八把空椅子，应该搬到哪一场？[下载三页中文 PPTX](https://joeymilano.github.io/joey-design/listening-room.pptx)，在第二页点图表的「编辑数据」，可以改人数。网页表格、图表和中英文演示共享[同一份数据](skills/joey-design/assets/studies/listening-room.json)
 
 ## Installation

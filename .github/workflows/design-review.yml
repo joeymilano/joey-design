@@ -9,8 +9,8 @@ jobs:
   review:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.1.0
         with:
           python-version: '3.12'
       - name: Install renderer and browser
@@ -29,11 +29,11 @@ jobs:
           for demo in listening-room contact-sheet stillroom last-ferry; do
             python skills/joey-design/scripts/joey.py review "docs/$demo.html" --journey "skills/joey-design/assets/journeys/$demo.json" --out "captures/$demo" || rc=1
           done
-          for entry in a b c; do
+          for entry in a b c d e; do
             python skills/joey-design/scripts/joey.py review "docs/field-test/$entry.html" --journey "tests/journeys/$entry.json" --out "captures/$entry" || rc=1
           done
           exit "$rc"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7.0.2
         if: always()
         with:
           name: design-review

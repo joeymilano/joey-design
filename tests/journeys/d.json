@@ -1,0 +1,43 @@
+[
+  {
+    "action": "disabled",
+    "selector": "#prev"
+  },
+  {
+    "action": "click",
+    "selector": "#next"
+  },
+  {
+    "action": "text",
+    "selector": "nav output",
+    "value": "02"
+  },
+  {
+    "action": "press",
+    "selector": "#next",
+    "value": "ArrowRight"
+  },
+  {
+    "action": "text",
+    "selector": "nav output",
+    "value": "03"
+  },
+  {
+    "action": "click",
+    "selector": "#next"
+  },
+  {
+    "action": "disabled",
+    "selector": "#next"
+  },
+  {
+    "action": "press",
+    "selector": "#prev",
+    "value": "ArrowLeft"
+  },
+  {
+    "action": "text",
+    "selector": "nav output",
+    "value": "03"
+  }
+]

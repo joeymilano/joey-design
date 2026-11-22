@@ -2,11 +2,10 @@
   "brand": "SIDE B",
   "theme": "folio",
   "artwork": {
-    "file": "sleeves.jpg",
-    "portrait": "vinyl.jpg",
+    "file": "vinyl.jpg",
     "alt": {
-      "zh": "木桌上的红色唱片封套和黑胶",
-      "en": "A worn red record sleeve and a black disc on a wooden table"
+      "zh": "暖光下，银色唱臂伸向黑胶唱片的米色标签",
+      "en": "A silver tonearm beside a cream record label in warm light"
     },
     "credit": {
       "zh": "反面唱片室是虚构场景，图片为原创 AI 概念摄影",
@@ -39,11 +38,11 @@
         "en": "SIDE B / WEEKEND PROGRAMME"
       },
       "title": {
-        "zh": "椅子搬到哪一场",
+        "zh": "八把椅子\n搬去哪场",
         "en": "Where do the chairs go?"
       },
       "body": {
-        "zh": "周六还有八把椅子可以搬",
+        "zh": "周六三场试听，还有八个座位可以加",
         "en": "Eight spare chairs for Saturday"
       },
       "notes": {

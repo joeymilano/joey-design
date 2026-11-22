@@ -198,7 +198,7 @@ function render(){
     byId('receipt-details').textContent='周六'+session.label+' · '+session.time+' · '+items[record.item];
     return;
   }
-  const session=form.elements.session.value,item=form.elements.item.value;
+  const session=form.elements.session.value,item=form.elements.namedItem('item').value;
   const {free}=counts(session,item);
   byId('summary').innerHTML=sessions[session].label+' · '+items[item]+'　<strong>'+(free?'剩 '+free+' 位':'已满额')+'</strong>';
   byId('reserve').disabled=free===0;
@@ -220,7 +220,7 @@ form.addEventListener('submit',event=>{
   event.preventDefault();
   record=record||readRecord();
   if(record){render();return}
-  const session=form.elements.session.value,item=form.elements.item.value;
+  const session=form.elements.session.value,item=form.elements.namedItem('item').value;
   if(!counts(session,item).free)return;
   persist({session,item});
   byId('receipt-heading').focus();

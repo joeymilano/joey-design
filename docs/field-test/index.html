@@ -7,16 +7,29 @@
 *{box-sizing:border-box}body{margin:0;background:#f5f5ee;color:#202425;font:16px/1.5 system-ui,sans-serif}main{max-width:1450px;margin:auto;padding:16px clamp(12px,3vw,46px)}header,.controls,.identity,.modes{display:flex;align-items:center;gap:8px;flex-wrap:wrap}header{justify-content:space-between;border-bottom:1px solid #89918a;padding-bottom:13px}a{color:inherit;text-underline-offset:.22em}h1{font-size:clamp(27px,4.1vw,60px);line-height:1.05;margin:22px 0 9px;letter-spacing:-.046em}p{margin:.4em 0 1em}.controls{margin:18px 0 10px;justify-content:space-between}.modes{gap:4px}button{cursor:pointer;background:transparent;font:inherit;color:inherit;border:1px solid #7f8680;padding:7px 12px;border-radius:2px;min-height:40px}button[aria-pressed=true]{background:#182e24;color:white}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #2468b8;outline-offset:3px}.stage{background:#d8dcd7;padding:12px}.stage iframe{display:block;width:100%;height:min(76vh,850px);min-height:500px;border:0;background:white;margin:auto}.stage.phone iframe{max-width:390px}.identity{margin-top:16px;align-items:flex-start;justify-content:space-between}details{max-width:830px}summary{cursor:pointer}details p{margin-top:.7em}.back{font-weight:700;text-decoration:none}@media(max-width:600px){.stage{padding:0}.controls{gap:10px}.stage iframe{min-height:580px}main{padding-inline:10px}.modes button{padding:6px 9px}}
 </style>
 <main>
-<header><a class="back" href="../index.html">← Joey Design</a><a href="brief.txt">完整题目</a></header>
+<header><a class="back" href="../index.html">← Joey Design</a><nav aria-label="选择题目"><a href="index.html">报名界面</a>　<a href="?task=deck">发行会演示</a>　<a id="brief" href="brief.txt">完整题目</a></nav></header>
 <h1>同一道设计题</h1>
-<p>周六去修电器，上午还是下午更好约？试着留个名额，再撤销，看看哪版顺手</p>
+<p id="assignment">周六去修电器，上午还是下午更好约？试着留个名额，再撤销，看看哪版顺手</p>
 <div class="controls">
 <div class="modes" aria-label="切换作品"><button type="button" data-work="a" aria-pressed="true">作品 A</button><button type="button" data-work="b" aria-pressed="false">作品 B</button><button type="button" data-work="c" aria-pressed="false">作品 C</button></div>
 <div class="modes" aria-label="预览宽度"><button type="button" id="wide" aria-pressed="true">整页宽度</button><button type="button" id="phone" aria-pressed="false">手机宽度</button></div></div>
 <div class="stage"><iframe title="作品 A 预览" src="a.html"></iframe></div>
-<div class="identity"><details><summary>看作者与试做条件</summary><p>A 使用 UI UX Pro Max，B 使用 Joey Design，C 使用 Frontend Design。这两款对照工具使用本机安装版本，入口文件 SHA-256 前 16 位分别为 A 的 b3ab45c714a7222d 和 C 的 b81e2ff87ed8fa4d。三个独立会话使用同一份中文简报、相同的模型和素材约束，各提交一个离线 HTML。页面只保存本机演示记录</p><p>这次只比较这一道网页界面题。上手时请留意三件事：看不看得出哪一场更空，满额时知不知道接下来该做什么，刷新后能不能找到自己的名额</p></details><a id="full" href="a.html">单独打开作品 A ↗</a></div>
+<div class="identity"><details id="credits"><summary>看作者与试做条件</summary><p>A 使用 UI UX Pro Max，B 使用 Joey Design，C 使用 Frontend Design。这两款对照工具使用本机安装版本，入口文件 SHA-256 前 16 位分别为 A 的 b3ab45c714a7222d 和 C 的 b81e2ff87ed8fa4d。三个独立会话使用同一份中文简报、相同的模型和素材约束，各提交一个离线 HTML。页面只保存本机演示记录</p><p>首轮浏览器验收时，C 读取表单项遇到同名方法，满额后仍可点击留位。公开体验版已修正字段读取方式，<a href="https://github.com/joeymilano/joey-design/blob/0e3b9dafda032347650324e040b29650f8293a3c/docs/field-test/c.html">原始交付</a>和<a href="https://github.com/joeymilano/joey-design/actions/runs/44970249911">首轮验收</a>可查。A 保留首轮交付，B 在手机上收起了过细的方格，并放大已约人数。这里只比较这一道网页界面题。上手时请留意三件事：看不看得出哪一场更空，满额时知不知道接下来该做什么，刷新后能不能找到自己的名额</p></details><a id="full" href="a.html">单独打开作品 A ↗</a></div>
 </main>
 <script>
+const deckMode=new URLSearchParams(location.search).get('task')==='deck';
+if(deckMode){
+ document.title='同一道发行会演示题 · Joey Design';
+ document.querySelector('h1').textContent='两本书，先补印哪本？';
+ document.getElementById('assignment').textContent='两张照片，四周销量，四页演示。翻到数据页，再回头问自己：哪一版把补印的理由讲清了？';
+ document.getElementById('brief').href='deck-brief.txt';
+ const options=[...document.querySelectorAll('[data-work]')];
+ options[0].dataset.work='d';options[0].textContent='作品 D';
+ options[1].dataset.work='e';options[1].textContent='作品 E';options[2].remove();
+ const initial=document.querySelector('iframe');initial.src='d.html';initial.title='作品 D 预览';
+ const standalone=document.getElementById('full');standalone.href='d.html';standalone.textContent='单独打开作品 D ↗';
+ document.getElementById('credits').innerHTML='<summary>看作者与试做条件</summary><p>D 使用歸藏 PPT，E 使用 Joey Design。两次独立会话各拿到同一份简报、庭院和楼梯两张原图，交付四页可离线演示的 HTML。歸藏使用本机安装版，入口文件 SHA-256 前 16 位为 1d1eada17de2b862</p><p>两本书的销量都取自模拟题，没有借助外部素材。看图时可以核对两周预计卖出几本、手头还剩几本，以及作者怎样说明估算的限制</p>';
+}
 const stage=document.querySelector('.stage'),frame=stage.querySelector('iframe'),link=document.querySelector('#full');
 for(const button of document.querySelectorAll('[data-work]')){
  button.addEventListener('click',()=>{
