@@ -1,0 +1,27 @@
+[
+  {
+    "action": "click",
+    "selector": "a[aria-label=\"查看光隙\"]"
+  },
+  {
+    "action": "text",
+    "selector": "#main h1",
+    "value": "光隙"
+  },
+  {
+    "action": "reload"
+  },
+  {
+    "action": "text",
+    "selector": "#main h1",
+    "value": "光隙"
+  },
+  {
+    "action": "click",
+    "selector": "#main a.back[href=\"#work\"]"
+  },
+  {
+    "action": "visible",
+    "selector": "#tiles"
+  }
+]

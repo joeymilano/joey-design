@@ -1,0 +1,29 @@
+[
+  {
+    "action": "click",
+    "selector": "#start"
+  },
+  {
+    "action": "text",
+    "selector": "#fuel",
+    "value": "12"
+  },
+  {
+    "action": "click",
+    "selector": "button[aria-label=\"向右\"]"
+  },
+  {
+    "action": "text",
+    "selector": "#fuel",
+    "value": "11"
+  },
+  {
+    "action": "click",
+    "selector": "#retry"
+  },
+  {
+    "action": "text",
+    "selector": "#fuel",
+    "value": "12"
+  }
+]

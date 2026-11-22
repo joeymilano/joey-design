@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f8f5ea">
+<title>周六修理日 · 社区修理铺</title>
+<style>
+:root{--ink:#173e37;--paper:#f8f5ea;--yellow:#f3d36f;--orange:#d96337;--rule:#b5bcab;--mute:#546759;--type:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;--numbers:"Avenir Next Condensed","DIN Alternate","Arial Narrow",sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--type);-webkit-font-smoothing:antialiased}
+button{font:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible+span{outline:3px solid #d96b35;outline-offset:3px}
+button:disabled{cursor:not-allowed}
+.wrap{max-width:1344px;margin:0 auto;padding-inline:clamp(24px,5.6vw,88px)}
+.top{border-top:5px solid var(--ink);border-bottom:1px solid var(--ink)}
+.top .wrap{height:57px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;gap:11px;align-items:center;font-size:19px;font-weight:850;letter-spacing:.045em}
+.brand svg{width:31px;height:31px}
+.demo{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.08em;font-weight:650}
+.demo:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--orange);border:1px solid var(--ink)}
+.hero{position:relative;isolation:isolate;overflow:hidden;border-bottom:2px solid var(--ink);background:#f2d579}
+.hero:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.24;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='141' height='141'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23976a22' filter='url(%23n)' opacity='.44' d='M0 0h141v141H0z'/%3E%3C/svg%3E")}
+.hero-inner{display:grid;grid-template-columns:1.08fr 1fr;position:relative;min-height:246px;align-items:center}
+.hero-copy{position:relative;z-index:1;padding:27px 0 34px}
+.eyebrow{display:flex;align-items:center;gap:9px;font-weight:750;font-size:12px;letter-spacing:.17em}
+.eyebrow:before{content:"";width:26px;height:3px;background:var(--ink)}
+h1,h2,h3,p,fieldset{margin:0}
+h1{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;font-size:clamp(54px,6.65vw,90px);letter-spacing:-.07em;line-height:1.22;font-weight:950;margin:10px 0 12px}
+.lede{font-size:15px;line-height:1.7;font-weight:550}
+.hero-art{width:100%;height:252px;display:block;overflow:visible}
+.main{display:grid;grid-template-columns:minmax(0,1.85fr) minmax(295px,1fr);gap:clamp(24px,3.7vw,58px);align-items:start;padding-block:34px 38px}
+.section-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:17px}
+h2{font-size:25px;letter-spacing:-.04em;line-height:1.3;font-weight:820}
+.legend{display:flex;gap:12px;font-size:11px;color:var(--mute)}
+.legend span{display:flex;align-items:center;gap:5px}
+.legend i{width:9px;height:9px;display:inline-block;background:var(--ink);border:1px solid var(--ink)}
+.legend span:last-child i{background:var(--paper);border-color:#95a395}
+.sessions{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.session{border:1px solid var(--ink);background:#fffcf2;position:relative}
+.session-header{border-bottom:1px solid var(--ink);padding:14px 18px 13px;background:#e9eada}
+.session-header.afternoon{background:#efe2c9}
+.session-tag{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:750;letter-spacing:.05em}
+.session-tag svg{width:20px;height:20px}
+.time{font-family:var(--numbers);font-size:clamp(22px,2.2vw,33px);font-weight:800;line-height:1.25;letter-spacing:-.035em;margin-top:4px;font-variant-numeric:tabular-nums}
+.slot{padding:12px 0 11px;margin-inline:18px}
+.slot+.slot{border-top:1px dashed var(--rule)}
+.slot-head,.slot-foot{display:flex;align-items:center;justify-content:space-between;gap:5px}
+.slot-head{font-size:15px;font-weight:700}
+.rem{font-size:11px;font-weight:600;display:flex;align-items:baseline;gap:3px}
+.rem b{font:800 25px/1 var(--numbers)}
+.rem.full{background:#e8e5db;color:#5d6255;padding:2px 7px;border-radius:2px}
+.meter{display:flex;gap:3px;margin:8px 0 4px;height:9px}
+.meter i{flex:1;background:var(--ink);border:1px solid var(--ink)}
+.meter i.free{background:transparent;border-color:#99a594}
+.slot-foot{color:var(--mute);font-size:11px;line-height:1.5;font-variant-numeric:tabular-nums}
+.ticket{background:var(--ink);color:var(--paper);position:relative;padding:22px 24px 19px;border:1px solid var(--ink);box-shadow:4px 4px 0 #c4c6b2}
+.ticket:before,.ticket:after{content:"";position:absolute;border-radius:100%;width:14px;height:14px;top:54px;background:var(--paper)}
+.ticket:before{left:-8px}
+.ticket:after{right:-8px;box-shadow:4px 0 #c4c6b2 inset}
+.ticket-head{display:flex;align-items:center;justify-content:space-between;padding-bottom:15px;border-bottom:1px dashed #83998a}
+.ticket h2{font-size:22px}
+.ticket-head svg{width:25px;height:25px;color:var(--yellow)}
+fieldset{padding:0;border:0;min-width:0}
+.controls{padding-block:13px 0;display:grid;gap:10px}
+fieldset legend{display:block;margin:0 0 5px;padding:0;font-size:11px;letter-spacing:.07em;color:#d6dfce;font-weight:600}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.choice{display:block;position:relative;min-width:0;cursor:pointer}
+.choice input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.choice span{display:flex;align-items:center;justify-content:center;gap:7px;min-height:34px;border:1px solid #8ba294;color:#eff1e3;font-size:13px;font-weight:600}
+.choice span:before{content:"";width:8px;height:8px;border:1px solid currentColor;border-radius:50%}
+.choice input:checked+span{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.choice input:checked+span:before{background:var(--ink);box-shadow:inset 0 0 0 2px var(--paper)}
+.choice:hover span{border-color:var(--yellow)}
+.summary{color:#e5eada;font-size:12px;line-height:1.6;margin:12px 0 8px}
+.summary strong{color:var(--yellow)}
+.primary{display:flex;align-items:center;justify-content:space-between;border:1px solid transparent;background:var(--yellow);color:var(--ink);font-size:15px;font-weight:800;width:100%;padding:9px 14px;min-height:42px;transition:background .15s,transform .15s}
+.primary svg{width:23px;height:18px}
+.primary:hover:enabled{background:#ffe394}
+.primary:active:enabled{transform:translateY(1px)}
+.primary:disabled{background:#546c60;color:#cdd5c7}
+.note{font-size:11px;color:#d5ddcf;line-height:1.55;margin-top:10px}
+.receipt{padding-top:17px}
+.receipt h3{font-size:25px;color:var(--yellow);margin-bottom:12px}
+.receipt p{margin-bottom:17px;line-height:1.7}
+[hidden]{display:none!important}
+@media(min-width:1460px){.hero-inner{min-height:290px}.hero-art{height:288px}.main{padding-top:42px}}
+@media(max-width:900px){.wrap{padding-inline:30px}.hero-art{height:226px}.hero-inner{min-height:226px}.main{grid-template-columns:minmax(0,1.5fr) minmax(254px,1fr);gap:20px}.sessions{gap:9px}.slot{margin-inline:12px}.session-header{padding-inline:12px}.ticket{padding-inline:17px}.meter{gap:2px}}
+@media(max-width:700px){.wrap{padding-inline:19px}.top .wrap{height:46px}.brand{font-size:16px;gap:8px}.brand svg{width:26px;height:26px}.demo{font-size:11px}.hero-inner{display:block;min-height:205px}.hero-copy{padding:23px 0 96px}.eyebrow{font-size:10px;gap:6px}.eyebrow:before{width:20px;height:2px}h1{font-size:clamp(46px,9.2vw,60px);margin:4px 0 7px;letter-spacing:-.055em}.lede{font-size:12px;max-width:52%;line-height:1.6}.hero-art{position:absolute;right:7px;bottom:0;width:56%;height:auto}.main{grid-template-columns:1fr;gap:22px;padding-top:20px;padding-bottom:28px}.section-heading{margin-bottom:11px}h2{font-size:22px}.session-header{padding:10px 12px}.session-tag{font-size:12px}.session-tag svg{width:17px;height:17px}.time{font-size:23px;margin-top:2px}.slot{padding:9px 0 8px}.slot-head{font-size:14px}.rem b{font-size:21px}.meter{margin:6px 0 3px;height:7px}.slot-foot{font-size:10px}.ticket{padding:17px 19px 14px}.ticket-head{padding-bottom:13px}.ticket:after,.ticket:before{top:45px}.controls{grid-template-columns:1fr 1fr;gap:12px;padding-top:13px}.choice span{font-size:12px;gap:4px;min-height:38px}.options{gap:4px}.summary{margin:10px 0 7px}.primary{min-height:44px}}
+@media(min-width:440px) and (max-width:700px){.hero-art{width:47%;max-height:195px}.hero-copy{padding-bottom:44px}.hero-inner{min-height:190px}}
+@media(max-width:365px){.wrap{padding-inline:14px}.session-header{padding-inline:9px}.slot{margin-inline:9px}.time{font-size:20px}.controls{gap:7px}.choice span:before{display:none}}
+@media(prefers-reduced-motion:no-preference){.hero-art{animation:print-in .5s ease-out both}@keyframes print-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+<div class="brand"><svg aria-hidden="true" viewBox="0 0 36 36"><rect x="1" y="1" width="34" height="34" rx="6" fill="#173e37"/><path d="M9 26 20 15c-2-5 2-10 7-9l-4 5 3 3 5-4c1 5-3 10-8 9L13 29a3 3 0 0 1-4-3Z" fill="#f3d36f"/><circle cx="12" cy="26" r="1.5" fill="#173e37"/></svg>社区修理铺</div>
+<div class="demo">报名演示</div>
+</div></header>
+<section class="hero"><div class="wrap hero-inner">
+<div class="hero-copy"><div class="eyebrow">周六开放报名</div><h1>周六修理日</h1><p class="lede">修电器，下午空位更多。补衣物，可以选上午。</p></div>
+<svg class="hero-art" viewBox="0 0 500 252" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+<defs>
+<pattern id="halftone" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#173e37"/></pattern>
+<pattern id="grill" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="2.8" cy="3" r="1.45" fill="#23453b"/></pattern>
+<pattern id="thread" width="6" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(-10)"><path d="M0 2h6" stroke="#183f37" stroke-width="1.2"/></pattern>
+</defs>
+<g fill="none" stroke="#173e37" stroke-width=".85" opacity=".33">
+<circle cx="227" cy="124" r="112" stroke-dasharray="4 6"/><path d="M28 215h445M101 18v216M394 23v201" stroke-dasharray="3 7"/>
+</g>
+<path d="M24 211q126-27 346-16l27 17q-146 34-351 18z" fill="url(#halftone)" opacity=".48"/>
+<g transform="translate(50 65) matrix(1 .095 0 1 0 0)" stroke="#173e37" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+<path d="m182 0 92-74" fill="none" stroke-width="5"/><path d="m211-23 62-50" fill="none" stroke="#faf0c2" stroke-width="1.8"/><circle cx="274" cy="-74" r="3" fill="#173e37"/>
+<path d="M48-3v-29q0-8 8-8h115q8 0 8 8v23h-8v-21q0-3-4-3H60q-4 0-4 4v26Z" fill="#173e37"/>
+<path d="M56-34h112" stroke="#f7e9b8" stroke-width="2"/>
+<path d="m3 2 20-14h235l-19 17Z" fill="#f3a25b"/>
+<path d="m237 3 22-15v121l-18 18Z" fill="#a65838"/>
+<rect x="0" y="1" width="241" height="126" rx="8" fill="#eb8650"/>
+<rect x="7" y="8" width="226" height="108" rx="5" fill="#f0ac6e" stroke-width="1.5"/>
+<rect x="15" y="18" width="131" height="89" rx="6" fill="#eedaae"/>
+<rect x="21" y="24" width="119" height="77" rx="3" fill="url(#grill)" stroke-width="1"/>
+<rect x="156" y="18" width="67" height="31" rx="2" fill="#23483d"/>
+<path d="M162 34h55m-54-7v5m7-4v4m7-5v5m7-4v4m7-5v5m7-4v4m7-5v5m7-4v4" stroke="#f8edc0" stroke-width="1.3"/>
+<path d="m201 22-1 22" stroke="#ee884f" stroke-width="2"/>
+<circle cx="180" cy="79" r="22" fill="#c26c40" stroke-width="1.4"/><circle cx="178" cy="77" r="19" fill="#efe4bc"/><circle cx="178" cy="77" r="15" fill="#e3d5a4" stroke-width="1.1"/><path d="m179 75 9-9" stroke-width="3"/>
+<circle cx="213" cy="80" r="9" fill="#23483d"/><path d="m213 80 4-5" stroke="#ead7a4" stroke-width="1.8"/>
+<g fill="#173e37" stroke="none"><rect x="164" y="100" width="31" height="3" rx="1.5"/><rect x="165" y="105" width="24" height="2" rx="1"/><path d="M14 125h25v7H15zm187 0h25v7h-25z"/></g>
+<path d="m247 16 6-5m-6 11 6-5m-6 11 6-5m-6 11 6-5m-6 11 6-5" stroke-width="1.4"/>
+</g>
+<g fill="none" stroke="#173e37" stroke-linecap="round">
+<path d="M360 200c48 12 78 33 40 39-22 3-35-11-16-13 22-1 49 14 80 0" stroke-width="2.4"/>
+<g transform="translate(334 152) rotate(-14)">
+<path d="M0 0v43c0 10 51 10 51 0V0" fill="#f38b55" stroke-width="2.5"/>
+<path d="M0 0v43c0 10 51 10 51 0V0" fill="url(#thread)" stroke="none"/>
+<ellipse cx="25.5" cy="0" rx="28.5" ry="8" fill="#f8e4b2" stroke-width="2.5"/>
+<ellipse cx="25.5" cy="0" rx="7" ry="2.5" fill="#173e37"/>
+<path d="M-3 41q29 14 57 0v6q-27 14-57 0Z" fill="#eacb8b" stroke-width="2.5"/>
+</g>
+<path d="m410 197 34-61q4-6 7-4c2 1 2 4-1 8Z" fill="#f7ebbf" stroke-width="1.7"/><path d="m444 142 4-6" stroke-width="1.8"/>
+<path d="M447 137c-7-9-21-11-20-2 1 7 17 6 25-6 8-11 16-12 24-7" stroke-width="1.5"/>
+<path d="m326 67 9-10m-6 18 13-2M36 135l-9-3m7 10-6 4" stroke-width="2"/>
+</g>
+</svg></div></section>
+<main class="wrap main">
+<section aria-labelledby="availability-title"><div class="section-heading"><h2 id="availability-title">场次余量</h2><div class="legend" aria-hidden="true"><span><i></i>已约</span><span><i></i>空位</span></div></div>
+<div class="sessions" id="sessions"></div></section>
+<section class="ticket" aria-labelledby="booking-title">
+<div class="ticket-head"><h2 id="booking-title">我的报名单</h2><svg viewBox="0 0 25 25" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m3 8 13-6 6 13-13 6-2-4c2-1 1-4-2-3z"/><path d="m13 5 1 2m0 1 1 2m0 1 1 2m0 1 1 2"/></svg></div>
+<form id="booking"><div class="controls">
+<fieldset><legend>选择场次</legend><div class="options"><label class="choice"><input type="radio" name="session" value="am" checked><span>上午</span></label><label class="choice"><input type="radio" name="session" value="pm"><span>下午</span></label></div></fieldset>
+<fieldset><legend>维修项目</legend><div class="options"><label class="choice"><input type="radio" name="item" value="electric" checked><span>电器</span></label><label class="choice"><input type="radio" name="item" value="clothes"><span>衣物</span></label></div></fieldset>
+</div><p id="summary" class="summary" aria-live="polite"></p><button id="reserve" class="primary" type="submit"><span id="cta">给自己留一位</span><svg viewBox="0 0 24 18" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M1 9h20M15 2l7 7-7 7"/></svg></button></form>
+<div id="receipt" class="receipt" hidden><h3 id="receipt-heading" tabindex="-1">已为你留好一位</h3><p id="receipt-details"></p><button class="primary" id="undo" type="button">撤销留位 <span aria-hidden="true">↶</span></button></div>
+<p class="note" id="storage-note">演示报名，留位记录仅保存在本机。</p>
+<span id="status" style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)" role="status"></span>
+</section></main>
+<script>
+'use strict';
+const sessions={
+  am:{label:'上午',time:'09:00–12:00',slots:{electric:[12,10],clothes:[8,3]}},
+  pm:{label:'下午',time:'14:00–17:00',slots:{electric:[10,4],clothes:[6,6]}}
+};
+const items={electric:'电器',clothes:'衣物'};
+const key='community-repair-saturday-opal-v1';
+const byId=id=>document.getElementById(id);
+const form=byId('booking');
+let record=null;
+function readRecord(){
+  try{
+    const saved=JSON.parse(localStorage.getItem(key));
+    const slot=saved&&sessions[saved.session]?.slots?.[saved.item];
+    return Array.isArray(slot)&&slot[1]<slot[0]?{session:saved.session,item:saved.item}:null;
+  }catch{return null}
+}
+function counts(session,item){
+  const [total,base]=sessions[session].slots[item];
+  const booked=base+Number(record?.session===session&&record.item===item);
+  return {total,booked,free:total-booked};
+}
+function icon(session){
+  const lines=session==='am'?'<circle cx="10" cy="10" r="3.4"/><path d="M10 1v3m0 12v3M1 10h3m12 0h3M4 4l2 2m8 8 2 2M4 16l2-2m8-8 2-2"/>':'<path d="M1 13h18M3 17h14M5 12a5 5 0 0 1 10 0M10 2v3M3 5l2 2m10 0 2-2"/>';
+  return '<svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">'+lines+'</svg>';
+}
+function slotView(session,item){
+  const {total,booked,free}=counts(session,item);
+  const remaining=free?'<span class="rem">剩 <b>'+free+'</b> 位</span>':'<span class="rem full">满额</span>';
+  const meter='<i></i>'.repeat(booked)+'<i class="free"></i>'.repeat(free);
+  return '<div class="slot"><div class="slot-head"><span>'+items[item]+'</span>'+remaining+'</div><div class="meter" aria-hidden="true">'+meter+'</div><div class="slot-foot">已约 '+booked+' / '+total+' 位</div></div>';
+}
+function render(){
+  byId('sessions').innerHTML=Object.entries(sessions).map(([id,session])=>
+    '<article class="session"><header class="session-header '+(id==='pm'?'afternoon':'')+'"><h3 class="session-tag">'+icon(id)+session.label+'场</h3><div class="time">'+session.time+'</div></header>'+Object.keys(items).map(item=>slotView(id,item)).join('')+'</article>'
+  ).join('');
+  form.hidden=Boolean(record);
+  byId('receipt').hidden=!record;
+  if(record){
+    const session=sessions[record.session];
+    byId('receipt-details').textContent='周六'+session.label+' · '+session.time+' · '+items[record.item];
+    return;
+  }
+  const session=form.elements.session.value,item=form.elements.item.value;
+  const {free}=counts(session,item);
+  byId('summary').innerHTML=sessions[session].label+' · '+items[item]+'　<strong>'+(free?'剩 '+free+' 位':'已满额')+'</strong>';
+  byId('reserve').disabled=free===0;
+  byId('cta').textContent=free?'给自己留一位':'该项目已满额';
+}
+function persist(value){
+  try{
+    if(value)localStorage.setItem(key,JSON.stringify(value));
+    else localStorage.removeItem(key);
+    byId('storage-note').textContent='演示报名，留位记录仅保存在本机。';
+  }catch{
+    byId('storage-note').textContent='浏览器未能保存更改，刷新后请核对留位记录。';
+  }
+  record=value;
+  render();
+}
+form.addEventListener('change',render);
+form.addEventListener('submit',event=>{
+  event.preventDefault();
+  record=record||readRecord();
+  if(record){render();return}
+  const session=form.elements.session.value,item=form.elements.item.value;
+  if(!counts(session,item).free)return;
+  persist({session,item});
+  byId('receipt-heading').focus();
+});
+byId('undo').addEventListener('click',()=>{
+  persist(null);
+  byId('status').textContent='已撤销留位，名额已恢复。';
+  form.querySelector('input:checked').focus();
+});
+window.addEventListener('storage',event=>{if(event.key===key||event.key===null){record=readRecord();render()}});
+record=readRecord();
+render();
+</script>
+</body>
+</html>

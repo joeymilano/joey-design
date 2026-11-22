@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>同一道设计题 · Joey Design</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f5f5ee;color:#202425;font:16px/1.5 system-ui,sans-serif}main{max-width:1450px;margin:auto;padding:16px clamp(12px,3vw,46px)}header,.controls,.identity,.modes{display:flex;align-items:center;gap:8px;flex-wrap:wrap}header{justify-content:space-between;border-bottom:1px solid #89918a;padding-bottom:13px}a{color:inherit;text-underline-offset:.22em}h1{font-size:clamp(27px,4.1vw,60px);line-height:1.05;margin:22px 0 9px;letter-spacing:-.046em}p{margin:.4em 0 1em}.controls{margin:18px 0 10px;justify-content:space-between}.modes{gap:4px}button{cursor:pointer;background:transparent;font:inherit;color:inherit;border:1px solid #7f8680;padding:7px 12px;border-radius:2px;min-height:40px}button[aria-pressed=true]{background:#182e24;color:white}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #2468b8;outline-offset:3px}.stage{background:#d8dcd7;padding:12px}.stage iframe{display:block;width:100%;height:min(76vh,850px);min-height:500px;border:0;background:white;margin:auto}.stage.phone iframe{max-width:390px}.identity{margin-top:16px;align-items:flex-start;justify-content:space-between}details{max-width:830px}summary{cursor:pointer}details p{margin-top:.7em}.back{font-weight:700;text-decoration:none}@media(max-width:600px){.stage{padding:0}.controls{gap:10px}.stage iframe{min-height:580px}main{padding-inline:10px}.modes button{padding:6px 9px}}
+</style>
+<main>
+<header><a class="back" href="../index.html">← Joey Design</a><a href="brief.txt">完整题目</a></header>
+<h1>同一道设计题</h1>
+<p>周六去修电器，上午还是下午更好约？试着留个名额，再撤销，看看哪版顺手</p>
+<div class="controls">
+<div class="modes" aria-label="切换作品"><button type="button" data-work="a" aria-pressed="true">作品 A</button><button type="button" data-work="b" aria-pressed="false">作品 B</button><button type="button" data-work="c" aria-pressed="false">作品 C</button></div>
+<div class="modes" aria-label="预览宽度"><button type="button" id="wide" aria-pressed="true">整页宽度</button><button type="button" id="phone" aria-pressed="false">手机宽度</button></div></div>
+<div class="stage"><iframe title="作品 A 预览" src="a.html"></iframe></div>
+<div class="identity"><details><summary>看作者与试做条件</summary><p>A 使用 UI UX Pro Max，B 使用 Joey Design，C 使用 Frontend Design。这两款对照工具使用本机安装版本，入口文件 SHA-256 前 16 位分别为 A 的 b3ab45c714a7222d 和 C 的 b81e2ff87ed8fa4d。三个独立会话使用同一份中文简报、相同的模型和素材约束，各提交一个离线 HTML。页面只保存本机演示记录</p><p>这次只比较这一道网页界面题。上手时请留意三件事：看不看得出哪一场更空，满额时知不知道接下来该做什么，刷新后能不能找到自己的名额</p></details><a id="full" href="a.html">单独打开作品 A ↗</a></div>
+</main>
+<script>
+const stage=document.querySelector('.stage'),frame=stage.querySelector('iframe'),link=document.querySelector('#full');
+for(const button of document.querySelectorAll('[data-work]')){
+ button.addEventListener('click',()=>{
+  const key=button.dataset.work,name=button.textContent;
+  for(const other of document.querySelectorAll('[data-work]'))other.setAttribute('aria-pressed',String(other===button));
+  frame.title=name+' 预览';frame.src=key+'.html';link.href=key+'.html';link.textContent='单独打开'+name+' ↗';
+ });
+}
+for(const id of ['wide','phone']){
+ document.getElementById(id).addEventListener('click',()=>{
+  stage.classList.toggle('phone',id==='phone');
+  for(const mode of ['wide','phone'])document.getElementById(mode).setAttribute('aria-pressed',String(mode===id));
+ });
+}
+</script></html>

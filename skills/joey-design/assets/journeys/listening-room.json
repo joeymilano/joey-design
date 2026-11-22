@@ -1,0 +1,29 @@
+[
+  {
+    "action": "text",
+    "selector": "output",
+    "value": "1 / 3"
+  },
+  {
+    "action": "click",
+    "selector": "#next"
+  },
+  {
+    "action": "text",
+    "selector": ".slide.active table",
+    "value": "18"
+  },
+  {
+    "action": "click",
+    "selector": "#next"
+  },
+  {
+    "action": "click",
+    "selector": ".slide.active .slide-action"
+  },
+  {
+    "action": "text",
+    "selector": "output",
+    "value": "2 / 3"
+  }
+]

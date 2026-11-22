@@ -1,0 +1,43 @@
+[
+  {
+    "action": "click",
+    "selector": "label:has(input[name=\"session\"][value=\"pm\"])"
+  },
+  {
+    "action": "click",
+    "selector": "label:has(input[name=\"project\"][value=\"clothes\"])"
+  },
+  {
+    "action": "disabled",
+    "selector": "#reserve"
+  },
+  {
+    "action": "click",
+    "selector": "label:has(input[name=\"project\"][value=\"appliance\"])"
+  },
+  {
+    "action": "click",
+    "selector": "#reserve"
+  },
+  {
+    "action": "text",
+    "selector": "#receipt-choice",
+    "value": "下午"
+  },
+  {
+    "action": "reload"
+  },
+  {
+    "action": "text",
+    "selector": "#receipt-choice",
+    "value": "下午"
+  },
+  {
+    "action": "click",
+    "selector": "#cancel"
+  },
+  {
+    "action": "visible",
+    "selector": "#reserve"
+  }
+]

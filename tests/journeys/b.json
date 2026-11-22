@@ -1,0 +1,46 @@
+[
+  {
+    "action": "disabled",
+    "selector": "#clothing-pm"
+  },
+  {
+    "action": "click",
+    "selector": "label:has(#electrical-pm)"
+  },
+  {
+    "action": "text",
+    "selector": "#note",
+    "value": "6 位"
+  },
+  {
+    "action": "click",
+    "selector": "#submit"
+  },
+  {
+    "action": "text",
+    "selector": "#stamp",
+    "value": "已留位"
+  },
+  {
+    "action": "reload"
+  },
+  {
+    "action": "text",
+    "selector": "#session",
+    "value": "下午"
+  },
+  {
+    "action": "text",
+    "selector": "#stamp",
+    "value": "已留位"
+  },
+  {
+    "action": "click",
+    "selector": "#submit"
+  },
+  {
+    "action": "text",
+    "selector": "#note",
+    "value": "6 位"
+  }
+]

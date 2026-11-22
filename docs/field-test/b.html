@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>周六修理登记 · 社区修理铺</title>
+<style>
+:root{--paper:#f4f0df;--card:#fbf8eb;--ink:#233a30;--green:#254c3e;--rule:#9ba698;--soft:#d8d9c8;--rust:#aa421f;--lime:#e8efab;--sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;--song:"Songti SC","Noto Serif CJK SC","Source Han Serif SC","SimSun",serif;--mono:"SFMono-Regular","Consolas","Liberation Mono",monospace}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font-family:var(--sans);background-color:var(--paper);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.87' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");font-synthesis:weight}
+button,input{font:inherit}button{cursor:pointer}.sheet{width:min(1120px,calc(100% - 100px));margin:auto}header{height:72px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--ink);gap:8px}.brand{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:760;letter-spacing:.05em}.mark{width:32px;height:32px}.demo{display:flex;align-items:center;gap:8px;font-size:13px;letter-spacing:.04em}.demo:before{content:"";width:7px;height:7px;background:var(--rust);border-radius:50%}
+.hero{display:flex;align-items:center;justify-content:space-between;position:relative;min-height:222px;gap:0;overflow:hidden}.hero-copy{z-index:1;padding:22px 0 26px}.hero h1{font:800 clamp(50px,5.3vw,74px)/1.18 var(--song);letter-spacing:-.065em;margin:0 0 15px}.hero p{margin:0;font-size:16px;line-height:1.65}.hero p b{font-weight:750;color:var(--rust);font-variant-numeric:tabular-nums}.art{width:42%;height:210px;flex-shrink:0;overflow:visible}.bench{border-bottom:5px double var(--ink);margin-bottom:27px}.work{display:grid;grid-template-columns:minmax(0,2fr) minmax(290px,.93fr);gap:30px;align-items:start}.panel h2,.stub h2{font:750 28px/1.2 var(--song);letter-spacing:-.04em;margin:0}.lead{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:2px 0 17px}.lead p{margin:0;font-size:13px;color:#495a4c}
+table{width:100%;border-collapse:collapse;table-layout:fixed}.project-col{width:22%}th,td{text-align:left}thead{border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}thead th{padding:13px 9px 12px;font-size:15px;font-weight:650}thead th:first-child{padding-left:0;color:#506053;font-size:13px;font-weight:550}.hours{display:block;font:12px/1.65 var(--mono);letter-spacing:.025em;color:#506053}.project{padding:0 4px 0 0;font-weight:700;font-size:17px}.item-icon{display:block;width:30px;height:30px;margin-bottom:5px}.slots tr{border-bottom:1px solid var(--rule)}.slots td{padding:9px 3px}.slots td:last-child{padding-right:0}.option{display:block;position:relative;cursor:pointer}.option input{position:absolute;opacity:0;width:1px;height:1px;margin:0}.box{display:block;position:relative;padding:12px 13px 11px;min-height:91px;border:1px solid transparent;border-radius:3px}.option:hover input:not(:disabled):not(:checked)+.box{background:#e6e9d8}.option input:checked+.box{border-color:var(--green);background:#e4e9cf}.option input:focus-visible+.box,button:focus-visible{outline:3px solid #b9582a;outline-offset:3px}.choice{position:absolute;right:12px;top:15px;width:15px;height:15px;border-radius:100%;border:1px solid #738277;background:transparent}.option input:checked+.box .choice{border-color:var(--green);background:var(--green)}.option input:checked+.box .choice:after{content:"";display:block;margin:2px auto;width:4px;height:7px;border:solid #fff;border-width:0 1.7px 1.7px 0;transform:rotate(45deg)}.quantity{display:block;font-size:14px;font-weight:600;white-space:nowrap}.num{font:650 26px/1 var(--mono);vertical-align:-1px;letter-spacing:-.09em;margin:0 3px}.count{font-size:12px;line-height:1.5;color:#495a4c;display:block;margin-top:4px}.ticks{display:flex;gap:3px;margin-top:10px;max-width:146px}.tick{width:8px;height:5px;border:1px solid #596c5d;background:transparent}.tick.open{background:#52775a;border-color:#52775a}.option input:disabled+.box{cursor:default;color:#687066}.box.full .quantity{font-size:19px;line-height:26px}.box.full .choice{display:none}.box.full .tick{border-color:#989d90}.stub{background:var(--green);color:#fffbed;position:relative;border-radius:3px 3px 0 0;isolation:isolate;padding:22px 23px 24px}.stub:after{position:absolute;content:"";left:0;right:0;bottom:-5px;height:6px;background:linear-gradient(135deg,var(--green) 25%,transparent 25%) -4px 0/8px 10px repeat-x,linear-gradient(225deg,var(--green) 25%,transparent 25%) -4px 0/8px 10px repeat-x}.stub-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;gap:8px}.stub h2{font-size:26px}.stamp{white-space:nowrap;border:1px solid #b5cab1;color:#e7efd4;font-size:12px;padding:3px 7px;letter-spacing:.06em;transform:rotate(-4deg)}.stamp.held{background:var(--lime);color:var(--ink);border-color:var(--lime)}.entry{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:9px 0}.entry .label{font-size:13px;color:#d4e2d3}.entry strong{font-size:17px}.entry .time{font:14px var(--mono);margin-left:5px}.perforation{position:relative;height:1px;margin:20px -23px 16px;background:repeating-linear-gradient(90deg,transparent 0 4px,#a1b3a0 4px 8px)}.perforation:before,.perforation:after{content:"";position:absolute;top:-5px;width:7px;height:11px;background:var(--paper)}.perforation:before{left:0;border-radius:0 9px 9px 0}.perforation:after{right:0;border-radius:9px 0 0 9px}.note{margin:0 0 11px;font-size:13px;line-height:1.6;color:#e0e8d9}.primary{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:45px;padding:10px 14px;background:var(--lime);color:var(--ink);border:1px solid var(--lime);border-radius:2px;font-size:16px;font-weight:700}.primary:hover{background:#f3f7c4}.primary .arrow{font-size:21px;font-family:var(--mono);line-height:1}.primary.cancel{border-color:#d4e2c4;background:transparent;color:#fffbed}.primary.cancel:hover{background:#395f51}.secondary{background:none;border:0;color:#fffbed;font-size:13px;text-decoration:underline;text-underline-offset:3px;padding:9px 0 0;min-height:36px}footer{margin:35px 0 22px;border-top:1px solid var(--rule);padding-top:11px;color:#59685a;font-size:12px;line-height:1.6}.visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;clip-path:inset(50%);overflow:hidden;white-space:nowrap}
+@media(min-width:1400px){.hero{min-height:250px}}
+@media(max-width:850px){.sheet{width:calc(100% - 48px)}.work{gap:18px;grid-template-columns:minmax(0,1.5fr) minmax(235px,.85fr)}.lead{display:block}.lead p{margin-top:6px}.box{padding-left:7px;padding-right:7px}.choice{right:6px}.stub{padding:20px 16px}.perforation{margin-left:-16px;margin-right:-16px}.art{width:38%}.hero{min-height:185px}.art{height:180px}.hero h1{font-size:51px}.hero p{font-size:14px}}
+@media(max-width:680px){.sheet{width:calc(100% - 36px)}header{height:53px}.brand{font-size:16px;gap:7px}.mark{width:26px;height:26px}.demo{font-size:11px}.hero{min-height:145px;align-items:flex-start}.hero-copy{padding:24px 0 15px}.hero h1{font-size:clamp(33px,9.1vw,49px);margin:0 0 15px;letter-spacing:-.07em}.hero p{font-size:13px;line-height:1.65;max-width:56%;min-width:168px}.art{position:absolute;width:40%;height:auto;right:-1%;top:25px}.bench{margin-bottom:19px;border-bottom-width:4px}.work{display:block}.lead{display:flex;align-items:baseline;margin:0 0 11px;gap:6px}.panel h2{font-size:22px}.lead p{margin:0;font-size:11px}.project-col{width:19%}thead th{font-size:14px;padding:7px 8px}thead th:first-child{font-size:11px}.hours{font-size:11px}.project{font-size:15px}.item-icon{width:26px;height:26px;margin-bottom:2px}.slots td{padding:5px 2px}.box{padding:8px 7px;min-height:73px}.choice{width:13px;height:13px;top:10px;right:7px}.option input:checked+.box .choice:after{height:6px;margin-top:1px}.quantity{font-size:12px}.num{font-size:22px}.count{font-size:11px;margin-top:3px}.ticks{gap:2px;margin-top:7px}.tick{width:6px;height:4px}.box.full .quantity{font-size:16px;line-height:22px}.stub{margin-top:18px;padding:17px 18px 17px}.stub-head{margin-bottom:12px}.stub h2{font-size:23px}.stamp{font-size:11px}.entry{margin:6px 0}.entry strong{font-size:15px}.perforation{margin:13px -18px 11px}.note{margin-bottom:8px;font-size:12px}.primary{min-height:44px}.stub .time{font-size:13px}footer{margin:24px 0 14px;font-size:11px}}
+@media(max-width:355px){.sheet{width:calc(100% - 22px)}.lead p{font-size:10px}.art{top:34px}.choice{right:4px}}
+</style>
+</head>
+<body>
+<main class="sheet">
+<header>
+<div class="brand"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="3" fill="#254c3e"/><path d="M8 23l9-10a6 6 0 0 1 7-6l-4 4 1 3 3 1 3-4a6 6 0 0 1-7 7l-9 8z" fill="#e8efab"/><circle cx="10.5" cy="23" r="1.2" fill="#254c3e"/></svg>社区修理铺</div>
+<div class="demo">报名演示</div>
+</header>
+<div class="bench"><div class="hero">
+<div class="hero-copy"><h1>周六修理登记</h1><p id="comparison">修电器，下午还剩 <b>6</b> 位<br>修衣物，上午还剩 <b>5</b> 位</p></div>
+<svg class="art" viewBox="0 0 460 220" fill="none" aria-hidden="true" focusable="false">
+<defs>
+<pattern id="grid" width="19" height="19" patternUnits="userSpaceOnUse"><path d="M19 0H0V19" stroke="#728373" stroke-width=".65" opacity=".28"/></pattern>
+<pattern id="hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(36)"><path d="M0 0v4" stroke="#455b4a" stroke-width="1"/></pattern>
+<pattern id="grip" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(-30)"><path d="M0 0v6" stroke="#d1d9b2" stroke-width="1.1"/></pattern>
+<pattern id="thread" width="5" height="4" patternUnits="userSpaceOnUse"><path d="M-1 4L6 1" stroke="#f4cba8" stroke-width="1"/></pattern>
+</defs>
+<path fill="url(#grid)" d="M30 19h401v181H30z"/><g stroke="#6e806f" stroke-width="1"><path d="M23 23h12m-6-6v12m396 166h12m-6-6v12"/></g>
+<!-- Combination pliers, drawn around their two pivoting halves -->
+<g transform="translate(225 77) rotate(59)" stroke="#253d31" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round">
+<path d="M-13-62l-5 28-1 16 8 17-26 65 7 5 32-60 7-9-4-17-9-12-2-33z" fill="#dce0c7"/>
+<path d="M-12-58l-1 24 3 13 6 5-1-13-2-29z" fill="url(#hatch)" stroke-width="1.1"/>
+<path d="M3-62l9 3 5 28 1 13-8 16 27 70-8 4L-5 12l-8-8 2-18 10-15z" fill="#d6dcc6"/>
+<path d="M6-59l3 26-3 10-5 6 1-13z" fill="url(#hatch)" stroke-width="1.1"/>
+<path d="M-4-54l3 2-3 3 3 2-3 3 2 2-2 3m7-18l-2 3 2 2-2 3 2 2" stroke-width="1.1"/>
+<path d="M-13-3l8-9 13 1 5 11-8 12-12-2z" fill="#b3bda7"/><circle cx="0" cy="0" r="6.8" fill="#e7ead4"/><path d="M-3 1.5l6-3" stroke-width="1.7"/>
+<path d="M-10 19l-10-4-7 17-10 31-12 47q-1 5 5 8l7 2q5 1 7-4l13-46 10-34q2-10-3-17z" fill="#5e7354"/>
+<path d="M-21 26l-13 40-13 47 4 1 6-3 12-39 12-37z" fill="url(#grip)" stroke="none"/>
+<path d="M13 17l10-5 7 11 6 32 10 47q2 6-3 8l-8 3q-5 0-7-5L17 64 8 32q-2-9 5-15z" fill="#6e805f"/>
+<path d="M21 22l5 12 7 31 10 39-6 3-7-6-8-37-8-33z" fill="url(#grip)" stroke="none"/>
+<path d="M-23 33l10 4m29-3l12-4M-43 110l8 2m72-9l5-2" stroke-width="1.25"/>
+</g>
+<!-- A spool, its loose end and a threaded needle -->
+<path d="M321 147c27 10 52 36 32 44-24 9-61-20-94-13-19 4-29 15-51 14-21 0-31-13-22-19 7-5 16 2 14 8" stroke="#ab4b29" stroke-width="2.1" stroke-linecap="round"/>
+<g transform="translate(334 112) rotate(18)" stroke="#613d29" stroke-linejoin="round">
+<path d="M-26-31h52l-3 66h-47z" fill="#c5673e" stroke-width="2"/><path d="M-26-31h52l-3 66h-47z" fill="url(#thread)"/>
+<path d="M-28-25c14 7 43 8 56 0v-8h-56zM-28 28c12 7 44 9 56 0v8c-13 8-44 8-56 0z" fill="#c6a785" stroke-width="2"/>
+<ellipse cy="-34" rx="29" ry="9" fill="#e1c7a3" stroke-width="2"/><ellipse cy="-34" rx="8" ry="2.7" fill="#6a543b"/><path d="M-23-13c13 3 26 5 45 0m-45 9c8 3 18 4 29 3m-28 8c11 4 32 5 43 1m-38 8l37 1" stroke="#743e2e" stroke-width="1.1"/>
+</g>
+<g transform="translate(262 150) rotate(70)" stroke="#2e4739" stroke-linejoin="round"><path d="M-2-57q2-4 4 0l-.7 13L0 29l-1.5-73z" fill="#b2b6a4"/><path d="M0-55v8" stroke="#f4f0df" stroke-width="1.4"/></g>
+<path d="M313 132c16-5 26-3 28 2" stroke="#b95a34" stroke-width="1.2"/>
+</svg>
+</div></div>
+<div class="work">
+<section class="panel" aria-labelledby="availability"><div class="lead"><h2 id="availability">场次与余位</h2><p id="instructions">点选有空位的一格</p></div>
+<table aria-labelledby="availability" aria-describedby="instructions"><colgroup><col class="project-col"><col><col></colgroup><thead><tr><th scope="col">修理项目</th><th scope="col">上午<span class="hours">09:00–12:00</span></th><th scope="col">下午<span class="hours">14:00–17:00</span></th></tr></thead><tbody id="slots" class="slots"></tbody></table>
+</section>
+<section class="stub" aria-labelledby="ticket"><div class="stub-head"><h2 id="ticket">我的留位单</h2><span class="stamp" id="stamp">待确认</span></div>
+<div class="entry"><span class="label">场次</span><span><strong id="session"></strong><span class="time" id="time"></span></span></div>
+<div class="entry"><span class="label">项目</span><strong id="project"></strong></div>
+<div class="perforation" aria-hidden="true"></div><p class="note" id="note"></p><button type="button" class="primary" id="submit"><span id="action"></span><span aria-hidden="true" class="arrow">→</span></button><button type="button" class="secondary" id="undo" hidden>撤销原留位</button>
+</section>
+</div>
+<footer>演示数据 · 每人可留 1 位，记录保存在当前浏览器</footer>
+<p class="visually-hidden" aria-live="polite" role="status" id="status"></p>
+</main>
+<script>
+(() => {
+'use strict';
+const key = 'community-repair.saturday.hold.v1';
+const sessions = [
+  { name: '上午', time: '09:00–12:00' },
+  { name: '下午', time: '14:00–17:00' }
+];
+const projects = [
+  { name: '电器', icon: '<path d="M10 4v7m9-7v7M6.5 11h16v4a8 8 0 0 1-7 8v3m0-3a8 8 0 0 1-9-8z"/><path d="M15.5 26c0 3 2 3 5 3"/>' },
+  { name: '衣物', icon: '<path d="M10 5 3 9l3 7 4-2v13h13V14l4 2 3-7-8-4q-5 6-12 0z"/><path d="M11 24h11m-6-18q1 3 4 3" stroke-width="1.2"/>' }
+];
+const slots = [
+  {id:'electrical-am', project:0, session:0, total:12, base:10},
+  {id:'electrical-pm', project:0, session:1, total:10, base:4},
+  {id:'clothing-am', project:1, session:0, total:8, base:3},
+  {id:'clothing-pm', project:1, session:1, total:6, base:6}
+];
+const $ = id => document.getElementById(id);
+const lookup = id => slots.find(slot => slot.id === id);
+const valid = id => { const slot = lookup(id); return slot && slot.base < slot.total ? id : null; };
+let storageOK = true;
+function readHold() {
+  try { return valid(localStorage.getItem(key)); }
+  catch { storageOK = false; return null; }
+}
+let held = readHold();
+let selected = held || slots[0].id;
+const booked = slot => slot.base + Number(slot.id === held);
+const remaining = slot => slot.total - booked(slot);
+const description = slot => sessions[slot.session].name + ' · ' + projects[slot.project].name;
+function announce(text) { $('status').textContent = text; }
+function buildTable() {
+  projects.forEach((project, index) => {
+    const row = $('slots').insertRow();
+    const header = document.createElement('th');
+    header.scope = 'row';
+    header.className = 'project';
+    header.innerHTML = '<svg viewBox="0 0 32 32" class="item-icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">'+project.icon+'</svg>'+project.name;
+    row.appendChild(header);
+    slots.filter(slot => slot.project === index).forEach(slot => {
+      const cell = row.insertCell();
+      cell.innerHTML = '<label class="option"><input type="radio" name="slot" id="'+slot.id+'"><span class="box"><span class="choice" aria-hidden="true"></span><span class="quantity"></span><span class="count"></span><span class="ticks" aria-hidden="true"></span></span></label>';
+      $(slot.id).addEventListener('change', () => { selected = slot.id; render(); announce('已选择'+description(slot)); });
+    });
+  });
+}
+function render() {
+  slots.forEach(slot => {
+    const input = $(slot.id), box = input.nextElementSibling, left = remaining(slot);
+    input.checked = selected === slot.id;
+    input.disabled = left <= 0 && slot.id !== held;
+    input.setAttribute('aria-label', description(slot)+'，'+(left ? '余'+left+'位' : '已满')+'，已约'+booked(slot)+'位，共'+slot.total+'位');
+    box.classList.toggle('full',left === 0);
+    box.querySelector('.quantity').innerHTML = left ? '余 <b class="num">'+left+'</b> 位' : '已满';
+    box.querySelector('.count').textContent = '已约 '+booked(slot)+' / '+slot.total+' 位';
+    box.querySelector('.ticks').innerHTML = '<i class="tick open"></i>'.repeat(left)+'<i class="tick"></i>'.repeat(booked(slot));
+  });
+  $('comparison').innerHTML = '修电器，下午还剩 <b>'+remaining(slots[1])+'</b> 位<br>修衣物，上午还剩 <b>'+remaining(slots[2])+'</b> 位';
+  const slot = lookup(selected), session = sessions[slot.session], same = held === selected;
+  $('session').textContent = session.name;
+  $('time').textContent = session.time;
+  $('project').textContent = projects[slot.project].name;
+  $('stamp').textContent = same ? '已留位' : '待确认';
+  $('stamp').classList.toggle('held',same);
+  $('note').textContent = !storageOK ? '浏览器未能保存记录，当前留位仅在本页有效' : same ? '已为你留好 1 位，刷新后仍可查看' : held ? '已留'+description(lookup(held))+'，改选后将归还原名额' : '当前还剩 '+remaining(slot)+' 位，可给自己留 1 位';
+  $('action').textContent = same ? '撤销留位' : held ? '改留这一位' : '给自己留一位';
+  $('submit').classList.toggle('cancel',same);
+  $('submit').querySelector('.arrow').textContent = same ? '↶' : '→';
+  $('undo').hidden = !held || same;
+}
+function save(id) {
+  held = id;
+  try { if (id) localStorage.setItem(key,id); else localStorage.removeItem(key); storageOK = true; }
+  catch { storageOK = false; }
+  render();
+}
+function cancel() {
+  const old = lookup(held);
+  save(null);
+  announce(old ? '已撤销'+description(old)+'的留位，名额已归还' : '当前没有留位');
+  $('submit').focus({preventScroll:true});
+}
+$('submit').addEventListener('click', () => {
+  if (selected === held) { cancel(); return; }
+  const slot = lookup(selected);
+  if (!slot || remaining(slot) <= 0) return;
+  save(selected);
+  announce('已为你留下'+description(slot)+'的 1 个名额');
+});
+$('undo').addEventListener('click', cancel);
+window.addEventListener('storage', event => {
+  if (event.key !== key && event.key !== null) return;
+  held = readHold();
+  if (held) selected = held;
+  render(); announce('本机留位记录已更新');
+});
+buildTable();
+render();
+})();
+</script>
+</body>
+</html>

@@ -89,12 +89,15 @@ def load_brief(path):
         for i, slide in enumerate(slides):
             where = f"slides[{i}]"
             kind = field(slide, "kind", where)
-            if kind not in ("cover", "feature", "proof", "spread", "close"):
+            if kind not in ("cover", "feature", "proof", "spread", "chart", "close"):
                 raise ValueError(f"{where}: unsupported layout {kind}")
             if (kind == "cover" and i != 0) or (kind == "close" and i != len(slides)-1):
                 raise ValueError(f"{where}: cover/close must be at the ends")
             page = {k: resolve(slide, k, where) for k in ("kicker", "title", "body", "notes")}
             page["kind"] = kind
+            if kind == "chart":
+                from charts import localized_chart
+                page["chart"] = localized_chart(slide, lang, where)
             if kind == "spread":
                 plates = field(slide, "plates", where)
                 if not isinstance(plates,list) or len(plates) != 2:

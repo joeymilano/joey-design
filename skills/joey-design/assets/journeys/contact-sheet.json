@@ -1,0 +1,36 @@
+[
+  {
+    "action": "disabled",
+    "selector": "#export"
+  },
+  {
+    "action": "click",
+    "selector": "#pick"
+  },
+  {
+    "action": "text",
+    "selector": "#total",
+    "value": "1 张入选"
+  },
+  {
+    "action": "click",
+    "selector": "#undo"
+  },
+  {
+    "action": "text",
+    "selector": "#total",
+    "value": "0 张入选"
+  },
+  {
+    "action": "click",
+    "selector": "#pick"
+  },
+  {
+    "action": "reload"
+  },
+  {
+    "action": "text",
+    "selector": "#total",
+    "value": "1 张入选"
+  }
+]

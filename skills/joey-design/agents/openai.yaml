@@ -1,4 +1,4 @@
 interface:
   display_name: "Joey Design"
   short_description: "低 AI 味的高审美 PPT、Web / App UIUX、网站与游戏设计"
-  default_prompt: "Use $joey-design to make a low-AI-aesthetic presentation, product interface, website or playable game from my brief."
+  default_prompt: "Use $joey-design to design an editable deck, interface, site or game from my brief, then test the main task in the finished work."

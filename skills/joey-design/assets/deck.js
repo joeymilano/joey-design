@@ -33,6 +33,19 @@
     event.preventDefault();
     show(keys[event.key]);
   });
+  pages.forEach((page, i) => { page.id = "slide-" + (i + 1); });
+  function openHash() {
+    const match = /^#slide-([1-9][0-9]*)$/.exec(location.hash);
+    if (match) show(Number(match[1]) - 1);
+    if (location.hash === "#notes-panel" && panel.hidden) toggleNotes();
+  }
+  document.addEventListener("click", event => {
+    const link = event.target.closest("a.slide-action");
+    if (link && link.hash && link.origin === location.origin && link.pathname === location.pathname &&
+        link.hash === location.hash) openHash();
+  });
+  window.addEventListener("hashchange", openHash);
   show(0);
+  openHash();
   document.documentElement.classList.add("ready");
 })();

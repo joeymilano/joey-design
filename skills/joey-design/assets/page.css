@@ -18,3 +18,4 @@ dd{margin:0 0 .25em;font-size:clamp(32px,4.2vw,70px)}dt{font-size:16px}
 footer{border-top:1px solid var(--muted);font-size:15px}footer h2{font-size:26px;letter-spacing:-.02em}footer ul{list-style:none;padding:0}footer li{margin:12px 0}
 @media(max-width:760px){.hero,.story{display:block;min-height:0}.hero img{max-height:65vh;object-fit:contain}.story>.k{margin-bottom:25px}dl{gap:12px}h1{font-size:clamp(52px,14vw,88px)}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.story table{border-collapse:collapse;width:100%;margin-top:1.5rem;text-align:left}.story caption{text-align:left;font-weight:700}.story th,.story td{padding:.6rem .2rem;border-bottom:1px solid currentColor}.story td{text-align:right;font-variant-numeric:tabular-nums}

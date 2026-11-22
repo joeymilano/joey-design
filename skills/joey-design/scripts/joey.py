@@ -59,11 +59,21 @@ def copy_issues(value, path="$"):
 
 def main():
     parser=argparse.ArgumentParser(description="Build a bilingual design kit from one creative brief.")
-    parser.add_argument("command",choices=["build","check","social","app","directions","scenario","copycheck","ui","site","game"])
+    parser.add_argument("command",choices=["build","check","social","app","directions","scenario","copycheck","ui","site","game","review"])
     parser.add_argument("brief",type=Path)
     parser.add_argument("--out",type=Path,default=None)
+    parser.add_argument("--journey", type=Path, help="JSON interaction steps for review")
     args=parser.parse_args()
+    if args.journey and args.command != "review":
+        parser.error("--journey is used with review")
     try:
+        if args.command == "review":
+            from review import review_page
+            dest = args.out or Path("joey-review")
+            if not review_page(args.brief, dest, args.journey):
+                raise ValueError(f"Review found issues. Inspect {dest / 'report.json'}")
+            print(f"Desktop and phone checks passed. Open {dest / 'report.json'}")
+            return
         if args.command in ("ui", "site", "game"):
             from projects import build_project
             dest = args.out or Path("joey-" + args.command)

@@ -13,6 +13,12 @@
 | **网站** | [逛《间室》作品集](https://joeymilano.github.io/joey-design/stillroom.html)，按类别找作品，打开详情看近景 | 换上项目和图片，做好品牌官网、作品集或带明确行动入口的产品落地页 |
 | **游戏** | [玩《末班渡轮》](https://joeymilano.github.io/joey-design/last-ferry.html)，用有限的航程接齐乘客，跑完三关 | 改角色、地图与步数，生成自己的浏览器游戏 |
 
+## 同一道题，打开试试
+
+[三版修理铺报名页](https://joeymilano.github.io/joey-design/field-test/)共用一份简报。试着比较上午和下午的名额、选一场、留一位，再刷新或撤销。先体验作品，再展开看各自用了哪个 Skill
+
+[反面唱片室排场](https://joeymilano.github.io/joey-design/listening-room.html)有八把空椅子，应该搬到哪一场？[下载三页中文 PPTX](https://joeymilano.github.io/joey-design/listening-room.pptx)，在第二页点图表的「编辑数据」，可以改人数。网页表格、图表和中英文演示共享[同一份数据](skills/joey-design/assets/studies/listening-room.json)
+
 ## Installation
 
 ```sh
@@ -36,6 +42,10 @@ npx skills add joeymilano/joey-design --skill joey-design
 
 中文标题和按钮不用句号，不编客户评价、奖项和增长数字
 [设计与验收方法](skills/joey-design/references/product-work.md) · [中文文案示例](skills/joey-design/references/chinese-copy.md)
+
+## 交付前走一遍
+
+`review` 会在桌面和手机宽度从头操作一次，保存截图、已完成的步骤和异常。可以给自己的离线 HTML 写操作步骤，也可以直接复跑这个仓库的[四个示例](skills/joey-design/assets/journeys)。[用法与验收范围](skills/joey-design/references/design-review.md)
 
 ## 本地生成
 

@@ -1,0 +1,127 @@
+{
+  "brand": "SIDE B",
+  "theme": "folio",
+  "artwork": {
+    "file": "sleeves.jpg",
+    "portrait": "vinyl.jpg",
+    "alt": {
+      "zh": "木桌上的红色唱片封套和黑胶",
+      "en": "A worn red record sleeve and a black disc on a wooden table"
+    },
+    "credit": {
+      "zh": "反面唱片室是虚构场景，图片为原创 AI 概念摄影",
+      "en": "Fictional record room with original AI concept imagery"
+    }
+  },
+  "action": {
+    "zh": "核对候补人数",
+    "en": "Check the waiting lists"
+  },
+  "action_url": "#sources",
+  "facts": {
+    "seats": {
+      "value": "8",
+      "label": {
+        "zh": "可增设的座位",
+        "en": "Seats available to add"
+      },
+      "source": {
+        "zh": "本次排场练习的场地约束",
+        "en": "Venue limit in this fictional scheduling brief"
+      }
+    }
+  },
+  "slides": [
+    {
+      "kind": "cover",
+      "kicker": {
+        "zh": "反面唱片室 / 周末排场",
+        "en": "SIDE B / WEEKEND PROGRAMME"
+      },
+      "title": {
+        "zh": "椅子搬到哪一场",
+        "en": "Where do the chairs go?"
+      },
+      "body": {
+        "zh": "周六还有八把椅子可以搬",
+        "en": "Eight spare chairs for Saturday"
+      },
+      "notes": {
+        "zh": "提问后停一拍，再翻到候补名单",
+        "en": "Pause on the question before showing the lists"
+      }
+    },
+    {
+      "kind": "chart",
+      "kicker": {
+        "zh": "报名册 / 周五闭店时",
+        "en": "BOOKINGS / FRIDAY CLOSE"
+      },
+      "title": {
+        "zh": "晚场还有 18 人在等",
+        "en": "18 still waiting for the late set"
+      },
+      "body": {
+        "zh": "三个场次按开场时间排，数字只算候补",
+        "en": "Sessions in time order, counting only people on the waiting list"
+      },
+      "notes": {
+        "zh": "先看最晚的一场，再看下午场差了多少",
+        "en": "Compare the late and afternoon sets"
+      },
+      "chart": {
+        "unit": {
+          "zh": "候补人数（人）",
+          "en": "People waiting"
+        },
+        "source": {
+          "zh": "示例数据 · 反面唱片室周五候补表，三个场次均为虚构",
+          "en": "Illustrative data · fictional Friday waiting lists from Side B"
+        },
+        "rows": [
+          {
+            "label": {
+              "zh": "午场 12:00",
+              "en": "Noon 12:00"
+            },
+            "value": 0
+          },
+          {
+            "label": {
+              "zh": "下午 15:00",
+              "en": "Afternoon 15:00"
+            },
+            "value": 6
+          },
+          {
+            "label": {
+              "zh": "晚场 19:00",
+              "en": "Late 19:00"
+            },
+            "value": 18
+          }
+        ],
+        "max": 20
+      }
+    },
+    {
+      "kind": "close",
+      "kicker": {
+        "zh": "周六 / 搬椅子",
+        "en": "SATURDAY / SETUP"
+      },
+      "title": {
+        "zh": "八把都给晚场",
+        "en": "All eight to the late set"
+      },
+      "body": {
+        "zh": "18 人候补，补 {{seats}} 个座位后还有 10 人在等",
+        "en": "Adding {{seats}} seats leaves 10 people on the late waiting list"
+      },
+      "notes": {
+        "zh": "演示假设每人需一座，实际排场先核对容量",
+        "en": "One person per seat in this exercise. Check the venue limit before moving chairs"
+      }
+    }
+  ]
+}

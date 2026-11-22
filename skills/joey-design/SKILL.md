@@ -7,6 +7,10 @@ description: Low-AI-aesthetic design skill (低 AI 味) for editable PowerPoint 
 
 Build an artifact the reader can use. Start with their task and existing material, then choose the medium. For Chinese public copy and visual hierarchy use the low-AI-aesthetic (低 AI 味) guidance in [product-work.md](references/product-work.md) and [chinese-copy.md](references/chinese-copy.md).
 
+## Design and review a new brief
+
+Use [design-review.md](references/design-review.md) to choose between compositions, adapt a task to phone and desktop, and rehearse a real user journey. For bespoke product work, start with the user’s decision, the objects compared and the result of the next action. Test a long name, a blocked action and recovery before polishing the happy path. Look at actual captures at both sizes. When reviewing an existing design, fix the most consequential finding and rerun its steps.
+
 ## Choose the primary task
 
 | Request | Example / command | What to deliver |
@@ -31,6 +35,8 @@ For a brief that calls for stronger visual work, read [exhibition.md](references
     python3 "$SKILL/scripts/joey.py" directions brief.json --out cover-studies
 
 A complete example ships in `assets/studies/fold-deck.json` and `assets/studies/fold.json`. Use the plate theme for full-bleed exhibition work, or its listening-desk app for playing, tuning, storing and exporting a sound.
+
+For a data presentation, use the native chart layout in [brief.md](references/brief.md). Use the same numbers in both languages and name their source on the slide. Open the embedded workbook to check that the user can edit the data. A runnable example is `assets/studies/listening-room.json`.
 
 ## Direct the piece
 

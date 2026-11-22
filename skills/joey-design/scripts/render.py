@@ -7,6 +7,7 @@ from PIL import Image, ImageDraw, ImageOps
 
 from layout import font
 from model import THEMES
+from charts import add_office_chart, data_table, visual_bars
 
 esc = html.escape
 
@@ -43,7 +44,11 @@ def raster(c):
     draw=ImageDraw.Draw(im)
     for n in c.layers:
         x,y,w,h=(n[k] for k in ("x","y","w","h"))
-        if n["type"]=="image":
+        if n["type"] == "chart":
+            bars = visual_bars(n)
+            bars.bg = c.bg
+            im.paste(raster(bars), (x, y))
+        elif n["type"]=="image":
             im.paste(Image.open(io.BytesIO(framed(n["path"],w,h,n.get("fit","contain")))),(x,y))
         elif n["type"]=="rect":
             draw.rectangle((x,y,x+w-1,y+h-1),fill=n["color"])
@@ -76,7 +81,9 @@ def powerpoint(canvases, p, target):
         slide.background.fill.fore_color.rgb=rgb(c.bg)
         for n in c.layers:
             box=[unit(n[k]) for k in ("x","y","w","h")]
-            if n["type"]=="image":
+            if n["type"] == "chart":
+                add_office_chart(slide, box, n)
+            elif n["type"]=="image":
                 picture=slide.shapes.add_picture(io.BytesIO(framed(n["path"],n["w"],n["h"],n.get("fit","contain"))),*box)
                 picture._element.nvPicPr.cNvPr.set("descr",n["alt"])
             elif n["type"]=="rect":
@@ -107,10 +114,12 @@ def powerpoint(canvases, p, target):
                     if p["url"] != "#sources":
                         shape.click_action.hyperlink.address = p["url"]
                     else:
-                        proof = next((i for i, item in enumerate(p["pages"]) if item["kind"] == "proof"), None)
+                        proof = next((i for i, item in enumerate(p["pages"]) if item["kind"] in ("proof", "chart")), None)
                         if proof is not None:
                             shape.click_action.target_slide = deck.slides[proof]
         notes=page["notes"]
+        if page["kind"] == "chart":
+            notes += "\n" + page["chart"]["source"]
         if page["kind"]=="proof":
             notes+="\n"+"\n".join(f'{p["facts"][i]["value"]} — {p["facts"][i]["source"]}' for i in page["facts"])
         if page["kind"]=="close":
@@ -130,12 +139,16 @@ def uri(data):
     return "data:image/jpeg;base64,"+base64.b64encode(data).decode("ascii")
 
 
-def section_html(c, title):
+def section_html(c, title, nested=False, action_url=None, action_label=None):
     nodes=[]
     for n in c.layers:
         pos=(f'left:{n["x"]/c.width*100:.4f}%;top:{n["y"]/c.height*100:.4f}%;'
              f'width:{n["w"]/c.width*100:.4f}%;height:{n["h"]/c.height*100:.4f}%;')
-        if n["type"]=="image":
+        if n["type"] == "chart":
+            data = data_table(n["data"])
+            drawing = section_html(visual_bars(n), "", nested=True)
+            nodes.append(f'<div class="chart" style="{pos}"><div aria-hidden="true">{drawing}</div><div class="sr-data">{data}</div></div>')
+        elif n["type"]=="image":
             src=uri(framed(n["path"],n["w"],n["h"],n.get("fit","contain")))
             nodes.append(f'<img style="{pos}" alt="{esc(n["alt"])}" src="{src}">')
         elif n["type"]=="rect":
@@ -147,12 +160,22 @@ def section_html(c, title):
             style=(f"{pos}font-family:'{family}',{fallback};font-weight:{weight};"
                    f'font-size:{n["size"]/12.8:.5f}cqw;line-height:{n["pitch"]/12.8:.5f}cqw;color:{n["color"]};')
             value="<br>".join(esc(row) for row in n["rows"])
-            nodes.append(f'<div style="{style}">{value}</div>')
+            if action_url and action_label and " ".join(n["rows"]).replace(" ", "") == action_label.replace(" ", ""):
+                nodes.append(f'<a class="slide-action" style="{style}" href="{esc(action_url)}">{value}</a>')
+            else:
+                nodes.append(f'<div style="{style}">{value}</div>')
+    if nested:
+        return "".join(nodes)
     return f'<section class="slide" aria-label="{esc(title)}" style="background:{c.bg}">{"".join(nodes)}</section>'
 
 
 def deck_html(canvases,p,assets):
-    content="".join(section_html(c,s["title"]) for c,s in zip(canvases,p["pages"]))
+    source_page = next((i for i, s in enumerate(p["pages"], 1) if s["kind"] in ("proof", "chart")), None)
+    url = p["url"]
+    if url == "#sources":
+        url = f"#slide-{source_page}" if source_page else "#notes-panel"
+    content = "".join(section_html(c, s["title"], action_url=url if s["kind"] == "close" else None,
+                                   action_label=p["action"]) for c, s in zip(canvases, p["pages"]))
     en=p["lang"]=="en"
     note_items=[]
     for page in p["pages"]:
@@ -193,6 +216,8 @@ def sales_page(p,assets):
         cards=""
         if slide["kind"]=="proof":
             cards="<dl>"+"".join(f'<div><dt>{txt(p["facts"][k]["label"])}</dt><dd>{txt(p["facts"][k]["value"])}</dd></div>' for k in slide["facts"])+"</dl>"
+        if slide["kind"] == "chart":
+            cards = data_table(slide["chart"]) + f'<p>{txt(slide["chart"]["source"])}</p>'
         if slide["kind"]=="spread":
             plates = []
             for plate in slide["plates"]:

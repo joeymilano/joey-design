@@ -103,6 +103,9 @@ class Canvas:
 
 
 def compose(p, index):
+    if p["pages"][index]["kind"] == "chart":
+        from charts import slide_canvas
+        return slide_canvas(p, index)
     if p["theme"] == "plate":
         from plates import slide
         return slide(p,index)
