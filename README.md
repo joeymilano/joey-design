@@ -78,6 +78,6 @@ Windows 用 `.venv\Scripts\activate` 激活环境，Linux 渲染中文图片时�
 
 ## Design credits
 
-Designed by **Joey Zhao**. All projects are fictional studies. The harbour illustration, textile study, metallic sculpture, lighting, architecture and record-store images were generated for these examples. Paper Radio and Tide Index use original procedural artwork.
+Designed by **Joey Zhao**.
 
 [MIT License](LICENSE) · [Joey Zhao](https://www.joeyzhao.cc/)
